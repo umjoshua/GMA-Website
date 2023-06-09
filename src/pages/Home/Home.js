@@ -5,6 +5,7 @@ import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
+import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Slider />
       </div>
       <Events />
+      <RegisterForUpdate/>
       <Contact />
       <Footer />
     </div>
