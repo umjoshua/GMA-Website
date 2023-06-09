@@ -1,0 +1,104 @@
+.contact_main {
+  margin: 10px 0px 20px 0px;
+}
+
+.contact_us {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.contact_inside {
+  display: flex;
+}
+.contact_icons {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+.first_icons,
+.second_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact_symbols {
+  background: rgba(255, 255, 255, 0.2);
+  height: 120px;
+  width: 120px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border-style: none;
+
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.contact_symbols:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+.contact_form_div {
+  width: 50%;
+}
+.contact_form {
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0px 20px 0px 20px;
+  border-radius: 10px;
+  padding: 10px 10px 20px 20px;
+}
+.contact_form > label {
+  font-size: 15px;
+  margin: 10px 0px 4px 6px;
+}
+.contact_form > input {
+  width: calc(100% - 1rem);
+  height: 40px;
+  border-radius: 5px;
+  border-style: none;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+.contact_form > textarea {
+  width: calc(100% - 1rem);
+  height: 70px;
+  border-radius: 5px;
+  border-style: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+.contact_form > input::placeholder {
+  padding: 0px 0px 0px 10px;
+  font-size: 15px;
+  color: #999;
+}
+
+@media screen and (max-width: 768px) {
+  .contact_inside {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact_icons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  .contact_symbols:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+  .contact_form_div {
+    width: 100%;
+  }
+  .contact_form {
+    width: 90%;
+  }
+}
