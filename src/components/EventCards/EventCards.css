@@ -1,0 +1,41 @@
+.card_container{
+    width: 300px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px -5px;
+    transition: 0.3s;
+    animation: ease-out;
+    margin: 10px ;
+}
+.card_container:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px;
+}
+.card_container img{
+    overflow: hidden;
+    height: 200px;
+}
+.card_content{
+    margin: 1rem;
+    margin-top: 0.3rem;
+}
+.card_content > span{
+    margin: 0;
+    padding: 0;
+}
+.card_title{
+    margin-bottom:0.5rem;
+}
+.card_btn{
+    display: flex;
+    justify-content: center;
+}
+.card_btn > button{
+    padding: 0.5rem;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+}
+.card_btn > button:hover{
+    background: #FBCEB1;
+}
