@@ -24,7 +24,7 @@ function DetailsPage() {
       <div className="detail_description">
         <p>{event?.description}</p>
       </div>
-      {popup && <RegisterForm popupOpen={setPopup} />}
+      {popup && <RegisterForm popupOpen={setPopup} title={event.title}/>}
     </div>
   );
 }
