@@ -29,13 +29,13 @@
     display: flex;
     justify-content: center;
 }
-.card_btn > button{
+.card_button{
     padding: 0.5rem;
     border: none;
     transition: 0.2s;
     margin-bottom: 0.5rem;
     border-radius: 3px;
 }
-.card_btn > button:hover{
-    background: #FBCEB1;
+.card_button:hover{
+    background: rosybrown;
 }

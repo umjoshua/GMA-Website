@@ -1,0 +1,106 @@
+.register_form_background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(200, 200, 200, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+}
+.register_form {
+  width: 70%;
+  background: whitesmoke;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.register_title {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-gap: 10px;
+  color: #777;
+  height: 50px;
+}
+.reg_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bolder;
+}
+.close_btn {
+  display: flex;
+  justify-content: center;
+}
+.close_btn > button {
+  background: transparent;
+  border: none;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form > label {
+  color: #222;
+  margin: 12px 0px 2px 24px;
+}
+.form > input,
+.form > select {
+  width: 90%;
+  height: 35px;
+  margin: 0px 0px 0px 24px;
+  border-radius: 2px;
+  border: 1px solid #999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.form > input::placeholder {
+  padding-left: 12px;
+}
+.register_submit {
+  margin: 12px 0px 10px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.register_submit > input {
+  width: 70px;
+  height: 40px;
+  margin-top: 15px;
+  margin-right: 30px;
+  background: linear-gradient(130deg, #6f6df4, #4c46f5);
+  border: 1px solid #4c46f5;
+  border-radius: 4px;
+}
+@media screen and (max-width: 768px) {
+  .register_form_background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register_form {
+    width: 100%;
+    height: max-content;
+  }
+  .register_submit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register_submit > input{
+    width: 80%;
+    font-size: medium;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}

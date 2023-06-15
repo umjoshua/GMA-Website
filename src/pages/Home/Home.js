@@ -1,8 +1,6 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import Slider from "../../components/Slider/Slider";
 import "./Home.css";
-import Footer from "../../components/Footer/Footer";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
 import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
@@ -10,14 +8,12 @@ import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpd
 function Home() {
   return (
     <div>
-      <Navbar />
       <div className="slider_div">
         <Slider />
       </div>
       <Events />
-      <RegisterForUpdate/>
+      <RegisterForUpdate />
       <Contact />
-      <Footer />
     </div>
   );
 }
