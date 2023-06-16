@@ -22,8 +22,32 @@
     padding: 0 1rem;
 }
 .nav_menu li a{
-    font-size: 1.2rem;
+    font-size: medium;
     font-weight: 500;
+    transition: all 0.5s
+}
+.nav_menu li a:hover{
+    opacity: 1;
+    color: #ff0066;
+}
+.nav_menu li a::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: all 0.45s;
+}
+.nav_menu li a:hover::before{
+    background-color: black;
+    height: 2px;
+    width: 80%;
+    background-color: #ff0066;
+    position: absolute;
+    bottom: -3px;
+    left: 1px;
 }
 .hamburger{
     display: none;
@@ -50,7 +74,7 @@
         padding: 1rem 0;
     }
     .nav_menu li a{
-        font-size: 2rem;
+        font-size: medium;
 
     }
     .hamburger{

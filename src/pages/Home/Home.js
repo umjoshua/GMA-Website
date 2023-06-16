@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 import Contact from "../../components/Contact/Contact";
@@ -6,14 +6,29 @@ import Events from "../Events/Events";
 import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div>
-      <div className="slider_div">
-        <Slider />
-      </div>
-      <Events />
-      <RegisterForUpdate />
-      <Contact />
+      <section id="home">
+        <div className="slider_div">
+          <Slider />
+        </div>
+      </section>
+      <section id="events">
+        <Events />
+      </section>
+      <section id="registerUpdates">
+        <RegisterForUpdate />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+      <section id="about">
+
+      </section>
     </div>
   );
 }
