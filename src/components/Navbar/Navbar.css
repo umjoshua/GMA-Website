@@ -9,6 +9,8 @@
     width: 100%;
     height: 90px;
     z-index: 10;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ff0066;
 }
 .header_bg{
     background-color: rgba(0, 0,0,0.85);

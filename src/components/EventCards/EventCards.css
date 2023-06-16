@@ -5,6 +5,7 @@
     transition: 0.3s;
     animation: ease-out;
     margin: 10px ;
+    border-radius: 10px;
 }
 .card_container:hover{
     transform: scale(1.1);
@@ -31,11 +32,14 @@
 }
 .card_button{
     padding: 0.5rem;
-    border: none;
+    border: 3px solid gold;
+    border-radius: 10px;
+    background: none;
     transition: 0.2s;
     margin-bottom: 0.5rem;
     border-radius: 3px;
+    width: 50%;
 }
 .card_button:hover{
-    background: rosybrown;
+    background: gold;
 }

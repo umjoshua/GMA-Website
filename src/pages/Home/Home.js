@@ -3,7 +3,7 @@ import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
-import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
+//import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
   useEffect(() => {
@@ -20,9 +20,9 @@ function Home() {
       <section id="events">
         <Events />
       </section>
-      <section id="registerUpdates">
+      {/* <section id="registerUpdates">
         <RegisterForUpdate />
-      </section>
+      </section> */}
       <section id="contact">
         <Contact />
       </section>

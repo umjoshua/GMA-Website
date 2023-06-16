@@ -70,7 +70,7 @@ function Navbar({ pg }) {
                 <Link to="/">Events</Link>
               </ScrollLink>
             </li>
-            <li>
+            {/* <li>
               <ScrollLink
                 to="registerUpdates"
                 spy={true}
@@ -81,7 +81,7 @@ function Navbar({ pg }) {
               >
                 <Link to="/">Registration</Link>
               </ScrollLink>
-            </li>
+            </li> */}
             <li>
               <ScrollLink
                 to="about"

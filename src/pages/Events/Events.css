@@ -3,6 +3,9 @@
     display: flex;
     justify-content: center;
 }
+.event_div > h1 {
+    color: black;
+}
 .event_cards{
     display: flex;
     justify-content: center;
