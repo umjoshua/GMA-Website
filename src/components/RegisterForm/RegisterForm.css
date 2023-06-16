@@ -16,6 +16,7 @@
 }
 .register_form {
   width: 70%;
+  height: max-content;
   background: whitesmoke;
   border-radius: 4px;
   display: flex;
