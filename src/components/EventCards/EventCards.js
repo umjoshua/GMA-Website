@@ -1,6 +1,6 @@
 import React from "react";
 import "./EventCards.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function EventCards({ event }) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ function EventCards({ event }) {
   return (
     <div className="card_container">
       <div className="image_container">
-        <img src={event.eventImage} alt="Event Image" />
+        <img src={event.eventImage} alt="Event_Image" />
       </div>
       <div className="card_content">
         <div className="card_title">
