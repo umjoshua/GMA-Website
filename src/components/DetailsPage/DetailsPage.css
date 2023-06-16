@@ -1,128 +1,146 @@
-.details_container{
-    width: 100%;
+.details_container {
+  width: 100%;
 }
-.details{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    margin: 10px;
+.details {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  margin: 10px;
 }
-.detail_title{
-    margin: 10px;
-    padding: 10px;
-    font-size: 18px;
+.detail_title {
+  margin: 10px;
+  padding: 10px;
+  font-size: 18px;
 }
-.detail_shorthand{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 32% 32% 32%;
+.detail_shorthand {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+}
+.shorthand {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+}
+.shorthand_icon {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shorthand_text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.shorthand_title {
+  font-weight: bold;
+}
+.shorthand_detail {
+  font-size: 14px;
+  font-style: italic;
+  color: #999;
+}
+.detail_image {
+  width: 100%;
+}
+.detail_image > img {
+  width: 100%;
+}
+.detail_description {
+  width: 100%;
+}
+.description_title {
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+.detail_desc {
+  margin-left: 35px;
+  font-style: italic;
+}
+.detail_location {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+.location_title {
+  margin: 10px;
+}
+.location_details {
+  background: #f7f7f7;
+}
+.association_heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.heading_in {
+  color: gold;
+  margin-right: 10px;
+}
+.heading {
+  font-weight: bold;
+}
+.event_address {
+  border-top: 1px solid #000;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+.address_in {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.address_arrow {
+  color: gold;
+  margin-right: 10px;
+}
+.schedule_details {
+  margin-top: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #000;
+}
+.schedule_in {
+  display: flex;
+  align-items: center;
+}
+.schedule_date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.schedule_date > p {
+  color: #000;
+}
+.event_share {
+  padding: 14px;
+  border-bottom: 2px solid #000;
+}
+.event_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
 
-}
-.shorthand{
-    background: #F7F7F7;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-}
-.shorthand_icon{
-    width: 30px;
-    height: 100%;
-}
-.shorthand_text{
+@media screen and (max-width: 760px) {
+  .details {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-}
-.shorthand_title{
-    font-weight: bold;
-}
-.shorthand_detail{
-    font-size: 14px;
-    font-style: italic;
-    color: #999;
-}
-.detail_image{
-    width: 100%;
-}
-.detail_image > img{
-    width: 100%;
-}
-.detail_description{
-    width: 100%;
-}
-.description_title{
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-}
-.detail_desc{
-    margin-left: 35px;
-    font-style: italic;
-}
-.detail_location{
-    margin-left: 20px;
-   margin-top: 40px;
-}
-.location_title{
-    margin: 10px;
-}
-.location_details{
-    background: #F7F7F7;
-}
-.association_heading{
+  }
+  .detail_shorthand {
     width: 100%;
     display: flex;
-    align-items: center;
-    padding: 10px;
-}
-.heading_in{
-    color: gold;
-    margin-right: 10px;
-}
-.heading{
-    font-weight: bold;
-}
-.event_address{
-    border-top: 1px solid #000;
-    margin-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-}
-.address_in{
-    display: flex;
-    align-items: center;
-    margin: 10px;
-}
-.address_arrow{
-    color: gold;
-    margin-right: 10px;
-}
-.schedule_details{
-    margin-top: 10px;
-    padding: 10px;
-    border-bottom: 1px solid #000;
-}
-.schedule_in{
-    display: flex;
-    align-items: center;
-}
-.schedule_date{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-.schedule_date > p{
-    color: #000;
-}
-.event_share{
-    padding: 14px;
-    border-bottom: 2px solid #000;
-}
-.event_icons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
+    flex-direction: column;
+  }
+  .detail_location{
+    width: 100%;
+    margin: 0px;
+  }
 }

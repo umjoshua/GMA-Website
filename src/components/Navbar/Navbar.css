@@ -51,6 +51,7 @@
 }
 .hamburger{
     display: none;
+    color: #ffffff;
 }
 
 @media screen and (max-width: 1040px) {
