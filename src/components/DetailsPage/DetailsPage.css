@@ -48,6 +48,7 @@
 }
 .detail_image > img {
   width: 100%;
+  border-radius: 20px;
 }
 .detail_description {
   width: 100%;
