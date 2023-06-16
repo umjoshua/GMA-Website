@@ -65,13 +65,16 @@ function DetailsPage() {
           <div className="detail_description">
             <div className="description_title">
               <span>{event.title}</span>
+              <div className="description_register">
+                <button onClick={() => setPopup(true)}>Register</button>
+              </div>
             </div>
             <div className="detail_desc">
               <span>{event.description}</span>
             </div>
           </div>
         </div>
-
+        {popup && <RegisterForm popupOpen={setPopup} title={event.title}/>}
         <div className="detail_location">
           <div className="location_title">
             <h3>Event Location</h3>
