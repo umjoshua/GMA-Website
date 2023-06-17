@@ -4,6 +4,7 @@ import "./Home.css";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
 import CommitteePage from "../CommitteePage/CommitteePage";
+import AboutPage from "../AboutPage/AboutPage";
 //import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
@@ -17,6 +18,9 @@ function Home() {
         <div className="slider_div">
           <Slider />
         </div>
+      </section>
+      <section id="about">
+        <AboutPage/>
       </section>
       <section id="events">
         <Events />

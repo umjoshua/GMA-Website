@@ -41,13 +41,13 @@ function Footer() {
                         <a href="#" target='_blank' rel="noopener noreferrer"><SchoolIcon /></a>
                     </div>
                 </div>
-                <div className='right'>
+                {/* <div className='right'>
                     <h4>About Us....</h4>
 
                     <div className='social'>
                         <p>An American malayalee association formed to help the Keralites residing in United States of America</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
