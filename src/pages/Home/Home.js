@@ -3,6 +3,7 @@ import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
+import CommitteePage from "../CommitteePage/CommitteePage";
 //import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
@@ -23,6 +24,9 @@ function Home() {
       {/* <section id="registerUpdates">
         <RegisterForUpdate />
       </section> */}
+      <section id="committee">
+        <CommitteePage/>
+      </section>
       <section id="contact">
         <Contact />
       </section>

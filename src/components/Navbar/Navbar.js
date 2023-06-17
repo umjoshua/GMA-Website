@@ -70,18 +70,18 @@ function Navbar({ pg }) {
                 <Link to="/">Events</Link>
               </ScrollLink>
             </li>
-            {/* <li>
+            <li>
               <ScrollLink
-                to="registerUpdates"
+                to="committee"
                 spy={true}
                 smooth={true}
                 offset={-100}
                 duration={500}
                 style={{ cursor: "pointer" }}
               >
-                <Link to="/">Registration</Link>
+                <Link to="/">Committee</Link>
               </ScrollLink>
-            </li> */}
+            </li>
             <li>
               <ScrollLink
                 to="about"
