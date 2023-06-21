@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../App";
 import "./DetailsPage.css";
-import { useParams } from "react-router-dom";
-import RegisterForm from "../RegisterForm/RegisterForm.js";
+import { useNavigate, useParams } from "react-router-dom";
 import ListIcon from "@mui/icons-material/List";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -11,16 +10,25 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 function DetailsPage() {
-  const [popup, setPopup] = useState(false);
+  let navigate = useNavigate();
 
   const { title } = useParams();
   const events = useContext(AppContext);
 
   const event = events.find((event) => event.title === title);
+
+  const handleNavigate = () => {
+    navigate('/registerpage',{
+      state: {
+        eventName: event.title,
+        amount: event.amount
+      }
+    })
+  }
 
   return (
     <div className="details_container">
@@ -35,7 +43,7 @@ function DetailsPage() {
           <div className="detail_shorthand">
             <div className="shorthand">
               <div className="shorthand_icon">
-                <CalendarMonthIcon className="address_arrow"/>
+                <CalendarMonthIcon className="address_arrow" />
               </div>
               <div className="shorthand_text">
                 <span className="shorthand_title">Event Date:</span>
@@ -44,7 +52,7 @@ function DetailsPage() {
             </div>
             <div className="shorthand">
               <div className="shorthand_icon">
-                <AccessTimeIcon className="address_arrow"/>
+                <AccessTimeIcon className="address_arrow" />
               </div>
               <div className="shorthand_text">
                 <span className="shorthand_title">Event Time:</span>
@@ -53,7 +61,7 @@ function DetailsPage() {
             </div>
             <div className="shorthand">
               <div className="shorthand_icon">
-                <LocationOnIcon className="address_arrow"/>
+                <LocationOnIcon className="address_arrow" />
               </div>
               <div className="shorthand_text">
                 <span className="shorthand_title">Event Location:</span>
@@ -65,8 +73,11 @@ function DetailsPage() {
           <div className="detail_description">
             <div className="description_title">
               <span>{event.title}</span>
+              <span>{event.amount}</span>
               <div className="description_register">
-                <button onClick={() => setPopup(true)}>Register</button>
+                <button onClick={handleNavigate}>
+                  Register
+                </button>
               </div>
             </div>
             <div className="detail_desc">
@@ -74,7 +85,6 @@ function DetailsPage() {
             </div>
           </div>
         </div>
-        {popup && <RegisterForm popupOpen={setPopup} title={event.title}/>}
         <div className="detail_location">
           <div className="location_title">
             <h3>Event Location</h3>
@@ -109,7 +119,9 @@ function DetailsPage() {
                 <div>
                   <span className="schedule_date">
                     <CalendarMonthIcon className="address_arrow" />
-                    <p>{event.event_date} {event.event_time}</p>
+                    <p>
+                      {event.event_date} {event.event_time}
+                    </p>
                   </span>
                 </div>
               </div>

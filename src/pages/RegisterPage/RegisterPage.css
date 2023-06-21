@@ -1,0 +1,68 @@
+.register_page{
+    width: 100%;
+    overflow: hidden;
+}
+.register_title{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register_title > h1,
+.register_title > span{
+    color: navy;
+    margin: 10px;
+}
+.pay_methods > button{
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid navy;
+    color: navy;
+    background: transparent;
+    border-radius: 4px;
+}
+.pay_methods > button.active{
+    background: navy;
+    color: aliceblue;
+}
+.pay_methods > button:hover{
+    transform: scale(1.1);
+    transition: 0.5s ease-out;
+}
+.register_form_container{
+    width: 100%;
+    display: flex;
+}
+.register_form{
+    width: 60%;
+}
+.reg_title{
+    color: navy;
+    margin: 10px;
+}
+.cart{
+    width: 40%;
+}
+@media screen and (max-width: 768px){
+    .pay_methods{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .register_form{
+        width: 100%;
+    }
+    .register_form_container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    } 
+    .cart{
+        width: 100%;
+        margin: 30px;
+    }
+}
