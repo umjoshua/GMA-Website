@@ -5,7 +5,7 @@ import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
 import CommitteePage from "../CommitteePage/CommitteePage";
 import AboutPage from "../AboutPage/AboutPage";
-//import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
+import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
 
 function Home() {
   useEffect(() => {
@@ -25,9 +25,9 @@ function Home() {
       <section id="events">
         <Events />
       </section>
-      {/* <section id="registerUpdates">
+      <section id="registerUpdates">
         <RegisterForUpdate />
-      </section> */}
+      </section>
       <section id="committee">
         <CommitteePage/>
       </section>

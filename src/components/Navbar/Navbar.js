@@ -84,6 +84,18 @@ function Navbar({ pg }) {
             </li>
             <li>
               <ScrollLink
+                to="registerUpdates"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                style={{ cursor: "pointer" }}
+              >
+                <Link to="/">Membership</Link>
+              </ScrollLink>
+            </li>
+            <li>
+              <ScrollLink
                 to="about"
                 spy={true}
                 smooth={true}
