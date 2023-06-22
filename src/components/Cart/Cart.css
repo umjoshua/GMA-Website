@@ -1,0 +1,36 @@
+.cart_container{
+    width: 80%;
+    border: 2px solid navy;
+    border-radius: 4px;
+}
+.cart_title{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: navy;
+    color: whitesmoke;
+}
+.cart_title > span{
+    margin: 0px 0px 0px 10px;
+    font-size: 18px;
+}
+.cart_event{
+    padding: 10px 0px 10px 20px ;
+    color: navy;
+    border-bottom: 1px solid #888;
+}
+.fare{
+    margin: 10px 0px 10px 20px;
+}
+.fare_division{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: navy;
+}
+.subtotal{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+    color: navy;
+    font-weight: bold;
+}

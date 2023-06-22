@@ -1,74 +1,24 @@
 import React from "react";
 import "./RegisterForm.css";
-import CloseIcon from "@mui/icons-material/Close";
-
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-function RegisterForm(props) {
-  const states = [
-    "Alabama",
-    "Alaska",
-    "Arizona",
-    "Arkansas",
-    "California",
-    "Colorado",
-    "Connecticut",
-    "Delaware",
-    "Florida",
-    "Georgia",
-    "Hawaii",
-    "Idaho",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Kansas",
-    "Kentucky",
-    "Louisiana",
-    "Maine",
-    "MaryLand",
-    "Massachusetts",
-    "Michigan",
-    "Minnesota",
-    "Missippi",
-    "Missouri",
-    "Montana",
-    "Nebraska",
-    "Nevada",
-    "New Hampshire",
-    "New Jersey",
-    "New Mexico",
-    "New York",
-    "North Carolina",
-    "North Dakota",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Pennsylvania",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming",
-  ];
+function RegisterForm({ title, amount }) {
+  
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   const schema = yup.object().shape({
-    fullName: yup.string().required("Your Full Name is Required!"),
-    email: yup.string().email().required("Please provide your email!"),
-    address: yup.string().required("Please provide your Address"),
-    state: yup.string().required("State Required"),
-    zipcode: yup.number().required("Please provide your Zipcode"),
+    firstName: yup.string().required("Your First Name is Required!"),
+    lastName: yup.string().required("Your Last Name is Required!"),
+    country: yup.string().required("Please enter the country!"),
     phone: yup.string().matches(phoneRegExp, "Phone number is not valid!"),
+    address: yup.string().required("Please provide your Address"),
+    suburb: yup.string().required("SUBURB Required"),
+    postcode: yup.string().required("Please provide your Zipcode"),
+    email: yup.string().email().required("Please provide your email!"),
+    cEmail: yup.string().email().required("Please provide your email!"),
   });
   const {
     register,
@@ -79,72 +29,87 @@ function RegisterForm(props) {
   });
   const onSubmit = (data) => {
     console.log(data);
+    console.log(title,amount);
   };
   return (
-    <div className="register_form_background">
-      <div className="register_form">
-        <div className="register_title">
-          <div className="reg_title">
-            <span>Register for {props.title}</span>
+    <div className="form_container">
+      <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <div className="form_part_one">
+          <div className="form_name">
+            <label>FIRST NAME</label>
+            <input
+              type="text"
+              placeholder="First Name"
+              {...register("firstName")}
+            />
+            <span>{errors.fisrtName?.message}</span>
+          </div>
+          <div className="form_name">
+            <label>LAST NAME</label>
+            <input
+              type="text"
+              placeholder="Last Name"
+              {...register("lastName")}
+            />
+            <span>{errors.lastName?.message}</span>
           </div>
 
-          <div className="close_btn">
-            <button onClick={() => props.popupOpen(false)}>
-              <CloseIcon />
-            </button>
+          <div className="form_name">
+            <label>COUNTRY</label>
+            <input type="text" placeholder="Country" {...register("country")} />
+            <span>{errors.country?.message}</span>
+          </div>
+          <div className="form_name">
+            <label>PHONE NUMBER</label>
+            <input type="tel" {...register("phone")} />
+            <span>{errors.phone?.message}</span>
           </div>
         </div>
-        <div className="register_form_inputs">
-          <form className="form" onSubmit={handleSubmit(onSubmit)}>
-            <label>Full Name *</label>
+
+        <div className="form_address">
+          <label>ADDRESS</label>
+          <input type="text" placeholder="Address" {...register("address")} />
+          <span>{errors.address?.message}</span>
+        </div>
+
+        <div className="form_part_one">
+          <div className="form_name">
+            <label>SUBURB</label>
+            <input type="text" placeholder="SUBURB" {...register("suburb")} />
+            <span>{errors.suburb?.message}</span>
+          </div>
+          <div className="form_name">
+            <label>POSTCODE</label>
             <input
-              placeholder="Full Name"
               type="text"
-              {...register("fullName")}
+              placeholder="POSTCODE"
+              {...register("postcode")}
             />
-            <span>{errors.fullName?.message}</span>
-            <label>Email *</label>
+            <span>{errors.postcode?.message}</span>
+          </div>
+          <div className="form_name">
+            <label>EMAIL ADDRESS</label>
             <input
-              placeholder="johndoe@gmail.com"
               type="email"
+              placeholder="johndoe@gmail.com"
               {...register("email")}
             />
             <span>{errors.email?.message}</span>
-            <label>Address *</label>
+          </div>
+          <div className="form_name">
+            <label>CONFIRM EMAIL ADDRESS</label>
             <input
-              placeholder="3248 Burning Memory Lane"
-              type="text"
-              {...register("address")}
+              type="email"
+              placeholder="johndoe@gmail.com"
+              {...register("cEmail")}
             />
-            <span>{errors.address?.message}</span>
-            <label htmlFor="state">State/Province *</label>
-            <select id="state" placeholder="State" {...register("state")}>
-              <option value="" disabled selected>
-                Select a state
-              </option>
-              {states.map((state, index) => (
-                <option key={index} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
-            <span>{errors.state?.message}</span>
-            <label>Zip Code *</label>
-            <input placeholder="19145" type="text" {...register("zipcode")} />
-            <span>{errors.zipcode?.message}</span>
-            <label>Phone Number *</label>
-            <input
-              placeholder="+1 806-674-1431"
-              type="tel"
-              {...register("phone")}
-            />
-            <span>{errors.phone?.message}</span>
-            <div className="register_submit">
-              <input type="submit" />
-            </div>
-          </form>
+            <span>{errors.cEmail?.message}</span>
+          </div>
         </div>
-      </div>
+        <div className="form_submit">
+          <input type="submit" />
+        </div>
+      </form>
     </div>
   );
 }
