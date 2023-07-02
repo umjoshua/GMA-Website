@@ -1,0 +1,35 @@
+.phone_form {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+}
+.area_code {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-right: 10px;
+}
+.phone_code {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.area_code > input,
+.phone_code > input {
+  border-radius: 6px;
+  border: 1px solid #999;
+  height: 35px;
+  padding-left: 10px;
+}
+.area_code > label,
+.phone_code > label{
+    color: #666;
+}
+@media screen and (max-width: 768px){
+    .area_code > input{
+        width: 70px;
+    }
+    .phone_code{
+        width: 200px;
+    }
+}

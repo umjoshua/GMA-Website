@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { createContext } from "react";
 import events from "./data/EventData/EventData";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import MemRegistrationPage from "./pages/MemRegistrationPage/MemRegistrationPage";
 
 export const AppContext = createContext();
 
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/details/:title" element={<DetailsPage />} />
-            <Route path="registerpage" element={<RegisterPage/>}/>
+            <Route path="/membership" element={<MemRegistrationPage/>}/>
           </Routes>
           <Footer />
         </div>

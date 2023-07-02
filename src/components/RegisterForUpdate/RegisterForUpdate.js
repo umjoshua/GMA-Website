@@ -6,7 +6,7 @@ function RegisterForUpdate() {
   let navigate = useNavigate();
 
   const handleMembership = () => {
-    navigate("/")
+    navigate("/membership")
   }
 
   return (
