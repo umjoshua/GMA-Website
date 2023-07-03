@@ -1,0 +1,24 @@
+.membership_container {
+  height: 100vh;
+  
+  background: radial-gradient(#4f46e4 15%, transparent 16%),
+    linear-gradient(45deg, transparent 49%, #4f46e4 49% 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, #4f46e4 49% 51%, transparent 51%);
+  background-size: 3em 3em;
+  background-color: #ffffff;
+  opacity: 1;
+}
+.member{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+@media screen and (max-width: 768px){
+  .membership_container{
+    overflow: hidden;
+    padding: 0px;
+    width: 100%;
+  }
+}

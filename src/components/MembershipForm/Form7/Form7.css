@@ -1,0 +1,11 @@
+.blood_form_container{
+    margin: 10px;
+}
+.blood_form_container > select {
+    width: 90%;
+    height: 35px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    background: transparent;
+    padding-left: 10px;
+}

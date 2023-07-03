@@ -1,0 +1,22 @@
+.fee_form_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fee_form_container > input{
+    height: 35px;
+    border: 1px solid blue;
+    border-radius: 6px;
+    width: 40%;
+    margin: 10px;
+    background: transparent;
+}
+.fee_form_container > input.active{
+    background: blue;
+    color: white;
+}
+.fee_form_container > input:hover{
+    background: blue;
+    color: white;
+}

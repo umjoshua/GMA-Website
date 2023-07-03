@@ -1,0 +1,22 @@
+.p_form_container{
+    margin: 0px 0px 0px 20px;
+}
+.p_first{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.p_first > label{
+    width: 80%;
+    border: 1px solid #999;
+    border-radius: 6px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.p_first > label > input{
+    margin: 10px;
+}
