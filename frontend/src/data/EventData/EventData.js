@@ -11,7 +11,8 @@ const events = [
         event_location: "Katsumata Center Geelong",
         state: "Notingham",
         country: "UK",
-        amount: "20.00$",
+        amountAdult: 20.00,
+        amountChild: 10.00
     },
     {
         eventImage: EventImages,
@@ -22,7 +23,8 @@ const events = [
         event_location: "Marcus Garvey Hall",
         state: "Notingham",
         country: "UK",
-        amount: "25.00$",
+        amountAdult: 21.00,
+        amountChild: 11.00,
     },
 ]
 

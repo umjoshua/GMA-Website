@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../App";
 import "./DetailsPage.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,7 +25,8 @@ function DetailsPage() {
     navigate('/registerpage', {
       state: {
         eventName: event.title,
-        amount: event.amount
+        amountAdult: event.amountAdult,
+        amountChild: event.amountChild,
       }
     })
   }
@@ -136,7 +137,10 @@ function DetailsPage() {
               <div className="detail_description">
                 <div className="description_title">
                   <span>{event.title}</span>
-                  <span>{event.amount}</span>
+                  <span style={{display: "flex", flexDirection: "column"}}>
+                    <span>Child: {event.amountChild}</span>
+                    <span>Adult: {event.amountAdult}</span>
+                  </span>
                   <div className="description_register">
                     <button onClick={handleNavigate}>
                       Register

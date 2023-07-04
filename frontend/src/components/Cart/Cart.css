@@ -23,8 +23,6 @@
     margin: 10px 0px 10px 20px;
 }
 .fare_division{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     color: navy;
 }
 .subtotal{
@@ -33,4 +31,9 @@
     margin: 10px;
     color: navy;
     font-weight: bold;
+}
+.count {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
 }

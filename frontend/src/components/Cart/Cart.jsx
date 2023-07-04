@@ -2,7 +2,8 @@ import React from "react";
 import "./Cart.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function Cart({title, amount}) {
+function Cart({ title, amountAdult, amountChild, adultCount, childCount }) {
+  let subTotal = (amountAdult * adultCount) + (amountChild * childCount)
   return (
     <div className="cart_container">
       <div className="cart_title">
@@ -14,27 +15,24 @@ function Cart({title, amount}) {
           <h3>{title}</h3>
         </div>
         <div className="cart_event">
-          <span>Price: {amount}</span>
+          <span>Adult Fee: $ {amountAdult}</span>
+          <br />
+          <span>Child Fee: $ {amountChild}</span>
         </div>
       </div>
       <div className="fare">
         <div>
           <div className="fare_division">
-            <span>Ticket: </span>
-            <span>{amount}</span>
-          </div>
-          <div className="fare_division">
-            <span>Ticket Fee:</span>
-            <span>$1.00</span>
-          </div>
-          <div className="fare_division">
-            <span>Processing Fee: </span>
-            <span>$1.75</span>
+            <span style={{ fontWeight: "bold" }}>Ticket Count: </span>
+            <div className="count">
+              <span>Adult x {adultCount}</span>
+              <span>Child x {childCount}</span>
+            </div>
           </div>
         </div>
       </div>
       <div className="subtotal">
-        <span>SUBTOTAL: $22.75</span>
+        <span>Subtotal: $ {subTotal}</span>
       </div>
     </div>
   );

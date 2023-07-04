@@ -34,6 +34,7 @@
 .register_form_container{
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 .register_form{
     width: 60%;
