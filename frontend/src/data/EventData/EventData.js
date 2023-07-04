@@ -1,4 +1,5 @@
-import EventImage from '../../assets/events/events.jpg'
+import EventImage from '../../assets/events/onam2k23.jpeg'
+import EventImages from '../../assets/events/events.jpg'
 
 
 const events = [
@@ -14,7 +15,7 @@ const events = [
         amount: "20.00$",
     },
     {
-        eventImage: EventImage,
+        eventImage: EventImages,
         title: "Event Title 2",
         description: "This is the description of Event 2",
         event_time: "12:30pm",
@@ -23,50 +24,6 @@ const events = [
         state: "Notingham",
         country: "UK",
         amount: "25.00$",
-    },
-    {
-        eventImage: EventImage,
-        title: "Event Title 3",
-        description: "This is the description of Event 3",
-        event_time: "12:30pm",
-        event_date: "April 16, 2023",
-        event_location: "Marcus Garvey Hall",
-        state: "Notingham",
-        country: "UK",
-        amount: "10.00$",
-    },
-    {
-        eventImage: EventImage,
-        title: "Event Title 4",
-        description: "This is the description of Event 4",
-        event_time: "12:30pm",
-        event_date: "April 16, 2023",
-        event_location: "Marcus Garvey Hall",
-        state: "Notingham",
-        country: "UK",
-        amount: "20.00$",
-    },
-    {
-        eventImage: EventImage,
-        title: "Event Title 5",
-        description: "This is the description of Event 5",
-        event_time: "12:30pm",
-        event_date: "April 16, 2023",
-        event_location: "Marcus Garvey Hall",
-        state: "Notingham",
-        country: "UK",
-        amount: "30.00$",
-    },
-    {
-        eventImage: EventImage,
-        title: "Event Title 6",
-        description: "This is the description of Event 6",
-        event_time: "12:30pm",
-        event_date: "April 16, 2023",
-        event_location: "Marcus Garvey Hall",
-        state: "Notingham",
-        country: "UK",
-        amount: "40.00$",
     },
 ]
 

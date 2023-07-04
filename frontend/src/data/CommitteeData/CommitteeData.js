@@ -1,29 +1,40 @@
-import Profile from "../../assets/committee/profie.jpg";
-//import Profile2 from "../../assets/committee/profile2.jpg"
+// import Profile from '../../assets/committee/committee';
+import * as Profile from '../../assets/committee/committee';
+
 const CommitteeData = [
     {
-        profile: Profile,
-        name: "John Doe",
+        profile: Profile.bindu,
+        name: "Bindu Krishnankutty",
         position: "President"
     },
     {
-        profile: Profile,
-        name: "Alice",
-        position: "Vice-President"
+        profile: Profile.simi,
+        name: "Simi Koovaplackal",
+        position: "Vice President"
     },
     {
-        profile: Profile,
-        name: "Bob",
+        profile: Profile.sunoj,
+        name: "Sunoju Vattakkattu",
         position: "Secretary"
     },
     {
-        profile: Profile,
-        name: "Smith",
+        profile: Profile.diana,
+        name: "Diana Joseph",
         position: "Joint Secretary"
     },
     {
-        profile: Profile,
-        name: "Thomas",
+        profile: Profile.rajesh,
+        name: "Rajesh Thomas",
+        position: "Executive Committee"
+    },
+    {
+        profile: Profile.eldo,
+        name: "Eldo Jose",
+        position: "Executive Committee"
+    },
+    {
+        profile: Profile.sherin,
+        name: "Sherin Thomas",
         position: "Treasurer"
     },
 ]

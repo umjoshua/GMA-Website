@@ -10,7 +10,7 @@ function EventCards({ event }) {
   return (
     <div className="card_container">
       <div className="image_container">
-        <img src={event.eventImage} alt="Event_Image" />
+        <img className="event-img" src={event.eventImage} alt="Event_Image" />
       </div>
       <div className="card_content">
         <div className="card_title">
