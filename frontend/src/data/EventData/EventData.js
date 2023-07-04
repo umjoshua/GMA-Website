@@ -1,15 +1,14 @@
 import EventImage from '../../assets/events/onam2k23.jpeg'
 import EventImages from '../../assets/events/events.jpg'
 
-
 const events = [
     {
         eventImage: EventImage,
-        title: "Event Title 1",
-        description: "This is the description of Event 1",
-        event_time: "12:30pm",
-        event_date: "April 16, 2023",
-        event_location: "Marcus Garvey Hall",
+        title: "Thiruvavaniraavu",
+        description: "Onam Sadhya, Cultural Programme, Games, Inagural function and mega shows.",
+        event_time: "11:00 am",
+        event_date: "September 19, 2023",
+        event_location: "Katsumata Center Geelong",
         state: "Notingham",
         country: "UK",
         amount: "20.00$",

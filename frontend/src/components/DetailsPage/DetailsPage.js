@@ -22,7 +22,7 @@ function DetailsPage() {
   const event = events.find((event) => event.title === title);
 
   const handleNavigate = () => {
-    navigate('/registerpage',{
+    navigate('/registerpage', {
       state: {
         eventName: event.title,
         amount: event.amount
@@ -39,50 +39,6 @@ function DetailsPage() {
           </div>
           <div className="detail_image">
             <img src={event.eventImage} alt="" />
-          </div>
-          <div className="detail_shorthand">
-            <div className="shorthand">
-              <div className="shorthand_icon">
-                <CalendarMonthIcon className="address_arrow" />
-              </div>
-              <div className="shorthand_text">
-                <span className="shorthand_title">Event Date:</span>
-                <span className="shorthand_detail">{event.event_date}</span>
-              </div>
-            </div>
-            <div className="shorthand">
-              <div className="shorthand_icon">
-                <AccessTimeIcon className="address_arrow" />
-              </div>
-              <div className="shorthand_text">
-                <span className="shorthand_title">Event Time:</span>
-                <span className="shorthand_detail">{event.event_time}</span>
-              </div>
-            </div>
-            <div className="shorthand">
-              <div className="shorthand_icon">
-                <LocationOnIcon className="address_arrow" />
-              </div>
-              <div className="shorthand_text">
-                <span className="shorthand_title">Event Location:</span>
-                <span className="shorthand_detail">{event.event_location}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="detail_description">
-            <div className="description_title">
-              <span>{event.title}</span>
-              <span>{event.amount}</span>
-              <div className="description_register">
-                <button onClick={handleNavigate}>
-                  Register
-                </button>
-              </div>
-            </div>
-            <div className="detail_desc">
-              <span>{event.description}</span>
-            </div>
           </div>
         </div>
         <div className="detail_location">
@@ -145,6 +101,50 @@ function DetailsPage() {
                   <span>
                     <MailOutlineIcon className="address_arrow" />
                   </span>
+                </div>
+              </div>
+              <div className="detail_shorthand">
+                <div className="shorthand">
+                  <div className="shorthand_icon">
+                    <CalendarMonthIcon className="address_arrow" />
+                  </div>
+                  <div className="shorthand_text">
+                    <span className="shorthand_title">Event Date:</span>
+                    <span className="shorthand_detail">{event.event_date}</span>
+                  </div>
+                </div>
+                <div className="shorthand">
+                  <div className="shorthand_icon">
+                    <AccessTimeIcon className="address_arrow" />
+                  </div>
+                  <div className="shorthand_text">
+                    <span className="shorthand_title">Event Time:</span>
+                    <span className="shorthand_detail">{event.event_time}</span>
+                  </div>
+                </div>
+                <div className="shorthand">
+                  <div className="shorthand_icon">
+                    <LocationOnIcon className="address_arrow" />
+                  </div>
+                  <div className="shorthand_text">
+                    <span className="shorthand_title">Event Location:</span>
+                    <span className="shorthand_detail">{event.event_location}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="detail_description">
+                <div className="description_title">
+                  <span>{event.title}</span>
+                  <span>{event.amount}</span>
+                  <div className="description_register">
+                    <button onClick={handleNavigate}>
+                      Register
+                    </button>
+                  </div>
+                </div>
+                <div className="detail_desc">
+                  <span>{event.description}</span>
                 </div>
               </div>
             </div>
