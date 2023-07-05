@@ -1,20 +1,34 @@
-.register_page{
-    width: 100%;
+.registerPage {
+    min-height: calc(100vh - 300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_page {
+    width: 80%;
     overflow: hidden;
 }
-.register_title{
+
+.register_title {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.register_title > h1,
-.register_title > span{
+
+.register_title>h1,
+.register_title>span {
     color: navy;
     margin: 10px;
 }
-.pay_methods > button{
+
+.pay_methods {
+    margin-bottom: 10px;
+}
+
+.pay_methods>button {
     margin: 10px;
     width: 100px;
     height: 30px;
@@ -23,46 +37,72 @@
     background: transparent;
     border-radius: 4px;
 }
-.pay_methods > button.active{
+
+.pay_methods>button.active {
     background: navy;
     color: aliceblue;
 }
-.pay_methods > button:hover{
+
+.pay_methods>button:hover {
     transform: scale(1.1);
     transition: 0.5s ease-out;
 }
-.register_form_container{
+
+.register_form_container {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.register_form{
+
+.register_form {
     width: 60%;
 }
-.reg_title{
+
+.reg_title {
     color: navy;
     margin: 10px;
 }
-.cart{
+
+.cart {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-@media screen and (max-width: 768px){
-    .pay_methods{
+
+.paymentSection {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .register_page{
+        width: 100%;
+    }
+    .pay_methods {
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .register_form{
+
+    .register_form {
         width: 100%;
     }
-    .register_form_container{
+
+    .register_form_container {
         width: 100%;
         display: flex;
         flex-direction: column;
-    } 
-    .cart{
+    }
+
+    .cart {
         width: 100%;
         margin: 30px;
     }

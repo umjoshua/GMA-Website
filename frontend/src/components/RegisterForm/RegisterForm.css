@@ -9,17 +9,13 @@
 }
 
 .form_name>label,
-.ticket_count>label,
-.custom_error>span {
+.ticket_count>label {
   display: flex;
   flex-direction: column;
   font-size: medium;
   margin: 10px 0px 0px 15px;
 }
 
-.custom_error>span {
-  color: red;
-}
 
 .ticket_count {
   display: flex;
@@ -123,6 +119,7 @@ input::placeholder {
 .counter span {
   margin: 0px 5px;
 }
+
 
 @media screen and (max-width: 768px) {
   .form_container {

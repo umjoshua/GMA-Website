@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./RegisterForm.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCount, paymentMethod }) {
+function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCount, checkOut, setCheckOut }) {
 
   const phoneRegExp = /^\+\d{1,4}\d{10}$/;
-
-  const [paymentMethodError, setPaymentMethodError] = useState(null);
-
-
   const schema = yup.object().shape({
     firstName: yup.string().required("Your First Name is Required!"),
     lastName: yup.string().required("Your Last Name is Required!"),
@@ -33,11 +29,7 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
 
   const onSubmit = (data) => {
 
-    setPaymentMethodError("");
-    if (paymentMethod === 0) {
-      setPaymentMethodError("Please select a payment method to proceed")
-      return
-    }
+    setCheckOut(true)
 
     console.log(data);
   };
@@ -151,14 +143,10 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
             </div>
           </div>
         </div>
-        {paymentMethodError !== "" &&
-          <div className="custom_error">
-            <span>{paymentMethodError}</span>
-          </div>
-        }
-
         <div className="form_submit">
-          <input type="submit" />
+          {!checkOut && <input type="submit"
+            value={"Submit and Proceed to Pay"}
+          />}
         </div>
       </form>
     </div>
