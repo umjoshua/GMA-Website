@@ -8,7 +8,7 @@ function EventCards({ event }) {
     navigate(`/details/${encodeURIComponent(event.title)}`);
   };
   return (
-    <div className="card_container">
+    <div className="card_container" onClick={handleRegister}>
       <div className="image_container">
         <img className="event-img" src={event.eventImage} alt="Event_Image" />
       </div>
@@ -17,7 +17,7 @@ function EventCards({ event }) {
           <span>{event.title}</span>
         </div>
         <div className="card_body">
-          <span>Register for {event.title}</span>
+          <span>Click to view details</span>
         </div>
       </div>
       <div className="card_btn">

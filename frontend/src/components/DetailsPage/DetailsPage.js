@@ -44,15 +44,18 @@ function DetailsPage() {
         </div>
         <div className="detail_location">
           <div className="location_title">
-            <h3>Event Location</h3>
+            <h3>Event Details</h3>
           </div>
           <div className="location_details">
             <div>
+              <div className="detail_desc">
+                <span>{event.description}</span>
+              </div>
               <div className="association_heading">
                 <span className="heading_in">
                   <ListIcon />
                 </span>
-                <span className="heading">By: Association</span>
+                <span className="heading">Organized By: Association</span>
               </div>
               <div className="event_address">
                 <span className="address_in">
@@ -136,19 +139,15 @@ function DetailsPage() {
 
               <div className="detail_description">
                 <div className="description_title">
-                  <span>{event.title}</span>
-                  <span style={{display: "flex", flexDirection: "column"}}>
-                    <span>Child: {event.amountChild}</span>
-                    <span>Adult: {event.amountAdult}</span>
+                  <span style={{ display: "flex", flexDirection: "column" }}>
+                    <span>Child: ${event.amountChild}</span>
+                    <span>Adult: ${event.amountAdult}</span>
                   </span>
                   <div className="description_register">
                     <button onClick={handleNavigate}>
                       Register
                     </button>
                   </div>
-                </div>
-                <div className="detail_desc">
-                  <span>{event.description}</span>
                 </div>
               </div>
             </div>

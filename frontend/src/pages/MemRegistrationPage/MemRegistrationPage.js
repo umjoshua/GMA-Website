@@ -382,7 +382,7 @@ function MemRegistrationPage() {
           </span>
           <div className="contactMethod">
             <div className="gender">
-              <label>
+              <label >
                 <input
                   className="radioInput"
                   name="membershipFeePaid"
@@ -403,6 +403,37 @@ function MemRegistrationPage() {
                   value="No"
                 />
                 No
+              </label>
+            </div>
+          </div>
+
+          {/* Agreement */}
+          <div className="policyDetails">
+            <span>
+              By ticking this box I agree that I have read, understood and abide the rules of Geelong Malayalee Association (GMA).
+              I also agree to be a member of Geelong Malayalee Association (GMA) and my details can be entered in the membership register.
+              I am aware that these details can be used to send membership fee notices and other communications including information about meeting and events organized or supported by Geelong Malayalee Association (GMA).
+              Geelong Malayalee Association (GMA) and it's office bearers respects your privacy seriously and are aware that it is an offence to make improper use of information about a person obtained from the Register of
+              Members as per Section 58 of the Associations Incorporation Reform act 2012.
+            </span>
+          </div>
+          <div className="contactMethod">
+            <div className="policyDetails1">
+              <label style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  className="radioInput"
+                  type="checkbox"
+                  required
+                />
+                I have read, understood, and accepted the rules of membership.
+              </label>
+              <label style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  className="radioInput"
+                  type="checkbox"
+                  required
+                />
+                I confirm that all the above information are correct and true to best of my knowledge and belief.
               </label>
             </div>
           </div>

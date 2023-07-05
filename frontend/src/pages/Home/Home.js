@@ -20,7 +20,7 @@ function Home() {
         </div>
       </section>
       <section id="about">
-        <AboutPage/>
+        <AboutPage />
       </section>
       <section id="events">
         <Events />
@@ -29,7 +29,7 @@ function Home() {
         <RegisterForUpdate />
       </section>
       <section id="committee">
-        <CommitteePage/>
+        <CommitteePage />
       </section>
       <section id="contact">
         <Contact />

@@ -8,4 +8,5 @@
   height: 100%;
   display: block;
   border-radius: 20px;
+  object-fit: cover;
 }
