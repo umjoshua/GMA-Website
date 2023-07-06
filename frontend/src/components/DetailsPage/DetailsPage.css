@@ -105,7 +105,6 @@
   padding: 10px;
 }
 .heading_in {
-  color: gold;
   margin-right: 10px;
 }
 .heading {
@@ -123,7 +122,7 @@
   margin: 10px;
 }
 .address_arrow {
-  color: gold;
+  /* color: gold; */
   margin-right: 10px;
 }
 .schedule_details {

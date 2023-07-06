@@ -4,6 +4,7 @@ import "./RegisterPage.css";
 import { useLocation } from "react-router-dom";
 import Cart from "../../components/Cart/Cart";
 import Payment from "../../components/Payment/Payment";
+import EventThank from "../../components/EventThank/EventThank";
 
 function RegisterPage() {
   const [activeButton, setActiveButton] = useState(null);
@@ -11,6 +12,7 @@ function RegisterPage() {
   const [childCount, setChildCount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState(0);
   const [checkOut, setCheckOut] = useState(false)
+  const [thank, setThank] = useState(false)
 
   const handleActive = (buttonId) => {
     setActiveButton(buttonId);
@@ -22,7 +24,7 @@ function RegisterPage() {
     <div className="registerPage">
       <div className="register_page">
         <div className="reg_title">
-          <h3>Registration Details</h3>
+          {!checkOut && <h3>Registration Details</h3>}
         </div>
         <div className="register_form_container">
           {!checkOut && < div className="register_form">
@@ -36,21 +38,22 @@ function RegisterPage() {
               setChildCount={setChildCount}
               checkOut={checkOut}
               setCheckOut={setCheckOut}
+              setThank={setThank}
             />
           </div>}
           <div className="cart">
-            <Cart
+            {!thank && <Cart
               title={eventName}
               amountAdult={amountAdult}
               amountChild={amountChild}
               adultCount={adultCount}
               childCount={childCount}
-            />
+            />}
           </div>
 
         </div>
         {
-          checkOut && <div className="register_title">
+          checkOut && !thank && <div className="register_title">
             <h1>Checkout</h1>
             <span>How would you like to pay?</span>
             <div className="pay_methods">
@@ -76,6 +79,10 @@ function RegisterPage() {
               <Payment />
             </div>
           </div>
+        }
+        {
+          thank &&
+          <EventThank></EventThank>
         }
       </div >
     </div >

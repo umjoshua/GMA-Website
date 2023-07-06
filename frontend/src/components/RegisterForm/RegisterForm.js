@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCount, checkOut, setCheckOut }) {
+function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCount, checkOut, setCheckOut, setThank }) {
 
   const phoneRegExp = /^\+\d{1,4}\d{10}$/;
   const schema = yup.object().shape({
@@ -30,6 +30,7 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
   const onSubmit = (data) => {
 
     setCheckOut(true)
+    setThank(true)
 
     console.log(data);
   };

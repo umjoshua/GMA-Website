@@ -12,7 +12,7 @@ const events = [
         state: "Notingham",
         country: "UK",
         amountAdult: 20.00,
-        amountChild: 10.00
+        amountChild: 10.00,
     },
     {
         eventImage: EventImages,

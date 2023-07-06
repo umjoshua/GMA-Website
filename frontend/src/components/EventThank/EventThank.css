@@ -1,0 +1,18 @@
+.thankContainer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.thankContainer>button {
+    height: 40px;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    background-image: linear-gradient(43deg, hsla(340, 100%, 76%, 1) 0%, hsla(269, 100%, 77%, 1) 100%);
+    color: white;
+    font-weight: 600;
+}
