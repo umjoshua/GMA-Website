@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,8 +11,9 @@ import SchoolIcon from '@mui/icons-material/School';
 import './Footer.css'
 
 function Footer() {
+    const location = useLocation();
     return (
-        <div className='footer'>
+        <div className='footer' style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
             <div className='footer_container'>
                 <div className='left'>
                     <div className='location'>

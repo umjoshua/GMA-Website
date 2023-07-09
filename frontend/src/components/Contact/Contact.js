@@ -47,11 +47,11 @@ function Contact() {
             <label>Last Name</label>
             <input type="text" placeholder="Last Name" />
             <label>Phone No</label>
-            <input type="tel" placeholder="+91" />
+            <input type="tel" placeholder="Phone number" />
             <label>Email</label>
             <input type="email" placeholder="johndoe@gmail.com" />
             <label>Description</label>
-            <textarea ref={textAreaRef} onChange={handleTextAreaChange} />
+            <textarea ref={textAreaRef} onChange={handleTextAreaChange} placeholder="Type here.."/>
           </form>
         </div>
       </div>
