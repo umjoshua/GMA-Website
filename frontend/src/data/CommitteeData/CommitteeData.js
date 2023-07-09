@@ -1,4 +1,3 @@
-// import Profile from '../../assets/committee/committee';
 import * as Profile from '../../assets/committee/committee';
 
 const CommitteeData = [

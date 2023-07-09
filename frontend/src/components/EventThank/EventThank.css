@@ -16,3 +16,8 @@
     color: white;
     font-weight: 600;
 }
+
+.thankContainer>button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(43deg, hsla(340, 70%, 76%, 2) 0%, hsla(269, 80%, 77%, 1) 100%);
+}

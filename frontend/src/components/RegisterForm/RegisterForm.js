@@ -30,7 +30,7 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
   const onSubmit = (data) => {
 
     setCheckOut(true)
-    setThank(true)
+    // setThank(true)
 
     console.log(data);
   };

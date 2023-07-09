@@ -8,7 +8,7 @@ function Events() {
   return (
     <div>
       <div className="event_div">
-        <h1>Events</h1>
+        <h1>Upcoming Events</h1>
       </div>
       <div className="event_cards">
         {events.map((item, key) => (

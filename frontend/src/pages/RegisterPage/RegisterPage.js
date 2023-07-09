@@ -23,66 +23,65 @@ function RegisterPage() {
   return (
     <div className="registerPage">
       <div className="register_page">
-        <div className="reg_title">
+        {!thank ? <> <div className="reg_title">
           {!checkOut && <h3>Registration Details</h3>}
         </div>
-        <div className="register_form_container">
-          {!checkOut && < div className="register_form">
-            <RegisterForm
-              title={eventName}
-              amountAdult={amountAdult}
-              amountChild={amountChild}
-              adultCount={adultCount}
-              setAdultCount={setAdultCount}
-              childCount={childCount}
-              setChildCount={setChildCount}
-              checkOut={checkOut}
-              setCheckOut={setCheckOut}
-              setThank={setThank}
-            />
-          </div>}
-          <div className="cart">
-            {!thank && <Cart
-              title={eventName}
-              amountAdult={amountAdult}
-              amountChild={amountChild}
-              adultCount={adultCount}
-              childCount={childCount}
-            />}
-          </div>
+          <div className="register_form_container">
+            {!checkOut && < div className="register_form">
+              <RegisterForm
+                title={eventName}
+                amountAdult={amountAdult}
+                amountChild={amountChild}
+                adultCount={adultCount}
+                setAdultCount={setAdultCount}
+                childCount={childCount}
+                setChildCount={setChildCount}
+                checkOut={checkOut}
+                setCheckOut={setCheckOut}
+                setThank={setThank}
+              />
+            </div>}
+            <div className="cart">
+              {!thank && <Cart
+                title={eventName}
+                amountAdult={amountAdult}
+                amountChild={amountChild}
+                adultCount={adultCount}
+                childCount={childCount}
+              />}
+            </div>
 
-        </div>
-        {
-          checkOut && !thank && <div className="register_title">
-            <h1>Checkout</h1>
-            <span>How would you like to pay?</span>
-            <div className="pay_methods">
-              <button
-                className={activeButton === 1 ? "active" : ""}
-                onClick={() => { handleActive(1); setPaymentMethod(1); }}
-              >
-                Card
-              </button>
-              <button
-                className={activeButton === 2 ? "active" : ""}
-                onClick={() => { handleActive(2); setPaymentMethod(2) }}
-              >
-                PayPal
-              </button>
-            </div>
           </div>
-        }
-        {
-          paymentMethod === 1 &&
-          <div className="paymentSection">
-            <div className="paymentSection1">
-              <Payment />
+          {
+            checkOut && !thank && <div className="register_title">
+              <h1>Checkout</h1>
+              <span>How would you like to pay?</span>
+              <div className="pay_methods">
+                <button
+                  className={activeButton === 1 ? "active" : ""}
+                  onClick={() => { handleActive(1); setPaymentMethod(1); }}
+                >
+                  Card
+                </button>
+                <button
+                  className={activeButton === 2 ? "active" : ""}
+                  onClick={() => { handleActive(2); setPaymentMethod(2) }}
+                >
+                  PayPal
+                </button>
+              </div>
             </div>
-          </div>
-        }
-        {
-          thank &&
-          <EventThank></EventThank>
+          }
+          {
+            paymentMethod === 1 &&
+            <div className="paymentSection">
+              <div className="paymentSection1">
+                <Payment setThank={setThank} />
+              </div>
+            </div>
+          }
+        </> :
+          <EventThank />
         }
       </div >
     </div >

@@ -1,6 +1,6 @@
 import { PaymentForm, CreditCard } from 'react-square-web-payments-sdk';
 
-function Payment() {
+function Payment({ setThank, setCheckOut }) {
     return (
         <div>
             <PaymentForm
@@ -15,7 +15,12 @@ function Payment() {
                             sourceId: token.token,
                         }),
                     });
-                    console.log(await response.json());
+                    const res = await response.json();
+                    console.log(res.payment.status)
+                    if (res.payment.status === "COMPLETED") {
+                        setThank(true);
+                        console.log('heyy')
+                    }
                 }}
                 locationId='XXXXXXXXXX'
             >

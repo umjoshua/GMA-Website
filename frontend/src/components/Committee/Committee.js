@@ -6,11 +6,11 @@ function Committee({ item }) {
   return (
     <div className="commitee_container">
       <div className="committee_image">
-        <img src={item.profile} alt="Profile Picture" />
+        <img src={item.profile} alt="Profile" />
       </div>
       <div className="committee_content">
-          <span className="p_name">{item.name}</span>
-          <span className="po_name">{item.position}</span>
+        <span className="p_name">{item.name}</span>
+        <span className="po_name">{item.position}</span>
       </div>
     </div>
   );

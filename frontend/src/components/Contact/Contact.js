@@ -20,21 +20,26 @@ function Contact() {
       </div>
 
       <div className="contact_inside">
-        
         <div className="contact_icons">
           <div className="first_icons">
             <span className="contact_symbols">
               <PhoneIcon className="contact_phone" />
             </span>
-            <span className="contact_symbols">
+            <span className="contact_symbols" style={
+              {
+                background: "radial-gradient(circle, #dd4336 10%, #eeeeee 10%, #eeeeee 90%, #d53224 90%)"
+              }
+            }>
               <EmailIcon />
             </span>
           </div>
           <div className="second_icons">
-            <span className="contact_symbols">
+            <span className="contact_symbols" style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}>
               <InstagramIcon />
             </span>
-            <span className="contact_symbols">
+            <span className="contact_symbols" style={{
+              background: "radial-gradient(circle, #0077B5, #006699)"
+            }}>
               <LinkedInIcon />
             </span>
           </div>
@@ -51,11 +56,11 @@ function Contact() {
             <label>Email</label>
             <input type="email" placeholder="johndoe@gmail.com" />
             <label>Description</label>
-            <textarea ref={textAreaRef} onChange={handleTextAreaChange} placeholder="Type here.."/>
+            <textarea ref={textAreaRef} onChange={handleTextAreaChange} placeholder="Type here.." />
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

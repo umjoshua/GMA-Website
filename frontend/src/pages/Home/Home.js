@@ -19,11 +19,11 @@ function Home() {
           <Slider />
         </div>
       </section>
-      <section id="about">
-        <AboutPage />
-      </section>
       <section id="events">
         <Events />
+      </section>
+      <section id="about">
+        <AboutPage />
       </section>
       <section id="registerUpdates">
         <RegisterForUpdate />
@@ -33,9 +33,6 @@ function Home() {
       </section>
       <section id="contact">
         <Contact />
-      </section>
-      <section id="about">
-
       </section>
     </div>
   );

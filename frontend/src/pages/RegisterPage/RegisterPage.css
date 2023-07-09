@@ -1,4 +1,5 @@
 .registerPage {
+    width: 100%;
     min-height: calc(100vh - 300px);
     display: flex;
     justify-content: center;
@@ -81,9 +82,10 @@
 
 
 @media screen and (max-width: 768px) {
-    .register_page{
+    .register_page {
         width: 100%;
     }
+
     .pay_methods {
         width: 100%;
         display: flex;

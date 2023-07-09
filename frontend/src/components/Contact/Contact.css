@@ -32,7 +32,8 @@
 }
 
 .contact_symbols {
-  background: rgba(252, 215, 4, 0.5);
+  background: #c2fbd7;
+  color:white;
   height: 120px;
   width: 120px;
   margin: 10px;
