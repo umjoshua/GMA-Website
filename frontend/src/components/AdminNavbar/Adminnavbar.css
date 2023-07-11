@@ -48,3 +48,8 @@
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+
+@media screen and (max-width: 768px) {
+    
+}

@@ -8,12 +8,17 @@ const Adminnavbar = ({ setAdminPage }) => {
                 <button className='admin-navbar-button'
                     onClick={() => { setAdminPage(0) }}
                 >
-                    Add / View / Edit Events
+                    View / Edit Events
                 </button>
                 <button className='admin-navbar-button'
                     style={{ backgroundColor: "black" }}
                     onClick={() => setAdminPage(1)}>
                     View Event Registrations
+                </button>
+                <button className='admin-navbar-button'
+                    style={{ backgroundColor: "orange" }}
+                    onClick={() => setAdminPage(2)}>
+                    View / Edit Committee
                 </button>
             </div >
         </div >

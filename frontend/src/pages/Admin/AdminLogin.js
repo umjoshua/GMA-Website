@@ -1,9 +1,9 @@
 import { useState } from "react";
-import axios from "axios";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import * as api from '../../api'
 
 const AdminLogin = () => {
     const navigate = useNavigate();
@@ -15,28 +15,26 @@ const AdminLogin = () => {
         setData({ ...data, [input.name]: input.value });
     };
 
-    const url = "http://localhost:5000/admin/login";
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // try {
-        //     setLoading(true);
-        //     setWarning(false);
-        //     const { data: res } = await axios.post(url, data);
-        //     localStorage.setItem("token", res.token);
-        //     navigate('/admin');
-        //     window.location.reload();
-        // } catch (error) {
-        //     if (
-        //         error.response &&
-        //         error.response.status >= 400 &&
-        //         error.response.status <= 500
-        //     ) {
-        //         setWarning(true);
-        //         setLoading(false);
-        //     }
-        // }
-        localStorage.setItem("token", "asdf")
+        try {
+            setLoading(true);
+            setWarning(false);
+            const { data: res } = await api.login(data);
+            console.log(res);
+            localStorage.setItem("token", res.token);
+            navigate('/admin');
+            window.location.reload();
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setWarning(true);
+                setLoading(false);
+            }
+        }
     };
 
     return (

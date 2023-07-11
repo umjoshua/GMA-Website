@@ -98,20 +98,46 @@
     padding: 10px;
 }
 
-.admin_edit_form {
-    flex: 0 0 40%;
-    margin-right: 20px;
-}
-
 .admin_edit_events {
     flex: 1;
     overflow-y: auto;
 }
 
+.add_event_icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #EA4C89;
+    border-radius: 50px;
+}
+
+.add_post_form {
+    margin: auto;
+    width: 80%;
+}
+
+.committee_main {
+    margin-top: 90px;
+}
+
 @media screen and (max-width: 768px) {
-    .admin_edit_main{
+    .admin_edit_main {
         width: auto;
         flex-direction: column-reverse;
     }
-  }
-  
+
+    .add_event_icon {
+        height: 50px;
+        width: 50px;
+    }
+
+    .add_post_form {
+        margin: auto;
+        width: 100%;
+    }
+}

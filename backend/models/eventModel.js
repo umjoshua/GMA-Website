@@ -2,12 +2,28 @@ import mongoose, { Schema } from "mongoose";
 
 const eventSchema = mongoose.Schema({
     title: { type: String, required: true },
-    location: { type: String, required: true },
-    conductedBy: { type: String, required: true },
-    eventDate: { type: Date, required: true },
-    eventTime: { type: String, required: true },
-    fee: { type: Number, require: true },
-})
+    description: String,
+    event_date: { type: String, required: true },
+    event_time: { type: String, required: true },
+    event_location: { type: String, required: true },
+    state: String,
+    country: String,
+    tickets: [
+        {
+            name: { type: String, required: true },
+            description: String,
+            pricing: [
+                {
+                    name: { type: String, required: true },
+                    price: { type: Number, required: true },
+                },
+            ],
+        },
+    ],
+    terms: String,
+    poster: String,
+    file: String,
+});
 
 const eventRegSchema = mongoose.Schema({
     eventId: { type: Schema.Types.ObjectId },

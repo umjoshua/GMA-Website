@@ -1,11 +1,9 @@
 import express from "express"
-import { RegisterEvent } from "../controllers/events.js"
+import { RegisterEvent, GetEvents } from "../controllers/events.js"
 
 const router = express.Router()
 
-router.get("/list", (req, res) => {
-    res.send("get events")
-})
+router.get("/", GetEvents)
 
 router.post("/register/:id", RegisterEvent)
 

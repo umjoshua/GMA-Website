@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import "./Contact.css";
 
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -7,12 +7,24 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Contact() {
-  const textAreaRef = useRef(null);
-  const handleTextAreaChange = () => {
-    const textarea = textAreaRef.current;
-    textarea.style.height = "70px";
-    textarea.style.height = `${textarea.scrollHeight}px`;
+
+  const [input, setInput] = useState({ name: '', phone: '', email: '', message: '' })
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInput((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+    console.log(input)
+  }
+
   return (
     <div className="contact_main">
       <div className="contact_us">
@@ -46,17 +58,24 @@ function Contact() {
         </div>
 
         <div className="contact_form_div">
-          <form className="contact_form">
-            <label>First Name</label>
-            <input type="text" placeholder="First Name" />
-            <label>Last Name</label>
-            <input type="text" placeholder="Last Name" />
+          <form className="contact_form" onSubmit={handleSubmit}>
+            <label>Your Name</label>
+            <input type="text" placeholder="Name" value={input.name}
+              name="name"
+              onChange={handleChange} />
             <label>Phone No</label>
-            <input type="tel" placeholder="Phone number" />
+            <input type="tel" placeholder="Phone number" value={input.phone}
+              name="phone"
+              onChange={handleChange} />
             <label>Email</label>
-            <input type="email" placeholder="johndoe@gmail.com" />
-            <label>Description</label>
-            <textarea ref={textAreaRef} onChange={handleTextAreaChange} placeholder="Type here.." />
+            <input type="email" placeholder="johndoe@gmail.com" value={input.email}
+              name="email"
+              onChange={handleChange} />
+            <label>Your message (optional)</label>
+            <textarea placeholder="Type here.." value={input.message}
+              name="message"
+              onChange={handleChange} />
+            <button className="contact_button">Send</button>
           </form>
         </div>
       </div>

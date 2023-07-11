@@ -1,4 +1,4 @@
-import { EventRegModel } from "../models/eventModel.js";
+import { EventRegModel, EventModel } from "../models/eventModel.js";
 
 export const RegisterEvent = async (req, res) => {
     try {
@@ -10,5 +10,15 @@ export const RegisterEvent = async (req, res) => {
         res.json(regData);
     } catch (err) {
         console.log(err)
+    }
+}
+
+export const GetEvents = async (req, res) => {
+    try {
+        let response = await EventModel.find();
+        res.status(200).json(response);
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ "msg": "Internal server error" })
     }
 }

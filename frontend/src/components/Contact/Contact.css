@@ -33,7 +33,7 @@
 
 .contact_symbols {
   background: #c2fbd7;
-  color:white;
+  color: white;
   height: 120px;
   width: 120px;
   margin: 10px;
@@ -73,6 +73,8 @@
 }
 
 .contact_form>input {
+  width: 100%;
+  padding: 10px;
   width: calc(100% - 1rem);
   height: 40px;
   border-radius: 5px;
@@ -81,6 +83,8 @@
 }
 
 .contact_form>textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
   width: calc(100% - 1rem);
   height: 70px;
   border-radius: 5px;
@@ -88,10 +92,39 @@
   background-color: whitesmoke;
 }
 
-.contact_form>input::placeholder,.contact_form>textarea::placeholder {
+.contact_form>input::placeholder,
+.contact_form>textarea::placeholder {
   padding: 10px;
   font-size: 15px;
   color: #999;
+}
+
+.contact_button {
+  align-self: center;
+  width: 70%;
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  line-height: 20px;
+  margin-top: 10px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.contact_button {
+  background-color: #F082AC;
 }
 
 @media screen and (max-width: 768px) {

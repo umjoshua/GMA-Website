@@ -1,0 +1,96 @@
+.popup-container {
+  text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px dotted gray;
+  /* width: 300px; */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  max-height: 70%;
+}
+
+.popup-1 {
+  padding: 10px;
+  color: white;
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.popup-2 {
+  padding: 5px;
+}
+
+.popup-3 {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+.popup-4 {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+.popup-5 {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #FFFFFF;
+  background-color: #1CB0F6;
+}
+
+.popup-btn {
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.popup-2 input,
+.popup-2 textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+}
+
+.popup-2 textarea {
+  padding: 10px;
+}
+
+.popup h2 {
+  margin-top: 0;
+}
+
+.popup button {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .popup {
+    width: 90%;
+  }
+}

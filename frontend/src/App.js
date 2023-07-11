@@ -18,8 +18,7 @@ export const AppContext = createContext();
 function App() {
   const [adminPage, setAdminPage] = useState(0);
   const location = useLocation();
-  // const user = localStorage.getItem("token")
-  const user = true
+  const user = localStorage.getItem("token")
   return (
     <AppContext.Provider value={events}>
       {location.pathname === "/admin" ?

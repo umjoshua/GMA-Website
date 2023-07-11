@@ -2,7 +2,6 @@ import React from "react";
 import "./Committee.css";
 
 function Committee({ item }) {
-  console.log(item.name);
   return (
     <div className="commitee_container">
       <div className="committee_image">
