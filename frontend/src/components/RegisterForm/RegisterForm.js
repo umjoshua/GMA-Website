@@ -41,7 +41,7 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
     setData(newData)
     if (newData.subTotal === 0) {
       await api.registerForEvent(newData).then((res) => {
-        setThank(true);
+        // setThank(true);
       }).catch((error) => {
         setError(true);
       });
