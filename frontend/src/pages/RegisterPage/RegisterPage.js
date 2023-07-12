@@ -1,90 +1,75 @@
-import React, { useState } from "react";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import "./RegisterPage.css";
-import { useLocation } from "react-router-dom";
-import Cart from "../../components/Cart/Cart";
-import Payment from "../../components/Payment/Payment";
-import EventThank from "../../components/EventThank/EventThank";
+import React, { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { AppContext } from "../../App";
+import './RegisterPage.css'
 
 function RegisterPage() {
-  const [activeButton, setActiveButton] = useState(null);
-  const [adultCount, setAdultCount] = useState(1);
-  const [childCount, setChildCount] = useState(0);
-  const [paymentMethod, setPaymentMethod] = useState(0);
-  const [checkOut, setCheckOut] = useState(false)
-  const [thank, setThank] = useState(false)
 
-  const handleActive = (buttonId) => {
-    setActiveButton(buttonId);
-  };
-  const location = useLocation();
-  const { eventName, amountAdult, amountChild } = location.state;
+  const { id } = useParams();
+  const events = useContext(AppContext);
+
+  const event = events.find((event) => event._id === id);
+
+  const [page, setPage] = useState(0);
+  const [ticketType, setTicketType] = useState(null);
+
+  const findMinAmount = (pricing) => {
+    return Math.min(...pricing.map(item => item.price));
+  }
+
+  const findMaxAmount = (pricing) => {
+    return Math.max(...pricing.map(item => item.price));
+  }
 
   return (
-    <div className="registerPage">
-      <div className="register_page">
-        {!thank ? <> <div className="reg_title">
-          {!checkOut && <h3>Registration Details</h3>}
-        </div>
-          <div className="register_form_container">
-            {!checkOut && < div className="register_form">
-              <RegisterForm
-                title={eventName}
-                amountAdult={amountAdult}
-                amountChild={amountChild}
-                adultCount={adultCount}
-                setAdultCount={setAdultCount}
-                childCount={childCount}
-                setChildCount={setChildCount}
-                checkOut={checkOut}
-                setCheckOut={setCheckOut}
-                setThank={setThank}
-              />
-            </div>}
-            <div className="cart">
-              {!thank && <Cart
-                title={eventName}
-                amountAdult={amountAdult}
-                amountChild={amountChild}
-                adultCount={adultCount}
-                childCount={childCount}
-              />}
-            </div>
-
+    <>
+      {
+        event && event.tickets.length >= 1 &&
+        <div className="rg1-1">
+          <div className="rg1-2">
+            <span>{event.title}</span>
           </div>
-          {
-            checkOut && !thank && <div className="register_title">
-              <h1>Checkout</h1>
-              <span>How would you like to pay?</span>
-              <div className="pay_methods">
-                <button
-                  className={activeButton === 1 ? "active" : ""}
-                  onClick={() => { handleActive(1); setPaymentMethod(1); }}
-                >
-                  Card
-                </button>
-                <button
-                  className={activeButton === 2 ? "active" : ""}
-                  onClick={() => { handleActive(2); setPaymentMethod(2) }}
-                >
-                  PayPal
-                </button>
+          {page === 0 &&
+            <div className="rg1-5">
+              <div id="rg1-3">
+                <span>Select an option</span>
               </div>
-            </div>
+              {
+                event.tickets.length >= 1 && event?.tickets.map((ticket, index) => {
+                  return (
+                    <div className="rg1-4" key={index}>
+                      <div className="rg1-4-div">
+                        <span id="rg1-4-1">{ticket.name}</span>
+                      </div>
+                      <div className="rg1-4-div">
+                        <span id="rg1-4-2">{ticket.description}</span>
+                      </div>
+                      <div className="rg1-4-div">
+                        <span id="rg1-4-2">{findMinAmount(ticket.pricing)}$ - {findMaxAmount(ticket.pricing)}$</span>
+                      </div>
+                      <button id="rg-4-3" onClick={() => {
+                        setTicketType(index);
+                        setPage(1);
+                      }}>Select</button>
+                    </div>
+                  )
+                })
+              }
+            </div >
           }
+
           {
-            paymentMethod === 1 &&
-            <div className="paymentSection">
-              <div className="paymentSection1">
-                <Payment setThank={setThank} />
+            ticketType && page === 1 &&
+            <div className="rg1-5">
+              <div id="rg1-3">
+                <span>Select Tickets</span>
               </div>
-            </div>
+              Hello
+            </div >
           }
-        </> :
-          <EventThank />
-        }
-      </div >
-    </div >
+        </div>
+      }
+    </>
   );
 }
 

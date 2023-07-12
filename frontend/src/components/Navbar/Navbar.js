@@ -67,16 +67,7 @@ function Navbar() {
             </ScrollLink>
           </li>
           <li>
-            <ScrollLink
-              to="committee"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              style={{ cursor: "pointer" }}
-            >
-              <Link to="/">Committee</Link>
-            </ScrollLink>
+            <Link to='/committee'>Committee</Link>
           </li>
           <li>
             <ScrollLink

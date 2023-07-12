@@ -1,111 +1,80 @@
-.registerPage {
-    width: 100%;
-    min-height: calc(100vh - 300px);
+.rg1-1 {
+    min-width: 80%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.rg1-2{
+    text-align: center;
+}
+
+.rg1-2 span {
+    font-weight: bold;
+    color: violet;
+    font-size: x-large;
+}
+
+#rg1-3 {
+    background-color: #00ced1;
+    border-radius: 10px;
+    min-height: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.register_page {
-    width: 80%;
-    overflow: hidden;
-}
-
-.register_title {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
-.register_title>h1,
-.register_title>span {
-    color: navy;
-    margin: 10px;
+#rg1-3 span {
+    font-size: x-large;
+    color: white;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.pay_methods {
-    margin-bottom: 10px;
+.rg1-4 {
+    margin-top: 15px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 30% 45% 15% 10%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.pay_methods>button {
-    margin: 10px;
-    width: 100px;
-    height: 30px;
-    border: 1px solid navy;
-    color: navy;
-    background: transparent;
-    border-radius: 4px;
+#rg1-4-1 {
+    font-weight: bold;
 }
 
-.pay_methods>button.active {
-    background: navy;
-    color: aliceblue;
+#rg1-5 {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
-.pay_methods>button:hover {
-    transform: scale(1.1);
-    transition: 0.5s ease-out;
+#rg-4-3 {
+    background: #FFFFFF;
+    border: 0 solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    color: #1A202C;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 40px;
+    overflow-wrap: break-word;
+    width: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
-
-.register_form_container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.register_form {
-    width: 60%;
-}
-
-.reg_title {
-    color: navy;
-    margin: 10px;
-}
-
-.cart {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.paymentSection {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 @media screen and (max-width: 768px) {
-    .register_page {
-        width: 100%;
+    .rg1-4 {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 100%;
     }
-
-    .pay_methods {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .register_form {
-        width: 100%;
-    }
-
-    .register_form_container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .cart {
-        width: 100%;
-        margin: 30px;
+    .rg1-4-div{
+        padding: 10px;
     }
 }

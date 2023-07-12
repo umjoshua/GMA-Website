@@ -4,19 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
 
-  const [event, setEvent] = useState(
-    {
-      title: '',
-      description: '',
-      event_time: '',
-      event_date: '',
-      event_location: '',
-      state: '',
-      country: '',
-      tickets: [],
-      terms: '',
-      file: ''
-    });
+  const [event, setEvent] = useState({});
 
 
   const viewEvent = currentId ? events.find((event) => event._id === currentId) : null
@@ -61,6 +49,7 @@ function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
         </div>
         <div className='form-input'>
           <div className='display-tickets'>
+            <span>Tickets</span>
             {event?.tickets?.length >= 1 && event.tickets.map((ticket, index) => {
               return (
                 <div key={index} className='form-1'>
@@ -98,8 +87,12 @@ function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
           </div>
         </div>
         <div className='form-input'>
+          <span>Registration Needed?</span>
+          <span style={{ fontWeight: 'normal' }}>{event.regOpen}</span>
+        </div>
+        <div className='form-input'>
           <span>Poster:</span>
-          <img src={event.file} alt='Poster'></img>
+          <img src={event.file} style={{ maxWidth: "300px" }} alt='Poster'></img>
         </div>
       </div>
     </div >

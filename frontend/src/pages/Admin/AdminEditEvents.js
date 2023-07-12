@@ -24,7 +24,7 @@ const AdminEditEvents = () => {
   return (
     <div className={styles.admin_edit_main}>
       {!addEvent && !viewEvent && < div className={styles.admin_edit_events}>
-        <Events events={events} setAddEvent={setAddEvent} setcurrentId={setcurrentId} currentId={currentId} setViewEvent={setViewEvent} />
+        <Events events={events} setEvents={setEvents} setAddEvent={setAddEvent} setcurrentId={setcurrentId} currentId={currentId} setViewEvent={setViewEvent} />
       </div>}
       <div className={styles.add_event_icon} style={{ visibility: addEvent ? "hidden" : "visible" }}
         onClick={() => setAddEvent(true)}
@@ -34,7 +34,7 @@ const AdminEditEvents = () => {
       {
         addEvent &&
         <div className={styles.add_post_form}>
-          <AdminEventForm events={events} setAddEvent={setAddEvent} setcurrentId={setcurrentId} currentId={currentId} />
+          <AdminEventForm events={events} setEvents={setEvents} setAddEvent={setAddEvent} setcurrentId={setcurrentId} currentId={currentId} />
         </div>
       }
       {

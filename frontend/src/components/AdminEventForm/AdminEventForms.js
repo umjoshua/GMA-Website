@@ -6,7 +6,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import FileBase from 'react-file-base64';
 import CloseIcon from '@mui/icons-material/Close';
 
-function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
+function AdminEventForm({ events, setEvents, setAddEvent, currentId, setcurrentId }) {
   const token = localStorage.getItem("token");
 
   const config = {
@@ -29,7 +29,8 @@ function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
       country: '',
       tickets: [],
       terms: '',
-      file: ''
+      file: '',
+      regOpen: 'Yes'
     });
 
   const handleDeleteTicket = (index) => {
@@ -61,6 +62,8 @@ function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
         console.log(data);
       }
     }
+    const response = await api.fetchEvents();
+    setEvents(response?.data);
   };
 
   const handleSubmit = (e) => {
@@ -80,7 +83,8 @@ function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
       event_location: '',
       state: '',
       country: '',
-      eventImage: ''
+      eventImage: '',
+      regOpen: 'Yes',
     });
     setcurrentId(null);
     setAddEvent(false);
@@ -90,12 +94,12 @@ function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
     <div className='form-container'>
       <div className='form-header'>
         <h2>{currentId ? 'Edit' : 'Create'} an Event</h2>
-        {currentId && <CloseIcon style={{ cursor: 'pointer', backgroundColor: 'red', borderRadius: '50px', padding: '5px' }}
+        <CloseIcon style={{ cursor: 'pointer', backgroundColor: 'red', borderRadius: '50px', padding: '5px' }}
           onClick={() => {
             setcurrentId(null);
             setAddEvent(false);
           }}
-        />}
+        />
       </div>
       <div className='form-content'>
         <div className='form-input'>
@@ -212,6 +216,17 @@ function AdminEventForm({ events, setAddEvent, currentId, setcurrentId }) {
           {
             event.file !== '' && <img src={event.file} alt="Poster" style={{ height: "110px", padding: "10px" }}></img>
           }
+        </div>
+        <div className='form-input'>
+          <span>Registration Needed ?</span>
+          <select
+            style={{ padding: "10px", border: 'none', borderRadius: '10px' }}
+            value={event.regOpen}
+            onChange={(e) => setEvent({ ...event, regOpen: e.target.value })}
+          >
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </div>
         <div className='form-buttons'>
           <button onClick={clearSubmit}>Cancel</button>

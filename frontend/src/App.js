@@ -4,18 +4,29 @@ import Home from "./pages/Home/Home";
 import DetailsPage from "./components/DetailsPage/DetailsPage";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import { createContext, useState } from "react";
-import events from "./data/EventData/EventData";
+import { createContext, useState, useEffect } from "react";
 import MemRegistrationPage from "./pages/MemRegistrationPage/MemRegistrationPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ScrollToTop from "./ScrollToTop";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminHome from "./pages/Admin/AdminHome";
 import Adminnavbar from "./components/AdminNavbar/Adminnavbar";
+import CommitteePage from "./pages/CommitteePage/CommitteePage";
+import * as api from './api'
 
 export const AppContext = createContext();
 
 function App() {
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.fetchEvents();
+      setEvents(response?.data);
+    };
+    fetchData();
+  }, [])
+
   const [adminPage, setAdminPage] = useState(0);
   const location = useLocation();
   const user = localStorage.getItem("token")
@@ -39,9 +50,10 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/details/:title" element={<DetailsPage />} />
+              <Route path="/event/:id" element={<DetailsPage />} />
               <Route path="/membership" element={<MemRegistrationPage />} />
-              <Route path="/registerpage" element={<RegisterPage />} />
+              <Route path="/register/:id" element={<RegisterPage />} />
+              <Route path="/committee" element={<CommitteePage />} />
             </Routes>
           </div>
           <Footer className="footer" />
