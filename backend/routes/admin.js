@@ -1,7 +1,7 @@
 import express from "express"
 import { adminLogin } from "../controllers/admin.js"
 import AuthMiddleware from "../middleware/auth.js"
-import { CreateEvent, AddCommittee } from '../controllers/admin.js'
+import { CreateEvent, AddCommittee, DeleteCommittee, DeleteEvent, UpdateEvent } from '../controllers/admin.js'
 
 const router = express.Router()
 
@@ -13,7 +13,14 @@ router.post("/login", adminLogin)
 
 router.post("/event", AuthMiddleware, CreateEvent)
 
+router.delete("/event/:id", AuthMiddleware, DeleteEvent)
+
+router.patch("/event/:id", AuthMiddleware, UpdateEvent)
+
 router.post("/committee", AuthMiddleware, AddCommittee)
+
+router.delete("/committee/:id", AuthMiddleware, DeleteCommittee)
+
 
 router.get('/', AuthMiddleware, (req, res) => {
     res.status(200).json("success")

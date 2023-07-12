@@ -3,6 +3,7 @@ import { CommitteeModel } from "../models/committeeModel.js"
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import AdminModel from "../models/adminModel.js"
+import mongoose from "mongoose";
 
 
 export const CreateEvent = async (req, res) => {
@@ -16,6 +17,27 @@ export const CreateEvent = async (req, res) => {
     }
 }
 
+export const DeleteEvent = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+
+    await EventModel.findByIdAndRemove(id);
+
+    res.json({ message: 'post deleted succesfully' });
+}
+
+export const UpdateEvent = async (req, res) => {
+
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+
+    const updatedEvent = req.body;
+    await EventModel.findByIdAndUpdate(id, updatedEvent, { new: true });
+
+    res.json(updatedEvent);
+}
+
 export const AddCommittee = async (req, res) => {
     try {
         const data = req.body;
@@ -25,6 +47,16 @@ export const AddCommittee = async (req, res) => {
     } catch (err) {
         res.status(500).json({ "error": "Couldn't add" })
     }
+}
+
+export const DeleteCommittee = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+
+    await CommitteeModel.findByIdAndRemove(id);
+
+    res.json({ message: 'post deleted succesfully' });
 }
 
 export const adminLogin = async (req, res) => {

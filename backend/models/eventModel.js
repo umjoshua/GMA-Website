@@ -21,8 +21,8 @@ const eventSchema = mongoose.Schema({
         },
     ],
     terms: String,
-    poster: String,
     file: String,
+    regOpen: String
 });
 
 const eventRegSchema = mongoose.Schema({
