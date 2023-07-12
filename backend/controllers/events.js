@@ -61,7 +61,7 @@ export const RegisterEvent = async (req, res) => {
             );
             try {
                 const newData = new EventRegModel(regData);
-                // await newData.save();
+                await newData.save();
                 regData.regId = newData._id;
                 res.status(200).json(data);
                 success = true;
@@ -75,7 +75,7 @@ export const RegisterEvent = async (req, res) => {
     } else {
         regData.amount = 0;
         const newData = new EventRegModel(regData);
-        // await newData.save()
+        await newData.save()
         regData.regId = newData._id;
         res.status(200).json({ "msg": "Added" });
         success = true;
