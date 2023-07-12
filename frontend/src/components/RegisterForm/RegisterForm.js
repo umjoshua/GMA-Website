@@ -3,10 +3,14 @@ import "./RegisterForm.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import * as api from '../../api'
 
-function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCount, checkOut, setCheckOut, setThank }) {
+function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
+
+  console.log(registrationData)
 
   const phoneRegExp = /^\+\d{1,4}\d{10}$/;
+
   const schema = yup.object().shape({
     firstName: yup.string().required("Your First Name is Required!"),
     lastName: yup.string().required("Your Last Name is Required!"),
@@ -26,13 +30,25 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
     resolver: yupResolver(schema),
   });
 
-
-  const onSubmit = (data) => {
-
-    setCheckOut(true)
-    // setThank(true)
-
-    console.log(data);
+  const onSubmit = async (data) => {
+    const newData = {
+      ...data,
+      event_id: registrationData.event_id,
+      ticketType: registrationData.ticketType,
+      ticketCount: registrationData.ticketCount,
+      subTotal: registrationData.subTotal,
+    }
+    setData(newData)
+    if (newData.subTotal === 0) {
+      await api.registerForEvent(newData).then((res) => {
+        setThank(true);
+      }).catch((error) => {
+        setError(true);
+      });
+    }
+    else {
+      setCheckOut(true);
+    }
   };
 
 
@@ -111,43 +127,13 @@ function RegisterForm({ title, adultCount, setAdultCount, childCount, setChildCo
             <span>{errors.cEmail?.message}</span>
           </div>
         </div>
-        <div className="ticket_count">
-          <label>Number of tickets</label>
-          <div className="counter-container">
-            <div className="counter">
-              <span>Adults</span>
-              <button
-                type="button"
-                onClick={() => setAdultCount(adultCount - 1)}
-                disabled={adultCount === 0}
-              >
-                -
-              </button>
-              <span>{adultCount}</span>
-              <button type="button" onClick={() => setAdultCount(adultCount + 1)}>
-                +
-              </button>
-            </div>
-            <div className="counter">
-              Children
-              <button
-                type="button"
-                onClick={() => setChildCount(childCount - 1)}
-                disabled={childCount === 0}
-              >
-                -
-              </button>
-              <span>{childCount}</span>
-              <button type="button" onClick={() => setChildCount(childCount + 1)}>
-                +
-              </button>
-            </div>
-          </div>
-        </div>
         <div className="form_submit">
-          {!checkOut && <input type="submit"
-            value={"Submit and Proceed to Pay"}
-          />}
+          <div onClick={() => setBackPage(registrationData.ticketIndex)}>
+            Back
+          </div>
+          <input type="submit"
+            value={registrationData.subTotal !== 0 ? "Submit and Pay" : "Submit"}
+          />
         </div>
       </form>
     </div>

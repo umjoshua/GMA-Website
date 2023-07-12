@@ -1,39 +1,66 @@
-.cart_container{
+.cart_container {
     width: 80%;
-    border: 2px solid navy;
-    border-radius: 4px;
+    border: none;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.7);
 }
-.cart_title{
+
+.cart_title {
+    border-top-left-radius: 10px;
     display: flex;
     align-items: center;
     padding: 10px;
     background: navy;
     color: whitesmoke;
 }
-.cart_title > span{
+
+.cart_title>span {
     margin: 0px 0px 0px 10px;
     font-size: 18px;
 }
-.cart_event{
-    padding: 10px 0px 10px 20px ;
+
+.cart_event {
+    padding: 10px;
     color: navy;
     border-bottom: 1px solid #888;
 }
-.fare{
+
+.fare {
     margin: 10px 0px 10px 20px;
 }
-.fare_division{
+
+.fare_division {
     color: navy;
 }
-.subtotal{
+
+.subtotal {
     display: flex;
     justify-content: flex-end;
     margin: 10px;
     color: navy;
     font-weight: bold;
 }
+
 .count {
     margin-top: 5px;
     display: flex;
     flex-direction: column;
 }
+.ticket_count{
+    padding: 5px;
+    border: 1px dotted orangered;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+@media screen and (max-width: 1000px) {
+    .cart_container {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+

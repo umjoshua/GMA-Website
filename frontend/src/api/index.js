@@ -23,6 +23,6 @@ export const fetchCommittee = async () => await API.get('/committee');
 
 export const editEvent = async (id, event, config) => await API.patch('/admin/event/' + id, event, config);
 
-export const registerForEvent = async (data, id) => await API.post('/event/register/' + id, data);
+export const registerForEvent = async (data) => await API.post('/events/register/', data);
 
 export const membershipRegister = async (data) => await API.post('/membership', data);

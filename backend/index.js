@@ -6,7 +6,6 @@ import AdminRouter from "./routes/admin.js"
 import EventRouter from "./routes/events.js"
 import CommitteeRouter from './routes/committee.js'
 import MembershipRouter from "./routes/membership.js"
-import PaymentHandler from './controllers/payment.js'
 import bodyParser from "body-parser";
 
 dotenv.config()
@@ -22,7 +21,6 @@ app.use("/admin", AdminRouter)
 app.use("/events", EventRouter)
 app.use("/membership", MembershipRouter)
 app.use("/committee", CommitteeRouter)
-app.post("/payment", PaymentHandler)
 
 mongoose.connect(MONGO_URI).then(() => {
     app.listen(PORT, () => {

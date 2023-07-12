@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/", GetEvents)
 
-router.post("/register/:id", RegisterEvent)
+router.post("/register", RegisterEvent)
 
 
 export default router

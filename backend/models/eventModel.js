@@ -26,14 +26,18 @@ const eventSchema = mongoose.Schema({
 });
 
 const eventRegSchema = mongoose.Schema({
-    eventId: { type: Schema.Types.ObjectId },
-    fname: String,
-    lname: String,
-    country: String,
-    phNo: String,
+    event_id: { type: Schema.Types.ObjectId },
+    firstName: String,
+    lastName: String,
     address: String,
     suburb: String,
-    postcode: Number,
+    postcode: String,
+    country: String,
+    phone: String,
+    email: String,
+    ticketType: String,
+    ticketCount: {},
+    amount: String,
 })
 
 const EventModel = mongoose.model("EventModel", eventSchema, "EventDetails")
