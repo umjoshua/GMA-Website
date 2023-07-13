@@ -83,6 +83,7 @@ export const RegisterEvent = async (req, res) => {
             success = true;
         }
         if (success) {
+            console.log("success")
             const ticketData = {
                 regId: regData.regId.toString(),
                 eventName: response.title,
