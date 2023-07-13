@@ -16,6 +16,7 @@ function RegisterPage() {
 
   const event = events.find((event) => event._id === id);
 
+
   const [page, setPage] = useState(0);
   const [ticketType, setTicketType] = useState(null);
 

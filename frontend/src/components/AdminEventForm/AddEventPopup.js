@@ -99,6 +99,7 @@ const AddEventPopup = ({ event, setEvent, ticketCount, setTicketCount }) => {
                   />
                   <input
                     placeholder='Price'
+                    type='number'
                     value={pricing.price}
                     onChange={(e) => {
                       const updatedTicket = { ...ticket };
