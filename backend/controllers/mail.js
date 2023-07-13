@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer"
+import dotenv from "dotenv"
+dotenv.config()
 
 const transporter = nodemailer.createTransport({
     service: "GMAIL",
@@ -9,7 +11,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const SendEmail = async (data) => {
-    console.log(`${process.env.MAIL_USER}`);
     const info = await transporter.sendMail({
         from: '"GMA" <joshuatest58@gmail.com>',
         to: data.reciever,
@@ -17,7 +18,6 @@ const SendEmail = async (data) => {
         text: data.text,
         attachments: data.attachments
     });
-
     console.log("Message sent: %s", info.messageId);
 }
 

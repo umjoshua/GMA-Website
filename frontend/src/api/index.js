@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_BASE_URL;
+export const baseURL = process.env.REACT_APP_BASE_URL;
 
 const API = axios.create({ baseURL })
 
@@ -26,3 +26,9 @@ export const editEvent = async (id, event, config) => await API.patch('/admin/ev
 export const registerForEvent = async (data) => await API.post('/events/register/', data);
 
 export const membershipRegister = async (data) => await API.post('/membership', data);
+
+export const ContactUs = async (data) => await API.post('/contactus', data);
+
+export const PayPalOrder = async (data) => await API.post('/orders', data)
+
+export const PayPalCapture = async (data, orderID) => await API.post('/orders/' + orderID + '/capture', data)

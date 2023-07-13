@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegisterForm.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as api from '../../api'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
 
-  console.log(registrationData)
+  const [loading, setLoading] = useState(false);
 
   const phoneRegExp = /^\+\d{1,4}\d{10}$/;
 
@@ -31,6 +33,7 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
   });
 
   const onSubmit = async (data) => {
+    setLoading(true);
     const newData = {
       ...data,
       event_id: registrationData.event_id,
@@ -41,10 +44,11 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
     setData(newData)
     if (newData.subTotal === 0) {
       await api.registerForEvent(newData).then((res) => {
-        // setThank(true);
+        setThank(true);
       }).catch((error) => {
         setError(true);
       });
+      setLoading(false);
     }
     else {
       setCheckOut(true);
@@ -54,6 +58,9 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
 
   return (
     <div className="form_container">
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form_part_one">
           <div className="form_name">

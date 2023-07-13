@@ -127,6 +127,13 @@
   background-color: #F082AC;
 }
 
+.status{
+  padding: 10px;
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 768px) {
   .contact_inside {
     display: flex;

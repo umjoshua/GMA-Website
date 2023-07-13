@@ -23,7 +23,7 @@ function Payment({ setThank, data, setError }) {
                         setThank(true);
                     }
                     else {
-                        setError(true);
+                        setError('Sorry, your transaction could not be processed.');
                     }
                 }}
                 locationId='XXXXXXXXXX'

@@ -3,6 +3,7 @@ import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import "./RegisterDetails.css";
 import Cart from "../../components/Cart/Cart";
 import Payment from "../../components/Payment/Payment";
+import PayPalPayment from "../../components/Payment/PayPal";
 import EventThank from "../../components/EventThank/EventThank";
 
 function RegisterDetails({ event, registrationData, setBackPage }) {
@@ -11,7 +12,7 @@ function RegisterDetails({ event, registrationData, setBackPage }) {
   const [checkOut, setCheckOut] = useState(false)
   const [thank, setThank] = useState(false)
   const [data, setData] = useState({})
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleActive = (buttonId) => {
     setActiveButton(buttonId);
@@ -69,6 +70,14 @@ function RegisterDetails({ event, registrationData, setBackPage }) {
               <div className="paymentSection">
                 <div className="paymentSection1">
                   <Payment setThank={setThank} data={data} setError={setError} />
+                </div>
+              </div>
+            }
+            {
+              paymentMethod === 2 &&
+              <div className="paymentSection">
+                <div className="paymentSection1">
+                <PayPalPayment setThank={setThank} regData={data} setError={setError}/>
                 </div>
               </div>
             }

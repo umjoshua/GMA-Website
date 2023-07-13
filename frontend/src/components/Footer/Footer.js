@@ -4,8 +4,7 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import SchoolIcon from '@mui/icons-material/School';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 import './Footer.css';
 
@@ -19,23 +18,21 @@ function Footer() {
           <div className='location'>
             <LocationCityIcon />
             <div>
-              <a href='https://maps.app.goo.gl/kuiSu981HsBggDBN8?g_st=ic' target='_blank' rel='noopener noreferrer'>
-                <p>3922 Spadafore Drive</p>
-                <p>Titusville, Pennsylvania, US</p>
-              </a>
+              <p>12 Galactic Street</p>
+              <p>Mt. Duneed, VIC 3217</p>
             </div>
           </div>
           <div className='location'>
             <PhoneIcon />
             <p>
-              <a href='tel://+919087654321'>+91 9087654321</a>
+              <a href='tel://+61476187075'>+61 476187075</a>
             </p>
           </div>
           <div className='location'>
             <EmailIcon />
             <p>
-              <a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=association@gmail.com' target='_blank' rel='noopener noreferrer'>
-                association@gmail.com
+              <a href='mailto:mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
+                geelongmalayaleeassociation@gmail.com
               </a>
             </p>
           </div>
@@ -44,13 +41,13 @@ function Footer() {
         <div className='footer_section'>
           <h4>Reach Us....</h4>
           <div className='social'>
-            <a href='#' target='_blank' rel='noopener noreferrer'>
+            <a href='https://www.instagram.com/geelong_malayalee_association' target='_blank' rel='noopener noreferrer'>
               <InstagramIcon />
             </a>
-            <a href='#' target='_blank' rel='noopener noreferrer'>
-              <LinkedInIcon />
+            <a href='https://www.facebook.com/GeelongMalayaleeAssociation' target='_blank' rel='noopener noreferrer'>
+              <FacebookIcon />
             </a>
-            <a href='#' target='_blank' rel='noopener noreferrer'>
+            <a href='mailto:mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
               <EmailIcon />
             </a>
           </div>

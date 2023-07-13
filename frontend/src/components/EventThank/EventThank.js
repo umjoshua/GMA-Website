@@ -13,7 +13,7 @@ const EventThank = ({ error }) => {
                     <button onClick={() => navigate('/')}>Go Home</button>
                 </div> : <div className="thankContainer">
                     <h1 style={{ color: "black", textAlign: 'center' }}>An error occured!</h1>
-                    <span style={{ fontSize: "large", padding: "10px" }}>Couldn't complete payment</span>
+                    <span style={{ fontSize: "large", padding: "10px" }}>{error}</span>
                     <button onClick={() => navigate('/')}>Go Home</button>
                 </div>
             }

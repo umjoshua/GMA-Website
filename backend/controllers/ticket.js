@@ -3,6 +3,7 @@ import fs from "fs";
 import SendEmail from "./mail.js";
 
 const HandleTicketGeneration = async (data) => {
+  console.log("handle ticket generation");
     const { ticketCount, pricing } = data;
     const pricingMap = new Map(pricing.map(item => [item.name, item.price]));
     let htmlContent = `

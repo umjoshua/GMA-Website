@@ -3,6 +3,6 @@ import { MembershipRegister } from "../controllers/membership.js"
 
 const router = express.Router()
 
-router.post("/register/new", MembershipRegister)
+router.post("/", MembershipRegister)
 
 export default router

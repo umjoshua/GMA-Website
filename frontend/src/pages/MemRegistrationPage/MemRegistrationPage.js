@@ -1,7 +1,22 @@
 import React, { useState } from "react";
 import "./MemRegistrationPage.css";
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import { useNavigate } from "react-router-dom";
+
+import * as api from '../../api';
+
 function MemRegistrationPage() {
+
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState("");
+
+  const [thank, setThank] = useState(false);
 
   const [formData, setFormData] = useState({
     fname: "",
@@ -29,8 +44,8 @@ function MemRegistrationPage() {
     spouceEmail: "",
     familyDetails: "",
     contactMethod: "Email",
-    membershipType: "",
-    membershipFeePaid: false,
+    membershipType: "Associate",
+    membershipFeePaid: "No",
   })
 
 
@@ -42,15 +57,24 @@ function MemRegistrationPage() {
     }));
   };
 
-  const handleSubmit = (event) => {
-
+  const handleSubmit = async (event) => {
+    setError("");
     event.preventDefault();
-    console.log(formData)
+    setLoading(true);
+    await api.membershipRegister(formData).then((res) => {
+      setThank(true);
+    }).catch((error) => {
+      setError("Couldn't Register");
+    });
+    setLoading(false);
   }
 
   return (
     <div className="membership_container">
-      <div className="membership_form">
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {!thank && <div className="membership_form">
         <h1>Membership Form </h1>
         <form onSubmit={handleSubmit}>
           <span className="mandatory">* indicates mandatory fields</span>
@@ -442,8 +466,17 @@ function MemRegistrationPage() {
           <button className="submitButton">
             Submit
           </button>
+          <div className="status">{error}</div>
         </form>
-      </div>
+      </div>}
+      {
+        thank &&
+        <div className="thankContainer" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
+          <h1 style={{ color: "black", textAlign: 'center' }}>Thankyou for registering!</h1>
+          <span style={{ fontSize: "large", padding: "10px" }}>You will recieve a confirmation mail soon..</span>
+          <button onClick={() => navigate('/')}>Go Home</button>
+        </div>
+      }
     </div>
   );
 }
