@@ -6,13 +6,17 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div className='banner-main'>
-            <div className='kerala-tourism'>
-                <img src={KeralaTourismLogo} alt="Kerala tourism" />
-            </div>
-            <div className='cultura'>
-                <img src={CulturaLogo} alt="Cultura"/>
-            </div>
-        </div>
+            <a href='https://www.keralatourism.org/' target='_blank' rel='noopener noreferrer'>
+                <div className='kerala-tourism'>
+                    <img src={KeralaTourismLogo} alt="Kerala tourism" />
+                </div>
+            </a>
+            <a href='https://www.cultura.org.au/' target='_blank' rel='noopener noreferrer'>
+                <div className='cultura'>
+                    <img src={CulturaLogo} alt="Cultura" />
+                </div>
+            </a>
+        </div >
     )
 }
 
