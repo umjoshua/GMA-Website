@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a85ef3cf.css",
+    "main.js": "/static/js/main.a7b70b34.js",
+    "static/media/logo.png": "/static/media/logo.1ebf289145dcab6bd97d.png",
+    "static/media/g3.jpeg": "/static/media/g3.a573a950d15c003abc47.jpeg",
+    "static/media/g4.jpeg": "/static/media/g4.ea11fba1465afd1a1873.jpeg",
+    "static/media/g6.jpeg": "/static/media/g6.83a10e8a1b387ca71cbc.jpeg",
+    "static/media/g5.jpeg": "/static/media/g5.e2e536f41858885fc380.jpeg",
+    "static/media/g8.jpeg": "/static/media/g8.bb551a7d8c41635b33ba.jpeg",
+    "static/media/g7.jpeg": "/static/media/g7.dee51a0dc474468300b7.jpeg",
+    "static/media/g1.jpeg": "/static/media/g1.1d091c5668430fc1da18.jpeg",
+    "static/media/cultura-logo.png": "/static/media/cultura-logo.7eecbd2f1557b10d491d.png",
+    "static/media/Rowdies-Regular.ttf": "/static/media/Rowdies-Regular.c3e51820d6d0195a2ef9.ttf",
+    "static/media/avatar.png": "/static/media/avatar.e4982d9c05ff5a185f7e.png",
+    "static/media/kerala-tourism-logo.png": "/static/media/kerala-tourism-logo.633b5035e4147cb8da02.png",
+    "index.html": "/index.html",
+    "main.a85ef3cf.css.map": "/static/css/main.a85ef3cf.css.map",
+    "main.a7b70b34.js.map": "/static/js/main.a7b70b34.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a85ef3cf.css",
+    "static/js/main.a7b70b34.js"
+  ]
+}
