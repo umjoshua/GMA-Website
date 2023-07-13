@@ -4,27 +4,31 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import * as Scroll from "react-scroll";
 import { Link, useLocation } from "react-router-dom";
+import Logo from '../../assets/images/logo.png';
 
 const ScrollLink = Scroll.Link;
 
 function Navbar() {
   const location = useLocation();
   const [icon, setIcon] = useState(false);
-  const [color, setColor] = useState(false);
+  // const [color, setColor] = useState(false);
 
 
-  const changeColor = () => {
-    if (window.scrollY >= 100) {
-      setColor(true);
-    } else {
-      setColor(false);
-    }
-  };
-  window.addEventListener("scroll", changeColor);
+  // const changeColor = () => {
+  //   if (window.scrollY >= 100) {
+  //     setColor(true);
+  //   } else {
+  //     setColor(false);
+  //   }
+  // };
+  // window.addEventListener("scroll", changeColor);
 
   return (
-    <div className={color ? "header header_bg" : "header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
-      <h1>Association</h1>
+    <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
+      <div className="logo-div">
+        <img src={Logo} alt="logo" className="logo"/>
+        <h2>Geelong Malayalee Association</h2>
+      </div>
       <ul className={icon ? "nav_menu active" : "nav_menu"}>
         <>
           {(
@@ -106,7 +110,6 @@ function Navbar() {
             </ScrollLink>
           </li>
         </>
-        )
       </ul>
       <div className="hamburger" onClick={() => setIcon(!icon)}>
         {icon ? <CloseIcon /> : <MenuIcon />}

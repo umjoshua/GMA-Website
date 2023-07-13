@@ -1,5 +1,4 @@
 import Image1 from '../../assets/images/g1.jpeg'
-import Image2 from '../../assets/images/g2.jpeg'
 import Image3 from '../../assets/images/g3.jpeg'
 import Image4 from '../../assets/images/g4.jpeg'
 import Image5 from '../../assets/images/g5.jpeg'
@@ -10,9 +9,6 @@ import Image8 from '../../assets/images/g8.jpeg'
 const SwiperData = [
     {
         image: Image1
-    },
-    {
-        image: Image2
     },
     {
         image: Image3

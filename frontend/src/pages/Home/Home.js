@@ -5,6 +5,7 @@ import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
 import AboutPage from "../AboutPage/AboutPage";
 import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
+import Banner from "../../components/Banner/Banner";
 
 function Home() {
   useEffect(() => {
@@ -29,6 +30,9 @@ function Home() {
       </section>
       <section id="contact">
         <Contact />
+      </section>
+      <section id="cultura">
+        <Banner />
       </section>
     </div>
   );
