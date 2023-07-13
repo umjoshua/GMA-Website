@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a85ef3cf.css",
-    "main.js": "/static/js/main.a7b70b34.js",
+    "main.js": "/static/js/main.40cc4700.js",
     "static/media/logo.png": "/static/media/logo.1ebf289145dcab6bd97d.png",
     "static/media/g3.jpeg": "/static/media/g3.a573a950d15c003abc47.jpeg",
     "static/media/g4.jpeg": "/static/media/g4.ea11fba1465afd1a1873.jpeg",
@@ -16,10 +16,10 @@
     "static/media/kerala-tourism-logo.png": "/static/media/kerala-tourism-logo.633b5035e4147cb8da02.png",
     "index.html": "/index.html",
     "main.a85ef3cf.css.map": "/static/css/main.a85ef3cf.css.map",
-    "main.a7b70b34.js.map": "/static/js/main.a7b70b34.js.map"
+    "main.40cc4700.js.map": "/static/js/main.40cc4700.js.map"
   },
   "entrypoints": [
     "static/css/main.a85ef3cf.css",
-    "static/js/main.a7b70b34.js"
+    "static/js/main.40cc4700.js"
   ]
 }
