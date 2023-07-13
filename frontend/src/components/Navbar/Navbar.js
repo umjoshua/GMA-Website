@@ -26,7 +26,7 @@ function Navbar() {
   return (
     <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
       <div className="logo-div">
-        <img src={Logo} alt="logo" className="logo"/>
+        <img src={Logo} alt="logo" className="logo" />
         <h2>Geelong Malayalee Association</h2>
       </div>
       <ul className={icon ? "nav_menu active" : "nav_menu"}>
@@ -112,7 +112,7 @@ function Navbar() {
         </>
       </ul>
       <div className="hamburger" onClick={() => setIcon(!icon)}>
-        {icon ? <CloseIcon /> : <MenuIcon />}
+        {icon ? <CloseIcon style={{ color: 'white' }} /> : <MenuIcon />}
       </div>
     </div>
   );
