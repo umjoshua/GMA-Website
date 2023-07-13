@@ -2,7 +2,10 @@ import React from "react";
 import "./Cart.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function Cart({title, amount}) {
+function Cart({ event, registrationData }) {
+
+  const ticket = event.tickets.find(ticket => ticket.name === registrationData.ticketType);
+
   return (
     <div className="cart_container">
       <div className="cart_title">
@@ -11,30 +14,32 @@ function Cart({title, amount}) {
       </div>
       <div className="cart_inside">
         <div className="cart_event">
-          <h3>{title}</h3>
+          <h3>{event.title}</h3>
         </div>
         <div className="cart_event">
-          <span>Price: {amount}</span>
+          {
+            ticket.name
+          }
+        </div>
+        <div className="cart_event">
+          {
+            Object.entries(registrationData.ticketCount).map(([key, value]) => {
+              return (
+                <div className="ticket_count" key={key}>
+                  <div>Ticket: <span style={{ color: 'green' }}>{key} </span><span>x {value}</span></div>
+                  <div style={{ placeSelf: "flex-end", padding: "10px" }}>
+                    <span style={{ color: 'red' }}>Price:</span> $ {registrationData.ticketPrice[key] * value}
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
       <div className="fare">
-        <div>
-          <div className="fare_division">
-            <span>Ticket: </span>
-            <span>{amount}</span>
-          </div>
-          <div className="fare_division">
-            <span>Ticket Fee:</span>
-            <span>$1.00</span>
-          </div>
-          <div className="fare_division">
-            <span>Processing Fee: </span>
-            <span>$1.75</span>
-          </div>
-        </div>
       </div>
       <div className="subtotal">
-        <span>SUBTOTAL: $22.75</span>
+        <span>Subtotal: $ {registrationData.subTotal}</span>
       </div>
     </div>
   );

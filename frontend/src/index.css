@@ -3,18 +3,26 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   background: #FAF9F6;
   color: #000;
 }
 
-h1,
+@font-face {
+  font-family: 'Rowdies';
+  src: url('./assets/fonts/Rowdies/Rowdies-Regular.ttf') format('truetype');
+  ;
+}
+
+/* h1,
 h4,
 p,
 a {
   color: #fff;
   text-decoration: none;
-}
-ul{
+} */
+
+ul {
   list-style: none;
 }

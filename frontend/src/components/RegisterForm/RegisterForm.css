@@ -2,87 +2,153 @@
   width: 100%;
   margin-bottom: 50px;
 }
+
 .form_part_one {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.form_name > label {
+
+.form_name>label,
+.ticket_count>label {
   display: flex;
   flex-direction: column;
-  font-size: small;
+  font-size: medium;
   margin: 10px 0px 0px 15px;
 }
-.form_name > input{
+
+
+.ticket_count {
   display: flex;
   flex-direction: column;
-  margin: 0px 0px 0px 15px;
+}
+
+.form_name>input {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px 0px 15px;
   width: 90%;
   height: 30px;
   border: 1px solid #888;
   border-radius: 4px;
+  padding: 5px;
 }
-.form_name > span{
+
+.form_name>span {
   color: red;
   font-size: x-small;
   margin: 20px;
 }
+
 .form_address {
   display: flex;
   flex-direction: column;
-  font-size: small;
   margin: 10px 0px 0px 15px;
 }
-.form_address > span{
+
+.form_address>span {
   color: red;
   font-size: x-small;
   margin: 4px 0px 0px 0px;
 }
-.form_address > input{
+
+.form_address>input {
+  padding: 5px;
+  margin-top: 5px;
   width: 96.8%;
   height: 30px;
   border: 1px solid #888;
   border-radius: 4px;
 }
-input::placeholder{
+
+.counter>span {
+  padding-left: 10px;
+}
+
+input::placeholder {
   padding: 0px 0px 0px 10px;
 }
-.form_submit{
+
+.form_submit {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: 20px 0px 20px 0px;
 }
-.form_submit > input{
-  width: 50%;
+
+.form_submit>input, .form_submit>div {
+  width: 40%;
   height: 30px;
   border: 1px solid navy;
   background: transparent;
   border-radius: 4px;
 }
-.form_submit > input:hover{
+.form_submit>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_submit>input:hover, .form_submit>div:hover {
   background-color: navy;
   color: aliceblue;
 }
 
-@media screen and (max-width: 768px){
+
+.counter-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.counter button {
+  width: 25px;
+  height: 25px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.counter button:hover {
+  background-color: #ddd;
+}
+
+.counter span {
+  margin: 0px 5px;
+}
+
+
+@media screen and (max-width: 768px) {
   .form_container {
     width: 100%;
   }
+
   .form_part_one {
     display: flex;
     flex-direction: column;
   }
-  .form_name > label {
+
+  .form_name>label {
     display: flex;
     flex-direction: column;
     font-size: small;
     margin: 10px 0px 0px 15px;
   }
-  .form_name > input{
+
+  .form_name>input {
     width: 85%;
     height: 30px;
   }
-  .form_address > input{
+
+  .form_address>input {
     width: 88%;
   }
 }

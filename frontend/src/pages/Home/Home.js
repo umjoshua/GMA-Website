@@ -3,9 +3,9 @@ import Slider from "../../components/Slider/Slider";
 import "./Home.css";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
-import CommitteePage from "../CommitteePage/CommitteePage";
 import AboutPage from "../AboutPage/AboutPage";
 import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
+import Banner from "../../components/Banner/Banner";
 
 function Home() {
   useEffect(() => {
@@ -19,23 +19,20 @@ function Home() {
           <Slider />
         </div>
       </section>
-      <section id="about">
-        <AboutPage/>
-      </section>
       <section id="events">
         <Events />
+      </section>
+      <section id="about">
+        <AboutPage />
       </section>
       <section id="registerUpdates">
         <RegisterForUpdate />
       </section>
-      <section id="committee">
-        <CommitteePage/>
-      </section>
       <section id="contact">
         <Contact />
       </section>
-      <section id="about">
-
+      <section id="cultura">
+        <Banner />
       </section>
     </div>
   );

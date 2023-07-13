@@ -1,0 +1,112 @@
+#event-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#event-title {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    color: #888;
+    cursor: pointer;
+}
+
+#event-image {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#event-image img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.event_item {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ddd;
+}
+
+.event_item:last-child {
+    border-bottom: none;
+}
+
+
+.event_item span:last-child {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.event_item span.amount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event_item span.amount span {
+    margin-right: 10px;
+}
+
+.confirmation_dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.confirmation_content {
+    max-width: 90%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.confirmation_buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.confirmation_button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f44336;
+    color: #fff;
+    cursor: pointer;
+}
+
+.confirmation_button:hover {
+    background-color: #d32f2f;
+}
+
+.confirmation_button:focus {
+    outline: none;
+}
+
+.confirmation_button:last-child {
+    background-color: #ccc;
+}

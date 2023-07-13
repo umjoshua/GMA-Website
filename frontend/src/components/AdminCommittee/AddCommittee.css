@@ -1,0 +1,57 @@
+.popup-container {
+    text-align: center;
+}
+
+.add_event_icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: blue;
+    border-radius: 50px;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px dotted gray;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 70%;
+  }
+
+.committee-1{
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.committee-2{
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: whitesmoke;
+}
+
+@media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+    }
+
+    .add_event_icon {
+        height: 50px;
+        width: 50px;
+    }
+
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import AboutImage from "../../assets/about/about.jpg";
+import Logo from '../../assets/images/logo.png';
 
 function About() {
   return (
@@ -19,7 +19,7 @@ function About() {
         </p>
       </div>
       <div className="about_logo">
-        <img src={AboutImage} alt="Logo" />
+        <img src={Logo} style={{width:"200px"}} alt="Logo" />
       </div>
     </div>
   );

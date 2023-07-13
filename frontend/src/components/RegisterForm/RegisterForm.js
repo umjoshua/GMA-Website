@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegisterForm.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import * as api from '../../api'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
-function RegisterForm({ title, amount }) {
-  
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
+
+  const [loading, setLoading] = useState(false);
+
+  const phoneRegExp = /^\+\d{1,4}\d{10}$/;
 
   const schema = yup.object().shape({
     firstName: yup.string().required("Your First Name is Required!"),
     lastName: yup.string().required("Your Last Name is Required!"),
     country: yup.string().required("Please enter the country!"),
     phone: yup.string().matches(phoneRegExp, "Phone number is not valid!"),
-    address: yup.string().required("Please provide your Address"),
-    suburb: yup.string().required("SUBURB Required"),
-    postcode: yup.string().required("Please provide your Zipcode"),
+    address: yup.string().required("Please provide your Address!"),
+    suburb: yup.string().required("Suburb Required!"),
+    postcode: yup.string().required("Please provide your Zipcode!"),
     email: yup.string().email().required("Please provide your email!"),
-    cEmail: yup.string().email().required("Please provide your email!"),
+    cEmail: yup.string().email().oneOf([yup.ref('email'), null], "Email doesn't match")
   });
   const {
     register,
@@ -27,16 +31,40 @@ function RegisterForm({ title, amount }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => {
-    console.log(data);
-    console.log(title,amount);
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    const newData = {
+      ...data,
+      event_id: registrationData.event_id,
+      ticketType: registrationData.ticketType,
+      ticketCount: registrationData.ticketCount,
+      subTotal: registrationData.subTotal,
+    }
+    setData(newData)
+    if (newData.subTotal === 0) {
+      await api.registerForEvent(newData).then((res) => {
+        setThank(true);
+      }).catch((error) => {
+        setError(true);
+      });
+      setLoading(false);
+    }
+    else {
+      setCheckOut(true);
+    }
   };
+
+
   return (
     <div className="form_container">
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form_part_one">
           <div className="form_name">
-            <label>FIRST NAME</label>
+            <label>First Name</label>
             <input
               type="text"
               placeholder="First Name"
@@ -45,7 +73,7 @@ function RegisterForm({ title, amount }) {
             <span>{errors.fisrtName?.message}</span>
           </div>
           <div className="form_name">
-            <label>LAST NAME</label>
+            <label>Last Name</label>
             <input
               type="text"
               placeholder="Last Name"
@@ -55,31 +83,31 @@ function RegisterForm({ title, amount }) {
           </div>
 
           <div className="form_name">
-            <label>COUNTRY</label>
+            <label>Country</label>
             <input type="text" placeholder="Country" {...register("country")} />
             <span>{errors.country?.message}</span>
           </div>
           <div className="form_name">
-            <label>PHONE NUMBER</label>
+            <label>Phone Number</label>
             <input type="tel" {...register("phone")} />
             <span>{errors.phone?.message}</span>
           </div>
         </div>
 
         <div className="form_address">
-          <label>ADDRESS</label>
+          <label>Address</label>
           <input type="text" placeholder="Address" {...register("address")} />
           <span>{errors.address?.message}</span>
         </div>
 
         <div className="form_part_one">
           <div className="form_name">
-            <label>SUBURB</label>
+            <label>Suburb</label>
             <input type="text" placeholder="SUBURB" {...register("suburb")} />
             <span>{errors.suburb?.message}</span>
           </div>
           <div className="form_name">
-            <label>POSTCODE</label>
+            <label>Postcode</label>
             <input
               type="text"
               placeholder="POSTCODE"
@@ -88,7 +116,7 @@ function RegisterForm({ title, amount }) {
             <span>{errors.postcode?.message}</span>
           </div>
           <div className="form_name">
-            <label>EMAIL ADDRESS</label>
+            <label>Email</label>
             <input
               type="email"
               placeholder="johndoe@gmail.com"
@@ -97,7 +125,7 @@ function RegisterForm({ title, amount }) {
             <span>{errors.email?.message}</span>
           </div>
           <div className="form_name">
-            <label>CONFIRM EMAIL ADDRESS</label>
+            <label>Confirm Email</label>
             <input
               type="email"
               placeholder="johndoe@gmail.com"
@@ -107,7 +135,12 @@ function RegisterForm({ title, amount }) {
           </div>
         </div>
         <div className="form_submit">
-          <input type="submit" />
+          <div onClick={() => setBackPage(registrationData.ticketIndex)}>
+            Back
+          </div>
+          <input type="submit"
+            value={registrationData.subTotal !== 0 ? "Submit and Pay" : "Submit"}
+          />
         </div>
       </form>
     </div>

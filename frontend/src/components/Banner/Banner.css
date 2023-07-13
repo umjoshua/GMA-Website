@@ -1,0 +1,47 @@
+.banner-main {
+    display: flex;
+    flex-direction: row;
+    max-height: 500px;
+    justify-content: space-around;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.kerala-tourism {
+    background-color: slategrey;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cultura {
+    padding: 5px;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+}
+
+.kerala-tourism img,
+.cultura img {
+    max-width: 500px;
+}
+
+@media screen and (max-width: 768px) {
+    .banner-main {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        flex-direction: column;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .kerala-tourism,
+    .cultura {
+        margin: 10px;
+        max-width: 90%;
+    }
+
+    .kerala-tourism img,
+    .cultura img {
+        max-width: 90%;
+    }
+
+}

@@ -1,68 +1,182 @@
-.register_page{
-    width: 100%;
-    overflow: hidden;
+.rg1-1 {
+    width: 70%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
-.register_title{
-    width: 100%;
+
+.rg1-2 {
+    text-align: center;
+}
+
+.rg1-2 span {
+    font-weight: bold;
+    color: violet;
+    font-size: x-large;
+}
+
+#rg1-3,
+.rg2-1 {
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    border-radius: 10px;
+    min-height: 50px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.rg2-1 {
+    padding: 10px;
+}
+
+#rg1-3 span,
+.rg2-1 {
+    text-align: center;
+    font-size: x-large;
+    color: white;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.rg1-4 {
+    margin-top: 15px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 30% 45% 15% 10%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#rg1-4-1 {
+    font-weight: bold;
+}
+
+.rg1-5 {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#rg-4-3 {
+    background: #FFFFFF;
+    border: 0 solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.7);
+    color: #1A202C;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 40px;
+    overflow-wrap: break-word;
+    width: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#rg2-2 {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 70% 20% 10%;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#rg2-3 {
+    display: flex;
     align-items: center;
 }
-.register_title > h1,
-.register_title > span{
-    color: navy;
-    margin: 10px;
+
+#rg1-4-2 {
+    padding-left: 20px;
 }
-.pay_methods > button{
-    margin: 10px;
-    width: 100px;
-    height: 30px;
-    border: 1px solid navy;
-    color: navy;
-    background: transparent;
-    border-radius: 4px;
+
+#rg2-3 span {
+    padding: 5px;
 }
-.pay_methods > button.active{
-    background: navy;
-    color: aliceblue;
-}
-.pay_methods > button:hover{
-    transform: scale(1.1);
-    transition: 0.5s ease-out;
-}
-.register_form_container{
-    width: 100%;
+
+.rg2-4 {
+    padding-top: 10px;
     display: flex;
+    justify-content: space-between;
 }
-.register_form{
-    width: 60%;
+
+.rg2-4 button {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
-.reg_title{
-    color: navy;
-    margin: 10px;
+
+.rg2-5{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: large;
+    margin-top: 10px;
 }
-.cart{
-    width: 40%;
-}
-@media screen and (max-width: 768px){
-    .pay_methods{
+
+@media screen and (max-width: 768px) {
+    .rg1-1 {
         width: 100%;
+    }
+
+    .rg1-4 {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .rg1-4-div {
+        padding: 10px;
+    }
+
+    #rg2-2 {
+        grid-template-columns: 80% 20%;
+    }
+
+    .rg2-1 {
+        font-size: small;
+    }
+
+    #rg-4-3 {
+        margin-top: 10px;
+    }
+
+    #rg2-2 {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
-    .register_form{
-        width: 100%;
+
+    #rg2-2 div,
+    #rg2-2 span {
+        padding: 5px;
     }
-    .register_form_container{
-        width: 100%;
-        display: flex;
+
+    .rg2-4 {
         flex-direction: column;
-    } 
-    .cart{
-        width: 100%;
-        margin: 30px;
     }
+
+    .rg2-4 button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
 }

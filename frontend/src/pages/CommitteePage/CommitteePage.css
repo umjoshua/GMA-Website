@@ -1,16 +1,22 @@
-.committee_title{
-    width: 100%;
-    margin: 20px 0px 20px 0px;
-    display: flex;
-    justify-content: center;
-}
-.committee_title > h1{
+.committee_title {
+    position: relative;
+    padding: 0;
     color: black;
-    font-size: 28px;
-    border-bottom: 2px solid black;
+    margin-top: 20px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: xx-large;
 }
-.committe_cards{
+
+.committe_cards {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .committee_title{
+        font-size: large;
+    }
 }
