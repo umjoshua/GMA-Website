@@ -91,7 +91,13 @@ const HandleTicketGeneration = async (data) => {
           </body>
       </html>`;
 
-  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+    ],
+  });
   const page = await browser.newPage();
 
   await page.setContent(htmlContent);
