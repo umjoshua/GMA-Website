@@ -4,9 +4,9 @@ import SendEmail from "./mail.js";
 
 const HandleTicketGeneration = async (data) => {
   console.log("handle ticket generation");
-    const { ticketCount, pricing } = data;
-    const pricingMap = new Map(pricing.map(item => [item.name, item.price]));
-    let htmlContent = `
+  const { ticketCount, pricing } = data;
+  const pricingMap = new Map(pricing.map(item => [item.name, item.price]));
+  let htmlContent = `
       <!DOCTYPE html>
       <html>
           <head>
@@ -57,10 +57,10 @@ const HandleTicketGeneration = async (data) => {
           </head>
           <body>`;
 
-    for (const [key, value] of Object.entries(ticketCount)) {
-        const price = pricingMap.get(key);
-        for (let i = 0; i < value; i++) {
-            htmlContent += `
+  for (const [key, value] of Object.entries(ticketCount)) {
+    const price = pricingMap.get(key);
+    for (let i = 0; i < value; i++) {
+      htmlContent += `
           <div style="padding: 5px; page-break-after: always;">
             <div class="ticket">
               <div class="first">
@@ -84,27 +84,27 @@ const HandleTicketGeneration = async (data) => {
               "${data.terms}"
               </div>
           </div>`;
-        }
     }
+  }
 
-    htmlContent += `
+  htmlContent += `
           </body>
       </html>`;
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+  const page = await browser.newPage();
 
-    await page.setContent(htmlContent);
-    const pdfBuffer = await page.pdf({ format: 'A4' });
+  await page.setContent(htmlContent);
+  const pdfBuffer = await page.pdf({ format: 'A4' });
 
-    await browser.close();
+  await browser.close();
 
-    // reciever, subject, text, attachments
+  // reciever, subject, text, attachments
 
-    const EmailData = {
-        reciever: data.email,
-        subject: data.eventName,
-        text: `
+  const EmailData = {
+    reciever: data.email,
+    subject: data.eventName,
+    text: `
             Hi ${data.name},
 
             Your booking has been confirmed, please find a copy of your ticket(s) attached to this email.
@@ -112,16 +112,16 @@ const HandleTicketGeneration = async (data) => {
             Booking ID: ${data.regId}
             Event Name: ${data.eventName}
             `,
-        attachments: [
-            {
-                filename: 'tickets.pdf',
-                content: pdfBuffer,
-                contentType: "application/pdf"
-            }
-        ]
-    }
+    attachments: [
+      {
+        filename: 'tickets.pdf',
+        content: pdfBuffer,
+        contentType: "application/pdf"
+      }
+    ]
+  }
 
-    await SendEmail(EmailData)
+  await SendEmail(EmailData)
 
 }
 
