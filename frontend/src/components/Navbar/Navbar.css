@@ -18,22 +18,24 @@
     border-bottom-left-radius: 10px;
 }
 
-.logo-div{
+.logo-div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.logo-div h2{
+.logo-div p {
     padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
+    font-family: 'Lilita_One';
+    font-size: xx-large;
 }
 
-.logo{
+.logo {
     max-height: 60px;
 }
 
@@ -122,5 +124,7 @@
         display: initial;
     }
 
-
+    .logo-div p {
+        font-size: x-large;
+    }
 }

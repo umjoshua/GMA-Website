@@ -6,10 +6,13 @@ import { useForm } from "react-hook-form";
 import * as api from '../../api'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import TermsPopup from './TermsPopup';
 
-function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
+function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
 
   const [loading, setLoading] = useState(false);
+  const [terms, setTerms] = useState(false);
+  const [warning, setWarning] = useState("");
 
   const phoneRegExp = /^\+\d{1,4}\d{10}$/;
 
@@ -33,6 +36,10 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
   });
 
   const onSubmit = async (data) => {
+    if (!terms) {
+      setWarning("Please agree terms and conditions to proceed.");
+      return;
+    }
     setLoading(true);
     const newData = {
       ...data,
@@ -134,6 +141,16 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
             <span>{errors.cEmail?.message}</span>
           </div>
         </div>
+        <label className="terms-c">
+          <input className="radioInput"
+            type="radio"
+            required
+            checked={terms}
+            onClick={() => setTerms(!terms)}
+          />
+          I agree to {<TermsPopup terms={event.terms} />}
+        </label>
+        <p style={{ color: 'red', marginLeft: "10px" }}>{warning}</p>
         <div className="form_submit">
           <div onClick={() => setBackPage(registrationData.ticketIndex)}>
             Back
@@ -143,7 +160,7 @@ function RegisterForm({ setCheckOut, setBackPage, registrationData, setData, set
           />
         </div>
       </form>
-    </div>
+    </div >
   );
 }
 

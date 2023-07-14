@@ -83,7 +83,7 @@ function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
           </div>
           <div className='form-input'>
             <span>Terms and Conditions:</span>
-            <span style={{ fontWeight: 'normal' }}>{event.terms}</span>
+            <span style={{ fontWeight: 'normal',whiteSpace:'pre-wrap' }}>{event.terms}</span>
           </div>
         </div>
         <div className='form-input'>

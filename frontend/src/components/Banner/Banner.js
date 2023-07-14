@@ -6,15 +6,11 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div className='banner-main'>
-            <a href='https://www.keralatourism.org/' target='_blank' rel='noopener noreferrer'>
-                <div className='kerala-tourism'>
+            <a href='https://www.keralatourism.org/' className='kerala-tourism' target='_blank' rel='noopener noreferrer'>
                     <img src={KeralaTourismLogo} alt="Kerala tourism" />
-                </div>
             </a>
-            <a href='https://www.cultura.org.au/' target='_blank' rel='noopener noreferrer'>
-                <div className='cultura'>
+            <a href='https://www.cultura.org.au/' className='cultura' target='_blank' rel='noopener noreferrer'>
                     <img src={CulturaLogo} alt="Cultura" />
-                </div>
             </a>
         </div >
     )

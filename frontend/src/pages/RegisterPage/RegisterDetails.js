@@ -35,6 +35,7 @@ function RegisterDetails({ event, registrationData, setBackPage }) {
             <div className="register_form_container">
               {!checkOut && < div className="register_form">
                 <RegisterForm
+                  event={event}
                   setCheckOut={setCheckOut}
                   setBackPage={setBackPage}
                   registrationData={registrationData}
@@ -77,7 +78,7 @@ function RegisterDetails({ event, registrationData, setBackPage }) {
               paymentMethod === 2 &&
               <div className="paymentSection">
                 <div className="paymentSection1">
-                <PayPalPayment setThank={setThank} regData={data} setError={setError}/>
+                  <PayPalPayment setThank={setThank} regData={data} setError={setError} />
                 </div>
               </div>
             }

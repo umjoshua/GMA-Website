@@ -70,7 +70,7 @@ function MemRegistrationPage() {
   }
 
   return (
-    <div className="membership_container">
+    <div className={!thank ? "membership_container" : ""}>
       <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -473,7 +473,7 @@ function MemRegistrationPage() {
         thank &&
         <div className="thankContainer" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
           <h1 style={{ color: "black", textAlign: 'center' }}>Thankyou for registering!</h1>
-          <span style={{ fontSize: "large", padding: "10px" }}>We will be in touch with you promptly..</span>
+          <span style={{ fontSize: "large", padding: "10px" }}>We have received your application and will be in contact with you shortly.</span>
           <button onClick={() => navigate('/')}>Go Home</button>
         </div>
       }

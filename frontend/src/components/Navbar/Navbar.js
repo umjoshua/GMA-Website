@@ -27,7 +27,7 @@ function Navbar() {
     <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
       <div className="logo-div">
         <img src={Logo} alt="logo" className="logo" />
-        <h2>Geelong Malayalee Association</h2>
+        <p>Geelong Malayalee Association Inc</p>
       </div>
       <ul className={icon ? "nav_menu active" : "nav_menu"}>
         <>
@@ -40,6 +40,7 @@ function Navbar() {
                 offset={-100}
                 duration={500}
                 style={{ cursor: "pointer" }}
+                onClick={() => setIcon(false)}
               >
                 <Link to="/">Home</Link>
               </ScrollLink>
@@ -54,6 +55,7 @@ function Navbar() {
               offset={-100}
               duration={500}
               style={{ cursor: "pointer" }}
+              onClick={() => setIcon(false)}
             >
               <Link to="/">Gallery</Link>
             </ScrollLink>
@@ -66,6 +68,7 @@ function Navbar() {
               offset={-100}
               duration={500}
               style={{ cursor: "pointer" }}
+              onClick={() => { if (icon) { setIcon(false) } }}
             >
               <Link to="/">Events</Link>
             </ScrollLink>
@@ -81,6 +84,7 @@ function Navbar() {
               offset={-100}
               duration={500}
               style={{ cursor: "pointer" }}
+              onClick={() => { if (icon) { setIcon(false) } }}
             >
               <Link to="/">Membership</Link>
             </ScrollLink>
@@ -93,6 +97,7 @@ function Navbar() {
               offset={-100}
               duration={500}
               style={{ cursor: "pointer" }}
+              onClick={() => { if (icon) { setIcon(false) } }}
             >
               <Link to="/">About</Link>
             </ScrollLink>
@@ -105,6 +110,7 @@ function Navbar() {
               offset={-100}
               duration={500}
               style={{ cursor: "pointer" }}
+              onClick={() => { if (icon) { setIcon(false) } }}
             >
               <Link to="/">Contact Us</Link>
             </ScrollLink>

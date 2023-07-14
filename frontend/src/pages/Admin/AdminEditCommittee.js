@@ -59,11 +59,11 @@ const AdminEditCommittee = () => {
 
     const Committee = ({ item }) => {
         return (
-            <div className="commitee_container" style={{ height: 'max-content' }}>
+            <div className="commitee_container" style={{ minHeightheight: 'max-content' }}>
                 <div className="committee_image">
                     <img src={item.file ? item.file : Avatar} alt="Profile" />
                 </div>
-                <div className="committee_content">
+                <div className="committee_content" style={{ height: 'max-content' }}>
                     <span className="p_name">{item.name}</span>
                     <span className="po_name">{item.position}</span>
                 </div>

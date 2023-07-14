@@ -15,6 +15,13 @@ body {
   ;
 }
 
+@font-face {
+  font-family: 'Lilita_One';
+  src: url('./assets/fonts/Lilita_One/LilitaOne-Regular.ttf') format('truetype');
+  ;
+}
+
+
 /* h1,
 h4,
 p,
