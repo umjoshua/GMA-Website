@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.11d81945.css",
-    "main.js": "/static/js/main.fb4bd137.js",
+    "main.css": "/static/css/main.730f5240.css",
+    "main.js": "/static/js/main.7c772507.js",
     "static/media/logo.png": "/static/media/logo.1ebf289145dcab6bd97d.png",
     "static/media/g3.jpeg": "/static/media/g3.a573a950d15c003abc47.jpeg",
     "static/media/g4.jpeg": "/static/media/g4.ea11fba1465afd1a1873.jpeg",
@@ -16,11 +16,11 @@
     "static/media/LilitaOne-Regular.ttf": "/static/media/LilitaOne-Regular.e970d047065ed950bb8c.ttf",
     "static/media/kerala-tourism-logo.png": "/static/media/kerala-tourism-logo.633b5035e4147cb8da02.png",
     "index.html": "/index.html",
-    "main.11d81945.css.map": "/static/css/main.11d81945.css.map",
-    "main.fb4bd137.js.map": "/static/js/main.fb4bd137.js.map"
+    "main.730f5240.css.map": "/static/css/main.730f5240.css.map",
+    "main.7c772507.js.map": "/static/js/main.7c772507.js.map"
   },
   "entrypoints": [
-    "static/css/main.11d81945.css",
-    "static/js/main.fb4bd137.js"
+    "static/css/main.730f5240.css",
+    "static/js/main.7c772507.js"
   ]
 }
