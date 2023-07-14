@@ -41,14 +41,14 @@ const HandleTicketGeneration = async (data) => {
                   }
   
                   .ticket p {
-                      font-size: 16px;
+                      font-size: 12px;
                       margin-bottom: 5px;
                   }
                   .last{
-                    font-size:9px;
+                    font-size: 9px;
                   }
                   .terms{
-                    white-space: pre;
+                    white-space: pre-wrap;
                   }
                   .third{
 
@@ -73,7 +73,7 @@ const HandleTicketGeneration = async (data) => {
                 <p>PRICE: ${key} - AUD ${price}</p>
                 <p>BOOKED BY: ${data.name}</p>
                 <p>SECTION: ${data.section}</p>
-                <p class="last">USE OF THIS TICKET MEANS THAT THE ATTENDEE IS BOUND BY ALL EVENT ORGANISER TERMS AND CONDITIONS</p>
+                <span class="last">USE OF THIS TICKET MEANS THAT THE ATTENDEE IS BOUND BY ALL EVENT ORGANISER TERMS AND CONDITIONS</span>
               </div>
               <div class="third">
                 <img src="${data.qrCodeData}" alt="QR Code" />
