@@ -2,15 +2,10 @@
     display: flex;
     flex-direction: row;
     max-height: 500px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 100px;
     margin-bottom: 100px;
-}
-
-.kerala-tourism {
-    background-color: slategrey;
-    padding: 5px;
 }
 
 .cultura {

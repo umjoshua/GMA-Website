@@ -6,9 +6,6 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div className='banner-main'>
-            <a href='https://www.keralatourism.org/' className='kerala-tourism' target='_blank' rel='noopener noreferrer'>
-                    <img src={KeralaTourismLogo} alt="Kerala tourism" />
-            </a>
             <a href='https://www.cultura.org.au/' className='cultura' target='_blank' rel='noopener noreferrer'>
                     <img src={CulturaLogo} alt="Cultura" />
             </a>
