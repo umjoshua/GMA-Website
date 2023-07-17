@@ -1,89 +1,113 @@
-import puppeteer from "puppeteer";
-import fs from "fs";
+import pdf from "pdf-creator-node"
 import SendEmail from "./mail.js";
 
 const HandleTicketGeneration = async (data) => {
-  console.log("handle ticket generation");
   const { ticketCount, pricing } = data;
   const pricingMap = new Map(pricing.map(item => [item.name, item.price]));
-  let htmlContent = `
-      <!DOCTYPE html>
-      <html>
-          <head>
-              <title>Ticket</title>
-              <style>
-                  @page {
-                    margin: 1cm;
-                  }
-                  .ticket {
-                      width: 100%;
-                      margin-right: 20px;
-                      border: 2px solid black;
-                      text-align: center;
-                      display: flex;
-                      flex-direction: row;
-                      align-items: flex-start;
-                  }
-                  .first{
-                      padding-left: 10px;
-                  }
-                  
-                  .second{
-                      margin:0px 20px 0px 20px;
-                      display: flex;
-                      flex-direction: column;
-                      align-items: start;
-                  }
-  
-                  .ticket h1 {
-                      font-size: 24px;
-                      margin-bottom: 10px;
-                  }
-  
-                  .ticket p {
-                      font-size: 12px;
-                      margin-bottom: 5px;
-                  }
-                  .last{
-                    font-size: 9px;
-                  }
-                  .terms{
-                    white-space: pre-wrap;
-                  }
-                  .third{
 
-                  }
-              </style>
-          </head>
-          <body>`;
+  let htmlContent = `
+  <!DOCTYPE html>
+  <html>
+      <head>
+          <title>Ticket</title>
+          <style>
+                    @page {
+                      margin: 1cm;
+                    }
+                    .ticket {
+                        width: 100%;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        display: -webkit-flex;
+                        flex-direction: row; 
+                        justify-content: space-between; 
+                    }
+                    
+                    .second{
+                        padding: 5px;
+                        flex-direction: column;
+                        align-items: start;
+                        width: 80%;
+                    }
+    
+                    .ticket h3{
+                        margin-bottom: 10px;
+                        font-weight: bolder;
+                    }
+    
+                    .ticket p {
+                        font-size: 12px;
+                        margin-bottom: 5px;
+                    }
+                    .last{
+                      font-size: 8px;
+                      width: 100%;
+                      display: -webkit-flex;
+                      text-align: center;
+                      justify-content: center;
+                      padding: 5px;
+                    }
+                    .terms{
+                      font-size: 8px;
+                      white-space: pre-wrap;
+                    }
+                    .third img{
+                      padding: 10px;
+                      width: 90px;
+                      height: 90px;
+                    }
+                    .item {
+                      width: 100%;
+                      display: -webkit-flex;
+                      justify-content: space-between;
+                    }
+                    .sub{
+                      width: 40%;
+                    }
+                    .sub-item{
+
+                    }
+                </style>
+      </head>`;
 
   for (const [key, value] of Object.entries(ticketCount)) {
     const price = pricingMap.get(key);
     for (let i = 0; i < value; i++) {
       htmlContent += `
-          <div style="padding: 5px; page-break-after: always;">
-            <div class="ticket">
-              <div class="first">
-                <h1>Ticket</h1>
-              </div>
-              <div class="second">
-                <h1>"${data.eventName}"</h1>
-                <p>VENUE: "${data.location}"</p>
-                <p>WHEN: "${data.when}"</p>
-                <p>PRICE: ${key} - AUD ${price}</p>
-                <p>BOOKED BY: ${data.name}</p>
-                <p>SECTION: ${data.section}</p>
-                <span class="last">USE OF THIS TICKET MEANS THAT THE ATTENDEE IS BOUND BY ALL EVENT ORGANISER TERMS AND CONDITIONS</span>
-              </div>
-              <div class="third">
-                <img src="${data.qrCodeData}" alt="QR Code" />
-                </div>
-            </div>
-            <h4>Terms and Conditions</h4>
-              <div class="terms">
-              "${data.terms}"
-              </div>
-          </div>`;
+      <div style="padding: 5px; page-break-after: always;">
+        <div class="first">
+          <h6>Ticket</h6>
+        </div>
+      <div class="ticket">
+          <div class="second">
+              <h3>${data.eventName}</h3>
+              <p class="item">
+                  <span class="sub">VENUE: </span> <span class="sub-item"> ${data.location}</span>
+              </p>
+              <p class="item">
+                  <span class="sub">WHEN: </span> ${data.when}
+              </p>
+              <p class="item">
+                  <span class="sub">PRICE: </span> ${key} - AUD ${price}
+              </p>
+              <p class="item">
+                  <span class="sub">BOOKED BY: </span> ${data.name}
+              </p>
+              <p class="item">
+                  <span class="sub">SECTION: </span> ${data.section}
+              </p>
+              <span class="last">USE OF THIS TICKET MEANS THAT THE ATTENDEE IS
+                  BOUND BY ALL EVENT ORGANISER TERMS AND CONDITIONS</span>
+          </div>
+          <div class="third">
+              <img src=${data.qrCodeData} alt="QR Code" />
+          </div>
+      </div>
+      <h4>Terms and Conditions</h4>
+      <div class="terms">
+          ${data.terms}
+      </div>
+  </div>`;
     }
   }
 
@@ -91,21 +115,32 @@ const HandleTicketGeneration = async (data) => {
           </body>
       </html>`;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-    ],
-  });
-  const page = await browser.newPage();
 
-  await page.setContent(htmlContent);
-  const pdfBuffer = await page.pdf({ format: 'A4' });
+  var document = {
+    html: htmlContent,
+    data: {
+      data: [],
+    },
+    type: "buffer"
+  }
 
-  await browser.close();
+  let pdfBuffer = ""
 
-  // reciever, subject, text, attachments
+  try {
+    const res = await pdf.create(document, {
+      format: "A4",
+      orientation: "portrait",
+      border: "10mm",
+      childProcessOptions: {
+        env: {
+          OPENSSL_CONF: '/dev/null',
+        },
+      }
+    });
+    pdfBuffer = res;
+  } catch (error) {
+    console.log(error)
+  }
 
   const EmailData = {
     reciever: data.email,

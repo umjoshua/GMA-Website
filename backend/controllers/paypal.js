@@ -129,8 +129,8 @@ export const Capture = async (req, res) => {
             const ticketData = {
                 regId: regData.regId.toString(),
                 eventName: eventDetails.title,
-                location: eventDetails.event_location + ' ' + eventDetails.state + ' ' + eventDetails.country,
-                when: eventDetails.event_date + ' ' + eventDetails.event_time,
+                location: eventDetails.event_location + ', ' + eventDetails.state + ', ' + eventDetails.country,
+                when: eventDetails.event_date + ', ' + eventDetails.event_time,
                 name: regData.firstName + ' ' + regData.lastName,
                 email: regData.email,
                 section: regData.ticketType,
