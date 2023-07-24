@@ -9,8 +9,9 @@ function PayPalPayment({ setThank, regData, setError }) {
     ];
 
     const initialOptions = {
-        "client-id": "AcVEtIaoJB1HNEVgiD8kaz7AjnluD_pQqmFJHbPEeZfm809hHdlQznVw5bmfTDIi3rV3h8ujFVzokOaK",
+        "client-id": "AVekX6NdnNlcuNZcHQ7FbKPVi31aBzrN7dxIk2UgQZo6Iji5oZzE5EshIK9WxWiK7fB6Tj3mwtCE58hr",
         "enable-funding": "paylater,venmo,card",
+        "currency":"AUD"
     }
 
     return (
@@ -19,6 +20,7 @@ function PayPalPayment({ setThank, regData, setError }) {
                 FUNDING_SOURCES.map(fundingSource => {
                     return (
                         <PayPalButtons
+                            
                             fundingSource={fundingSource}
                             key={fundingSource}
 
@@ -38,7 +40,6 @@ function PayPalPayment({ setThank, regData, setError }) {
                                         },
                                         body: JSON.stringify(regData),
                                     });
-                                    // const response = await api.PayPalOrder(regData);
 
                                     const details = await response.json();
                                     return details.id;

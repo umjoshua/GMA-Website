@@ -14,7 +14,8 @@ const HandleTicketGeneration = async (data) => {
                 left: 30,
                 right: 40,
                 bottom: 20
-            }
+            },
+            compress: false
         });
 
 
