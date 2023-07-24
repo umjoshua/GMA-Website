@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import AdminModel from "../models/adminModel.js"
 import mongoose from "mongoose";
+import GalleryModel from "../models/galleryModel.js";
 
 
 export const CreateEvent = async (req, res) => {
@@ -18,24 +19,32 @@ export const CreateEvent = async (req, res) => {
 }
 
 export const DeleteEvent = async (req, res) => {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
 
-    await EventModel.findByIdAndRemove(id);
+        await EventModel.findByIdAndRemove(id);
 
-    res.json({ message: 'post deleted succesfully' });
+        res.json({ message: 'post deleted succesfully' });
+    } catch (error) {
+        res.status(500).json({ "error": "Couldn't delete" })
+    }
 }
 
 export const UpdateEvent = async (req, res) => {
 
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+    try {
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
 
-    const updatedEvent = req.body;
-    await EventModel.findByIdAndUpdate(id, updatedEvent, { new: true });
+        const updatedEvent = req.body;
+        await EventModel.findByIdAndUpdate(id, updatedEvent, { new: true });
 
-    res.json(updatedEvent);
+        res.json(updatedEvent);
+    } catch (error) {
+        res.status(500).json({ "error": "Couldn't update" })
+    }
 }
 
 export const AddCommittee = async (req, res) => {
@@ -43,21 +52,26 @@ export const AddCommittee = async (req, res) => {
         const data = req.body;
         const newData = new CommitteeModel(data);
         await newData.save()
-        res.status(200).json(data);
+        res.status(200).json(newData);
     } catch (err) {
         res.status(500).json({ "error": "Couldn't add" })
     }
 }
 
 export const DeleteCommittee = async (req, res) => {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No member with this id');
 
-    await CommitteeModel.findByIdAndRemove(id);
+        await CommitteeModel.findByIdAndRemove(id);
 
-    res.json({ message: 'post deleted succesfully' });
+        res.json({ message: 'post deleted succesfully' });
+    } catch (error) {
+        res.status(500).json({ "error": "Couldn't delete" })
+    }
 }
+
 
 export const adminLogin = async (req, res) => {
     try {
@@ -90,5 +104,27 @@ export const adminLogin = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).send('Server error');
+    }
+}
+
+export const AddGalleryImage = async (req, res) => {
+    try {
+        const data = req.body;
+        const newData = new GalleryModel(data);
+        await newData.save()
+        res.status(200).json(newData);
+    } catch (err) {
+        res.status(500).json({ "error": "Couldn't add" })
+    }
+}
+
+export const DeleteGalleryImage = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No image with this id');
+        await GalleryModel.findByIdAndRemove(id);
+        res.json({ message: 'image deleted succesfully' });
+    } catch (error) {
+        res.status(500).json({ "error": "Couldn't delete" })
     }
 }

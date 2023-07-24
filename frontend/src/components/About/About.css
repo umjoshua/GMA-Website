@@ -13,6 +13,7 @@
 }
 
 .about_description>p {
+    text-align: justify;
     color: black;
 }
 

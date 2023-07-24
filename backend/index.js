@@ -3,10 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv"
 import mongoose from "mongoose";
 import AdminRouter from "./routes/admin.js"
-import EventRouter from "./routes/events.js"
-import CommitteeRouter from './routes/committee.js'
-import MembershipRouter from "./routes/membership.js"
-import { ContactUs } from "./controllers/contactus.js";
+import UserRouter from './routes/user.js';
+
+import { CommitteeModel } from "./models/committeeModel.js";
+
 import bodyParser from "body-parser";
 import { Order, Capture } from "./controllers/paypal.js";
 
@@ -20,12 +20,10 @@ const PORT = process.env.PORT
 const MONGO_URI = process.env.MONGO_URI
 
 app.use("/admin", AdminRouter)
-app.use("/events", EventRouter)
-app.use("/membership", MembershipRouter)
-app.use("/committee", CommitteeRouter)
-app.post("/contactus", ContactUs)
+app.use("/user", UserRouter)
 app.post("/orders", Order)
 app.post("/orders/:orderID/capture", Capture)
+
 
 mongoose.connect(MONGO_URI).then(() => {
     app.listen(PORT, () => {

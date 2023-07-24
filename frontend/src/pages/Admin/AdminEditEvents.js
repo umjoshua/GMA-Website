@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Events from '../../components/AdminEvents/Events';
-import AdminEventForm from '../../components/AdminEventForm/AdminEventForms';
+import Events from '../../components/Admin/AdminEvents/Events';
+import AdminEventForm from '../../components/Admin/AdminEventForm/AdminEventForms';
 import styles from "./styles.module.css";
 import AddIcon from '@mui/icons-material/Add';
-import AdminEventView from '../../components/AdminEventView/AdminEventView';
+import AdminEventView from '../../components/Admin/AdminEventView/AdminEventView'
 import * as api from '../../api'
 
 const AdminEditEvents = () => {

@@ -1,27 +1,28 @@
 .banner-main {
     display: flex;
-    flex-direction: row;
-    max-height: 500px;
-    justify-content: center;
+    flex-direction: column;
+    /* Display "Affiliated to" and cultura-container in a column */
     align-items: center;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.cultura {
-    padding: 5px;
-    background-color: blanchedalmond;
-}
-
-.kerala-tourism, .cultura{
+.cultura-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f2f2f2;
+    padding: 20px;
     border-radius: 10px;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.kerala-tourism img,
+.cultura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .cultura img {
     max-width: 500px;
     height: 100px;
@@ -31,22 +32,15 @@
     .banner-main {
         margin-top: 40px;
         margin-bottom: 40px;
-        flex-direction: column;
-        max-width: 100%;
-        align-items: center;
     }
 
-    .kerala-tourism,
-    .cultura {
-        margin: 10px;
+    .cultura-container {
         max-width: 90%;
         width: 80%;
         height: 100px;
     }
 
-    .kerala-tourism img,
     .cultura img {
         max-width: 90%;
     }
-
 }

@@ -3,11 +3,11 @@ import './AddCommittee.css';
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import FileBase from 'react-file-base64';
-import * as api from '../../api';
+import * as api from '../../../api'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee }) => {
+const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee, committee }) => {
 
     const [committeeData, setCommitteeData] = useState({
         name: '',
@@ -32,15 +32,12 @@ const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee }) => {
         setLoading(true);
         try {
             const { data } = await api.addCommittee(committeeData, config);
-            console.log(data);
             if (data) {
                 setAddCommittee(false);
                 setIsOpen(false);
-                const response = await api.fetchCommittee();
-                setCommittee(response?.data);
+                setCommittee([...committee, data]);
             }
         } catch (error) {
-            console.error(error);
             setAddError('Failed to add committee. Please try again later.');
         }
         setLoading(false);

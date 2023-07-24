@@ -31,7 +31,7 @@ function Footer() {
           <div className='location'>
             <EmailIcon />
             <p>
-              <a href='mailto:mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
+              <a href='mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
                 geelongmalayaleeassociation@gmail.com
               </a>
             </p>
@@ -47,7 +47,7 @@ function Footer() {
             <a href='https://www.facebook.com/GeelongMalayaleeAssociation' target='_blank' rel='noopener noreferrer'>
               <FacebookIcon />
             </a>
-            <a href='mailto:mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
+            <a href='mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
               <EmailIcon />
             </a>
           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Slider.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,10 +8,22 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
+import * as api from '../../api';
 
-import SwiperData from "../../data/SwiperData/SwiperData";
+// import SwiperData from "../../data/SwiperData/SwiperData";
 
 function Slider() {
+  const [swiperData, setSwiperData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.fetchSwiperData()
+      if (response?.data) {
+        setSwiperData(response.data)
+      }
+    }
+    fetchData()
+  }, []);
+
   return (
     <div className="slider_main">
       <Swiper
@@ -36,10 +48,10 @@ function Slider() {
         modules={[Autoplay, EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {SwiperData.map((image, key) => {
+        {swiperData.map((image, key) => {
           return (
             <SwiperSlide>
-              <img src={image.image} key={key} alt="slide_image" />
+              <img src={image.imageURL} key={key} alt="slide_image" />
             </SwiperSlide>
           );
         })}

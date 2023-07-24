@@ -1,5 +1,5 @@
 import express from "express"
-import { adminLogin } from "../controllers/admin.js"
+import { AddGalleryImage, DeleteGalleryImage, adminLogin } from "../controllers/admin.js"
 import AuthMiddleware from "../middleware/auth.js"
 import { CreateEvent, AddCommittee, DeleteCommittee, DeleteEvent, UpdateEvent } from '../controllers/admin.js'
 
@@ -20,6 +20,10 @@ router.patch("/event/:id", AuthMiddleware, UpdateEvent)
 router.post("/committee", AuthMiddleware, AddCommittee)
 
 router.delete("/committee/:id", AuthMiddleware, DeleteCommittee)
+
+router.post("/gallery", AuthMiddleware, AddGalleryImage)
+
+router.delete("/gallery/:id", AuthMiddleware, DeleteGalleryImage)
 
 
 router.get('/', AuthMiddleware, (req, res) => {

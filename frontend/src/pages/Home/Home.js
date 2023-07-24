@@ -4,7 +4,7 @@ import "./Home.css";
 import Contact from "../../components/Contact/Contact";
 import Events from "../Events/Events";
 import AboutPage from "../AboutPage/AboutPage";
-import RegisterForUpdate from "../../components/RegisterForUpdate/RegisterForUpdate";
+import MembershipRegister from "../../components/MembershipRegister/MembershipRegister";
 import Banner from "../../components/Banner/Banner";
 
 function Home() {
@@ -26,7 +26,7 @@ function Home() {
         <AboutPage />
       </section>
       <section id="registerUpdates">
-        <RegisterForUpdate />
+        <MembershipRegister />
       </section>
       <section id="contact">
         <Contact />

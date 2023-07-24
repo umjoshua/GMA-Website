@@ -34,26 +34,9 @@
 
 .pay_methods {
     margin-bottom: 10px;
-}
-
-.pay_methods>button {
-    margin: 10px;
-    width: 100px;
-    height: 30px;
-    border: 1px solid navy;
-    color: navy;
-    background: transparent;
-    border-radius: 4px;
-}
-
-.pay_methods>button.active {
-    background: navy;
-    color: aliceblue;
-}
-
-.pay_methods>button:hover {
-    transform: scale(1.1);
-    transition: 0.5s ease-out;
+    width: 40%;
+    overflow: hidden;
+    height: 100%;
 }
 
 .register_form_container {
@@ -80,12 +63,6 @@
     align-items: center;
 }
 
-.paymentSection {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 @media screen and (max-width: 768px) {
@@ -103,6 +80,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 100%;
     }
 
     .register_form {
@@ -125,5 +103,9 @@
 @media screen and (max-width: 400px) {
     .cart {
         width: 100%;
+    }
+    .pay_methods {
+        width: 100%;
+        height: 100%;
     }
 }

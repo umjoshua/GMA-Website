@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 function EventCards({ event }) {
   const navigate = useNavigate();
-  const handleRegister = () => {
+  const handleView = () => {
     navigate(`/event/${encodeURIComponent(event._id)}`);
   };
   return (
-    <div className="card_container" onClick={handleRegister}>
+    <div className="card_container" onClick={handleView}>
       <div className="image_container">
         <img className="event-img" src={event.file} alt="Event Poster" />
       </div>
@@ -21,8 +21,8 @@ function EventCards({ event }) {
         </div>
       </div>
       <div className="card_btn">
-        <button onClick={handleRegister} className="card_button">
-          Register
+        <button onClick={handleView} className="card_button">
+          View
         </button>
       </div>
     </div>

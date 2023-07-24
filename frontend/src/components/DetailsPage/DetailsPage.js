@@ -21,6 +21,41 @@ function DetailsPage() {
 
   const event = events.find((event) => event._id === id);
 
+  const currentURL = window.location.href;
+  const message = 'Check out this event by GMA';
+
+  const shareViaWhatsApp = () => {
+    const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+      `${message}: ${currentURL}`
+    )}`;
+    window.open(whatsappLink, '_blank');
+  };
+
+  const shareViaFacebook = () => {
+    const currentURL = window.location.href;
+    const facebookLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      currentURL
+    )}`;
+    window.open(facebookLink, '_blank');
+  };
+
+  const shareViaTwitter = () => {
+    const currentURL = window.location.href;
+    const twitterLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      currentURL
+    )}&text=${encodeURIComponent(message)}`;
+    window.open(twitterLink, '_blank');
+  };
+
+  const shareViaGmail = () => {
+    const currentURL = window.location.href;
+    const subject = 'Check out this event by GMA';
+    const gmailLink = `mailto:?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(currentURL)}`;
+    window.location.href = gmailLink;
+  };
+
   const handleNavigate = () => {
     navigate(`/register/${encodeURIComponent(event._id)}`);
   }
@@ -82,19 +117,16 @@ function DetailsPage() {
                     <h3>Share this Event</h3>
                   </span>
                   <div className="event_icons">
-                    <span>
+                    <span onClick={shareViaWhatsApp}>
                       <WhatsAppIcon className="address_arrow" />
                     </span>
-                    <span>
+                    <span onClick={shareViaFacebook}>
                       <FacebookIcon className="address_arrow" />
                     </span>
-                    <span>
+                    <span onClick={shareViaTwitter}>
                       <TwitterIcon className="address_arrow" />
                     </span>
-                    <span>
-                      <LinkedInIcon className="address_arrow" />
-                    </span>
-                    <span>
+                    <span onClick={shareViaGmail}>
                       <MailOutlineIcon className="address_arrow" />
                     </span>
                   </div>
@@ -131,9 +163,9 @@ function DetailsPage() {
 
                 <div className="detail_description">
                   {
-                    event?.regOpen && <div className="description_register">
+                    event?.regOpen === "Yes" && <div className="description_register">
                       <button onClick={handleNavigate}>
-                        Register
+                        Book Now
                       </button>
                     </div>
                   }

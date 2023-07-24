@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import { EventRegModel, EventModel } from "../models/eventModel.js";
-import { CalculateAmount } from "./events.js";
 import HandleTicketGeneration from "./ticket.js";
 import qr from "qrcode";
 import dotenv from "dotenv"
@@ -10,6 +9,19 @@ dotenv.config()
 const { CLIENT_ID, APP_SECRET } = process.env;
 
 const base = "https://api-m.sandbox.paypal.com";
+
+export const CalculateAmount = (tickets, ticketType, ticketCount) => {
+    let amount = 0;
+
+    const ticket = tickets.find(obj => obj.name.toString() === ticketType);
+    ticket.pricing.forEach(element => {
+        if (ticketCount[element.name]) {
+            amount += Number(element.price) * Number(ticketCount[element.name])
+        }
+    });
+
+    return amount;
+}
 
 
 const generateAccessToken = async () => {

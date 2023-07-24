@@ -11,17 +11,6 @@ const ScrollLink = Scroll.Link;
 function Navbar() {
   const location = useLocation();
   const [icon, setIcon] = useState(false);
-  // const [color, setColor] = useState(false);
-
-
-  // const changeColor = () => {
-  //   if (window.scrollY >= 100) {
-  //     setColor(true);
-  //   } else {
-  //     setColor(false);
-  //   }
-  // };
-  // window.addEventListener("scroll", changeColor);
 
   return (
     <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
@@ -57,7 +46,7 @@ function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => setIcon(false)}
             >
-              <Link to="/">Gallery</Link>
+              <Link to="/gallery">Gallery</Link>
             </ScrollLink>
           </li>
           <li>
@@ -70,10 +59,10 @@ function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => { if (icon) { setIcon(false) } }}
             >
-              <Link to="/">Events</Link>
+              <Link to="/events">Events</Link>
             </ScrollLink>
           </li>
-          <li>
+          <li onClick={() => { if (icon) { setIcon(false) } }}>
             <Link to='/committee'>Committee</Link>
           </li>
           <li>

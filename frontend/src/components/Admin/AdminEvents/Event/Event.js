@@ -3,7 +3,7 @@ import './Event.css'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import * as api from '../../../api'
+import * as api from '../../../../api'
 
 const Event = ({ item, setEvents, setViewEvent, setAddEvent, currentId, setcurrentId }) => {
     const token = localStorage.getItem("token");

@@ -54,26 +54,26 @@ function Contact() {
           <div className="first_icons">
             <a href='tel://+61476187075'>
               <span className="contact_symbols">
-                <PhoneIcon className="contact_phone" fontSize="large"/>
+                <PhoneIcon className="contact_phone" fontSize="large" />
               </span>
             </a>
-            <a href='mailto:mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
+            <a href='mailto://geelongmalayaleeassociation@gmail.com' target='_blank' rel='noopener noreferrer'>
               <span className="contact_symbols" style={{ backgroundColor: "#eeeeee" }}>
-                <EmailIcon style={{ color: 'red' }} fontSize="large"/>
+                <EmailIcon style={{ color: 'red' }} fontSize="large" />
               </span>
             </a>
           </div>
           <div className="second_icons">
             <a href='https://www.instagram.com/geelong_malayalee_association' target='_blank' rel='noopener noreferrer'>
               <span className="contact_symbols" style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}>
-                <InstagramIcon fontSize="large"/>
+                <InstagramIcon fontSize="large" />
               </span>
             </a>
             <a href='https://www.facebook.com/GeelongMalayaleeAssociation' target='_blank' rel='noopener noreferrer'>
               <span className="contact_symbols" style={{
                 background: "radial-gradient(circle, #0077B5, #006699)"
               }}>
-                <FacebookIcon fontSize="large"/>
+                <FacebookIcon fontSize="large" />
               </span>
             </a>
           </div>
@@ -98,7 +98,7 @@ function Contact() {
               name="message"
               onChange={handleChange} />
             <button className="contact_button">Send</button>
-            <div className="status" style={{ color: 'green' }}>{status}</div>
+            <div className="status" style={{ color: 'green', textAlign: 'center' }}>{status}</div>
           </form>
         </div>
       </div>

@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import AdminEditEvents from './AdminEditEvents';
 import AdminViewRegs from './AdminViewRegs';
 import AdminEditCommittee from './AdminEditCommittee';
+import AdminGallery from './AdminGallery.js';
 import * as api from '../../api'
 
 const AdminHome = ({ adminPage }) => {
@@ -49,6 +50,9 @@ const AdminHome = ({ adminPage }) => {
                 }
                 {
                     adminPage === 2 && <AdminEditCommittee />
+                }
+                {
+                    adminPage === 3 && <AdminGallery />
                 }
             </div>
         }

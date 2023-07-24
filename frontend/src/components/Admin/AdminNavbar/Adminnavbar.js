@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Adminnavbar.css';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../../assets/images/logo.png';
 
 const Adminnavbar = ({ setAdminPage }) => {
     const [icon, setIcon] = useState(false);
@@ -21,7 +21,7 @@ const Adminnavbar = ({ setAdminPage }) => {
             <div className={icon ? 'admin_nav_menu active' : 'admin_nav_menu'}>
                 <div className='buttons'>
                     <button className='admin-navbar-button'
-                        onClick={() => {setPage(0)}}
+                        onClick={() => { setPage(0) }}
                     >
                         View / Edit Events
                     </button>
@@ -34,6 +34,12 @@ const Adminnavbar = ({ setAdminPage }) => {
                         style={{ backgroundColor: "orange" }}
                         onClick={() => setPage(2)}>
                         View / Edit Committee
+                    </button>
+                    <button className='admin-navbar-button'
+                        style={{ backgroundColor: "green" }}
+                        onClick={() => { setPage(3) }}
+                    >
+                        Gallery
                     </button>
                     <button className='admin-navbar-button'
                         style={{ backgroundColor: "red" }}

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./styles.module.css";
-import AddCommittee from '../../components/AdminCommittee/AddCommittee';
+import AddCommittee from '../../components/Admin/AdminCommittee/AddCommittee';
 import DeleteIcon from '@mui/icons-material/Delete';
 import * as api from '../../api';
 import Avatar from '../../assets/images/avatar.png'
+import { fetchEventSource } from "@microsoft/fetch-event-source";
 
 const AdminEditCommittee = () => {
     const token = localStorage.getItem("token");
+    const baseURL = api.baseURL;
+
 
     const config = {
         headers: {
@@ -37,15 +40,29 @@ const AdminEditCommittee = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            let updatedCommittee = committee;
             try {
-                const response = await api.fetchCommittee();
-                setCommittee(response.data);
+                await fetchEventSource(baseURL + '/user/committee', {
+                    method: 'GET',
+                    headers: {
+                        Accept: "text/event-stream",
+                    },
+                    onmessage(event) {
+                        const parsedData = JSON.parse(event?.data)
+
+                        for (let i = 0; i < parsedData.length; i++) {
+                            updatedCommittee = [...updatedCommittee, parsedData[i]];
+                        }
+
+                        setCommittee(() => { return updatedCommittee })
+                    }
+                })
             } catch (error) {
                 console.error(error);
             }
         };
         fetchData();
-    }, [addCommittee]);
+    }, []);
 
     const openDeleteConfirmation = (id) => {
         setSelectedCommitteeId(id);
@@ -59,7 +76,10 @@ const AdminEditCommittee = () => {
 
     const Committee = ({ item }) => {
         return (
-            <div className="commitee_container" style={{ minHeightheight: 'max-content' }}>
+            <div className="commitee_container" style={{ minHeightheight: 'max-content' }}
+                onClick={() => {
+                    console.log(item)
+                }}>
                 <div className="committee_image">
                     <img src={item.file ? item.file : Avatar} alt="Profile" />
                 </div>
@@ -86,7 +106,7 @@ const AdminEditCommittee = () => {
                     ))}
                 </div>
             </div>
-            <AddCommittee addCommittee={addCommittee} setAddCommittee={setAddCommittee} setCommittee={setCommittee} />
+            <AddCommittee addCommittee={addCommittee} setAddCommittee={setAddCommittee} setCommittee={setCommittee} committee={committee} />
 
             {deleteConfirmation && (
                 <div className={styles.confirmation_dialog}>

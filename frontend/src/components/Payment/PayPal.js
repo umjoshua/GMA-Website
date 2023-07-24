@@ -4,12 +4,13 @@ import * as api from '../../api';
 function PayPalPayment({ setThank, regData, setError }) {
     const baseURL = api.baseURL;
     const FUNDING_SOURCES = [
-        FUNDING.PAYPAL
+        FUNDING.PAYPAL,
+        FUNDING.CARD,
     ];
 
     const initialOptions = {
         "client-id": "AcVEtIaoJB1HNEVgiD8kaz7AjnluD_pQqmFJHbPEeZfm809hHdlQznVw5bmfTDIi3rV3h8ujFVzokOaK",
-        "enable-funding": "paylater,venmo",
+        "enable-funding": "paylater,venmo,card",
     }
 
     return (
@@ -24,7 +25,7 @@ function PayPalPayment({ setThank, regData, setError }) {
                             style={{
                                 layout: 'vertical',
                                 shape: 'pill',
-                                color: 'gold',
+                                color: (fundingSource === FUNDING.PAYLATER) ? 'gold' : '',
                             }}
 
                             createOrder={async (data, actions) => {
@@ -60,27 +61,21 @@ function PayPalPayment({ setThank, regData, setError }) {
                                         body: JSON.stringify(regData),
                                     });
 
-                                    // const response = await api.PayPalCapture(regData, data.orderID);
-
                                     const details = await response.json();
-                                    // Three cases to handle:
-                                    //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                                    //   (2) Other non-recoverable errors -> Show a failure message
-                                    //   (3) Successful transaction -> Show confirmation or thank you message
 
-                                    // This example reads a v2/checkout/orders capture response, propagated from the server
-                                    // You could use a different API or structure for your 'orderData'
                                     const errorDetail = Array.isArray(details.details) && details.details[0];
 
+                                    console.log(details);
+                                    console.log("***");
+
                                     if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                                        setError("The instrument presented was either declined by the processor or bank, or it can't be used for this payment.")
                                         return actions.restart();
-                                        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
                                     }
 
                                     if (errorDetail) {
                                         let msg = 'Sorry, your transaction could not be processed.';
                                         msg += errorDetail.description ? ' ' + errorDetail.description : '';
-                                        msg += details.debug_id ? ' (' + details.debug_id + ')' : '';
                                         setError(msg);
                                     }
 
@@ -89,6 +84,8 @@ function PayPalPayment({ setThank, regData, setError }) {
                                     const transaction = details.purchase_units[0].payments.captures[0];
                                     if (transaction.status === "COMPLETED") {
                                         setThank(true);
+                                    } else {
+                                        setError("The instrument presented was either declined by the processor or bank, or it can't be used for this payment.")
                                     }
                                 } catch (error) {
                                     console.error(error);

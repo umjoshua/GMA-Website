@@ -10,8 +10,10 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ScrollToTop from "./ScrollToTop";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminHome from "./pages/Admin/AdminHome";
-import Adminnavbar from "./components/AdminNavbar/Adminnavbar";
+import Adminnavbar from "./components/Admin/AdminNavbar/Adminnavbar";
 import CommitteePage from "./pages/CommitteePage/CommitteePage";
+import EventsPage from "./pages/Events/EventsPage";
+import Gallery from "./pages/Gallery/Gallery";
 import * as api from './api'
 
 export const AppContext = createContext();
@@ -32,6 +34,7 @@ function App() {
   const user = localStorage.getItem("token")
   return (
     <AppContext.Provider value={events}>
+      <ScrollToTop />
       {location.pathname === "/admin" ?
         <div className="admin">
           <Routes>
@@ -45,7 +48,6 @@ function App() {
         </div>
         :
         <div className="App">
-          <ScrollToTop />
           <Navbar />
           <div className="content">
             <Routes>
@@ -54,6 +56,8 @@ function App() {
               <Route path="/membership" element={<MemRegistrationPage />} />
               <Route path="/register/:id" element={<RegisterPage />} />
               <Route path="/committee" element={<CommitteePage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/gallery" element={<Gallery />} />
             </Routes>
           </div>
           <Footer className="footer" />

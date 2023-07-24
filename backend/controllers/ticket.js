@@ -1,5 +1,6 @@
 import pdf from "pdf-creator-node"
 import SendEmail from "./mail.js";
+import fs from "fs";
 
 const HandleTicketGeneration = async (data) => {
   const { ticketCount, pricing } = data;
@@ -58,14 +59,9 @@ const HandleTicketGeneration = async (data) => {
                     }
                     .item {
                       width: 100%;
-                      display: -webkit-flex;
-                      justify-content: space-between;
                     }
                     .sub{
-                      width: 40%;
-                    }
-                    .sub-item{
-
+                      font-weight: bold;
                     }
                 </style>
       </head>`;

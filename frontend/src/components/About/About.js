@@ -7,15 +7,7 @@ function About() {
     <div className="about_container">
       <div className="about_description">
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+        GMA was established in 2018 with a distinct prospect to offer a cultural and tradition-sharing a platform for the growing Malayalee community in Geelong. The non-profitable lucrative venture of GMA showcases the dedication and admiration towards the land we live on. GMA’s assiduous effort instituted a Malayalam school locally to persuade the young “Mallu Kids” growing up in a multicultural society. Nevertheless, GMA pursuit to broaden its venture to be the best Geelong regional inclusive association with an infinite vision of serving locally, nationally and internationally.
         </p>
       </div>
       <div className="about_logo">

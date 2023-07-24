@@ -1,0 +1,22 @@
+.popup-container {
+    text-align: center;
+}
+
+.gp-1 {
+    padding: 10px;
+    color: white;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.gp-1 h2{
+    margin-right: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+    }
+}

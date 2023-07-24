@@ -157,6 +157,10 @@
   padding-top: 20px;
 }
 
+.event_icons span{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 760px) {
   .details {
     display: flex;
