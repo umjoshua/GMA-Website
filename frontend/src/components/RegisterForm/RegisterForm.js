@@ -38,7 +38,7 @@ function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setDa
       setWarning("Please agree terms and conditions to proceed.");
       return;
     }
-    // setLoading(true);
+    setLoading(true);
     const newData = {
       ...data,
       event_id: registrationData.event_id,
@@ -49,11 +49,11 @@ function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setDa
     setData(newData)
     if (newData.subTotal === 0) {
       await api.registerForEvent(newData).then((res) => {
-        // setThank(true);
+        setThank(true);
       }).catch((error) => {
-        // setError(true);
+        setError(true);
       });
-      // setLoading(false);
+      setLoading(false);
     }
     else {
       setCheckOut(true);
@@ -94,7 +94,7 @@ function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setDa
           </div>
           <div className="form_name">
             <label>Phone Number</label>
-            <input type="tel" {...register("phone")} placeholder="+611234567890" required/>
+            <input type="tel" {...register("phone")} placeholder="+611234567890" required />
             <span>{errors.phone?.message}</span>
           </div>
         </div>
