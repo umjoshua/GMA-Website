@@ -8,7 +8,7 @@ dotenv.config()
 
 const { CLIENT_ID, APP_SECRET } = process.env;
 
-const base = "https://api-m.sandbox.paypal.com";
+const base = "https://api-m.paypal.com";
 
 export const CalculateAmount = (tickets, ticketType, ticketCount) => {
     let amount = 0;

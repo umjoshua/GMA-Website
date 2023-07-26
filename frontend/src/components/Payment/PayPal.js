@@ -9,7 +9,7 @@ function PayPalPayment({ setThank, regData, setError }) {
     ];
 
     const initialOptions = {
-        "client-id": "AVekX6NdnNlcuNZcHQ7FbKPVi31aBzrN7dxIk2UgQZo6Iji5oZzE5EshIK9WxWiK7fB6Tj3mwtCE58hr",
+        "client-id": "ARg1nuqJFBBb2vAMf0IO_2L8YmmIUnxZJYnzzpJ3iuvmTJ4id4uLO2NFitHMcIYBQCVDD6Q1lycTczAo",
         "enable-funding": "paylater,venmo,card",
         "currency":"AUD"
     }
@@ -52,6 +52,7 @@ function PayPalPayment({ setThank, regData, setError }) {
 
 
                             onApprove={async (data, actions) => {
+                                console.log('approved')
                                 try {
                                     const response = await fetch(baseURL + "/orders/" + data.orderID + "/capture", {
                                         method: "POST",

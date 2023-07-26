@@ -5,8 +5,6 @@ import mongoose from "mongoose";
 import AdminRouter from "./routes/admin.js"
 import UserRouter from './routes/user.js';
 
-import { CommitteeModel } from "./models/committeeModel.js";
-
 import bodyParser from "body-parser";
 import { Order, Capture } from "./controllers/paypal.js";
 

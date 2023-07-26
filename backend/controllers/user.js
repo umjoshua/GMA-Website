@@ -165,7 +165,7 @@ export const ContactUs = async (req, res) => {
 
 export const MembershipRegister = async (req, res) => {
     const text = `
-    <b>Applicant Information: </b>
+    Applicant Information:
     First Name: ${req.body.fname ? req.body.fname : 'NA'}
     Middle Name: ${req.body.mname ? req.body.mname : 'NA'}
     Last Name: ${req.body.lname ? req.body.lname : 'NA'}
