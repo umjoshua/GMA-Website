@@ -75,9 +75,10 @@ function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => { if (icon) { setIcon(false) } }}
             >
-              <Link to="/">Membership</Link>
+              <Link to="/#registerUpdates">Membership</Link>
             </ScrollLink>
           </li>
+
           <li>
             <ScrollLink
               to="about"
@@ -88,7 +89,7 @@ function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => { if (icon) { setIcon(false) } }}
             >
-              <Link to="/">About</Link>
+              <Link to="/#about">About</Link>
             </ScrollLink>
           </li>
           <li>
@@ -101,7 +102,7 @@ function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => { if (icon) { setIcon(false) } }}
             >
-              <Link to="/">Contact Us</Link>
+              <Link to="/#contact">Contact Us</Link>
             </ScrollLink>
           </li>
         </>

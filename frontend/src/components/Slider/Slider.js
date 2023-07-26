@@ -9,10 +9,12 @@ import "swiper/css/pagination";
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper";
 import * as api from '../../api';
+import { useNavigate } from "react-router-dom";
 
 // import SwiperData from "../../data/SwiperData/SwiperData";
 
 function Slider() {
+  const navigate = useNavigate()
   const [swiperData, setSwiperData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,7 @@ function Slider() {
   }, []);
 
   return (
-    <div className="slider_main">
+    <div className="slider_main" onClick={() => navigate("/gallery")}>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

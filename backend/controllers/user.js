@@ -85,40 +85,18 @@ export const GetEvents = async (req, res) => {
     }
 }
 
-// export const GetCommittee = async (req, res) => {
-//     try {
-//         let response = await CommitteeModel.find();
-//         res.status(200).json(response);
-//     } catch (err) {
-//         console.log(err)
-//         res.status(500).json({ "msg": "Internal server error" })
-//     }
-// }
-
 export const GetCommittee = async (req, res) => {
     try {
-        const pageSize = 4;
-        const totalRecords = await CommitteeModel.countDocuments();
-        const totalPages = Math.ceil(totalRecords / pageSize);
-
-        res.setHeader('Content-Type', 'text/event-stream');
-        res.setHeader('Cache-Control', 'no-cache');
-        res.setHeader('Connection', 'keep-alive');
-
-        let skipRecords = 0;
-        let currentPage = 0;
-
-        while (skipRecords < totalRecords && currentPage < totalPages) {
-            const response = await CommitteeModel.find().skip(skipRecords).limit(pageSize);
-            res.write(`data: ${JSON.stringify(response)}\n\n`);
-            skipRecords += pageSize;
-            currentPage += 1;
-        }
-
-        res.end();
+        const committees = await CommitteeModel.find();
+        const response = committees.map((committee) => {
+            const filename = committee.file
+            const imageUrl = `${process.env.URL}/uploads/images/${filename}`;
+            return { ...committee.toObject(), imageUrl };
+        });
+        res.status(200).json(response);
     } catch (err) {
         console.log(err);
-        res.status(500).json({ "msg": "Internal server error" });
+        res.status(500).json({ msg: 'Internal server error' });
     }
 };
 

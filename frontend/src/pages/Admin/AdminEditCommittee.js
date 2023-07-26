@@ -4,11 +4,9 @@ import AddCommittee from '../../components/Admin/AdminCommittee/AddCommittee';
 import DeleteIcon from '@mui/icons-material/Delete';
 import * as api from '../../api';
 import Avatar from '../../assets/images/avatar.png'
-import { fetchEventSource } from "@microsoft/fetch-event-source";
 
 const AdminEditCommittee = () => {
     const token = localStorage.getItem("token");
-    const baseURL = api.baseURL;
 
 
     const config = {
@@ -27,7 +25,6 @@ const AdminEditCommittee = () => {
         if (selectedCommitteeId) {
             try {
                 const response = await api.deleteCommittee(selectedCommitteeId, config);
-                console.log(response);
                 if (response.status === 200) {
                     setCommittee(prevCommittee => prevCommittee.filter(item => item._id !== selectedCommitteeId));
                     setDeleteConfirmation(false);
@@ -40,23 +37,9 @@ const AdminEditCommittee = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            let updatedCommittee = committee;
             try {
-                await fetchEventSource(baseURL + '/user/committee', {
-                    method: 'GET',
-                    headers: {
-                        Accept: "text/event-stream",
-                    },
-                    onmessage(event) {
-                        const parsedData = JSON.parse(event?.data)
-
-                        for (let i = 0; i < parsedData.length; i++) {
-                            updatedCommittee = [...updatedCommittee, parsedData[i]];
-                        }
-
-                        setCommittee(() => { return updatedCommittee })
-                    }
-                })
+                const { data } = await api.fetchCommittee()
+                setCommittee(data);
             } catch (error) {
                 console.error(error);
             }
@@ -76,12 +59,9 @@ const AdminEditCommittee = () => {
 
     const Committee = ({ item }) => {
         return (
-            <div className="commitee_container" style={{ minHeightheight: 'max-content' }}
-                onClick={() => {
-                    console.log(item)
-                }}>
+            <div className="commitee_container" style={{ minHeightheight: 'max-content' }}>
                 <div className="committee_image">
-                    <img src={item.file ? item.file : Avatar} alt="Profile" />
+                    <img src={item.imageUrl ? item.imageUrl : Avatar} alt="Profile" />
                 </div>
                 <div className="committee_content" style={{ height: 'max-content' }}>
                     <span className="p_name">{item.name}</span>
@@ -98,33 +78,36 @@ const AdminEditCommittee = () => {
     };
 
     return (
-        <div className={styles.committee_main}>
-            <div>
-                <div className="committe_cards">
-                    {committee.map((item, key) => (
-                        <Committee item={item} key={key} />
-                    ))}
-                </div>
-            </div>
-            <AddCommittee addCommittee={addCommittee} setAddCommittee={setAddCommittee} setCommittee={setCommittee} committee={committee} />
-
-            {deleteConfirmation && (
-                <div className={styles.confirmation_dialog}>
-                    <div className={styles.confirmation_content}>
-                        <h2>Confirmation</h2>
-                        <p>Are you sure you want to delete this committee member?</p>
-                        <div className={styles.confirmation_buttons}>
-                            <button className={styles.confirmation_button} onClick={deleteMember}>
-                                Yes, Delete
-                            </button>
-                            <button className={styles.confirmation_button} onClick={closeDeleteConfirmation}>
-                                Cancel
-                            </button>
-                        </div>
+        <>
+            {committee.length !== 0 ? (<div className={styles.committee_main}>
+                <div>
+                    <div className="committe_cards">
+                        {committee.map((item, key) => (
+                            <Committee item={item} key={key} />
+                        ))}
                     </div>
                 </div>
-            )}
-        </div>
+
+                {deleteConfirmation && (
+                    <div className={styles.confirmation_dialog}>
+                        <div className={styles.confirmation_content}>
+                            <h2>Confirmation</h2>
+                            <p>Are you sure you want to delete this committee member?</p>
+                            <div className={styles.confirmation_buttons}>
+                                <button className={styles.confirmation_button} onClick={deleteMember}>
+                                    Yes, Delete
+                                </button>
+                                <button className={styles.confirmation_button} onClick={closeDeleteConfirmation}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>) : null
+            }
+            <AddCommittee addCommittee={addCommittee} setAddCommittee={setAddCommittee} setCommittee={setCommittee} />
+        </>
     );
 };
 

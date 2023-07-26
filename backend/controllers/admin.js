@@ -5,6 +5,8 @@ import jwt from 'jsonwebtoken';
 import AdminModel from "../models/adminModel.js"
 import mongoose from "mongoose";
 import GalleryModel from "../models/galleryModel.js";
+import { v4 as uuidv4 } from "uuid";
+import fs from "fs";
 
 
 export const CreateEvent = async (req, res) => {
@@ -50,27 +52,60 @@ export const UpdateEvent = async (req, res) => {
 export const AddCommittee = async (req, res) => {
     try {
         const data = req.body;
+        const filename = uuidv4();
+
+        const imageData = data.file.replace(/^data:image\/\w+;base64,/, '');
+        const imageBuffer = Buffer.from(imageData, 'base64');
+        const imagePath = `uploads/images/${filename}.png`;
+
+        fs.writeFileSync(imagePath, imageBuffer);
+
+        data.file = `${filename}.png`;
         const newData = new CommitteeModel(data);
-        await newData.save()
-        res.status(200).json(newData);
+        await newData.save();
+        const committees = await CommitteeModel.find();
+        const response = committees.map((committee) => {
+            const filename = committee.file
+            const imageUrl = `http://localhost:5000/uploads/images/${filename}`;
+            return { ...committee.toObject(), imageUrl };
+        });
+        res.status(200).json(response);
+
     } catch (err) {
-        res.status(500).json({ "error": "Couldn't add" })
+        console.log(err)
+        res.status(500).json({ error: "Couldn't add" });
     }
-}
+};
+
 
 export const DeleteCommittee = async (req, res) => {
     try {
         const { id } = req.params;
 
-        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No member with this id');
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send('No member with this id');
+        }
 
+        // Find the committee by id to get the imagePath
+        const committee = await CommitteeModel.findById(id);
+        if (!committee) {
+            return res.status(404).send('Committee not found');
+        }
+
+        // Delete the image file from the disk
+        const imagePath = `uploads/images/${committee.file}`;
+        if (imagePath) {
+            fs.unlinkSync(imagePath);
+        }
+
+        // Delete the committee from MongoDB
         await CommitteeModel.findByIdAndRemove(id);
 
-        res.json({ message: 'post deleted succesfully' });
+        res.json({ message: 'Post deleted successfully' });
     } catch (error) {
-        res.status(500).json({ "error": "Couldn't delete" })
+        res.status(500).json({ error: "Couldn't delete" });
     }
-}
+};
 
 
 export const adminLogin = async (req, res) => {

@@ -7,7 +7,7 @@ import * as api from '../../../api'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee, committee }) => {
+const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee }) => {
 
     const [committeeData, setCommitteeData] = useState({
         name: '',
@@ -33,9 +33,9 @@ const AddCommittee = ({ addCommittee, setAddCommittee, setCommittee, committee }
         try {
             const { data } = await api.addCommittee(committeeData, config);
             if (data) {
+                setCommittee(data);
                 setAddCommittee(false);
                 setIsOpen(false);
-                setCommittee([...committee, data]);
             }
         } catch (error) {
             setAddError('Failed to add committee. Please try again later.');

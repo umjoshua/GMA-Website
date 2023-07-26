@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose";
 import AdminRouter from "./routes/admin.js"
 import UserRouter from './routes/user.js';
+import path from "path"
 
 import bodyParser from "body-parser";
 import { Order, Capture } from "./controllers/paypal.js";
@@ -13,6 +14,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
+app.use('/uploads/images',express.static(path.join('uploads','images')));
 
 const PORT = process.env.PORT
 const MONGO_URI = process.env.MONGO_URI

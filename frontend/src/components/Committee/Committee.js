@@ -6,7 +6,7 @@ function Committee({ item }) {
   return (
     <div className="commitee_container">
       <div className="committee_image">
-        <img src={item.file ? item.file : Avatar} alt="Profile" style={{maxWidth: "200px"}}/>
+        <img src={item.imageUrl ? item.imageUrl : Avatar} alt="Profile" style={{maxWidth: "200px"}}/>
       </div>
       <div className="committee_content">
         <span className="p_name">{item.name}</span>
