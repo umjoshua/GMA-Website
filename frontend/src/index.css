@@ -21,6 +21,12 @@ body {
   ;
 }
 
+@font-face {
+  font-family: 'DM_Serif_Display';
+  src: url('./assets/fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf') format('truetype');
+  ;
+}
+
 
 /* h1,
 h4,

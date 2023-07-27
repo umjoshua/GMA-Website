@@ -90,7 +90,7 @@ export const GetCommittee = async (req, res) => {
         const committees = await CommitteeModel.find();
         const response = committees.map((committee) => {
             const filename = committee.file
-            const imageUrl = `${process.env.URL}/uploads/images/${filename}`;
+            const imageUrl = filename !== "" ? `${process.env.URL}/uploads/images/${filename}` : "";
             return { ...committee.toObject(), imageUrl };
         });
         res.status(200).json(response);
@@ -155,7 +155,6 @@ export const MembershipRegister = async (req, res) => {
     State: ${req.body.state ? req.body.state : 'NA'}
     Post Code: ${req.body.postCode ? req.body.postCode : 'NA'}
     Country: ${req.body.country ? req.body.country : 'NA'}
-    Area Code: ${req.body.areaCode ? req.body.areaCode : 'NA'}
     
     Phone Number: ${req.body.phNo ? req.body.phNo : 'NA'}
     

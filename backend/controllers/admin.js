@@ -52,7 +52,8 @@ export const UpdateEvent = async (req, res) => {
 export const AddCommittee = async (req, res) => {
     try {
         const data = req.body;
-        const filename = uuidv4();
+
+        const filename = data.file === "" ? "" : uuidv4();
 
         const imageData = data.file.replace(/^data:image\/\w+;base64,/, '');
         const imageBuffer = Buffer.from(imageData, 'base64');
@@ -60,9 +61,13 @@ export const AddCommittee = async (req, res) => {
 
         fs.writeFileSync(imagePath, imageBuffer);
 
-        data.file = `${filename}.png`;
+        if (filename !== "") {
+            data.file = `${filename}.png`;
+        }
+
         const newData = new CommitteeModel(data);
         await newData.save();
+
         const committees = await CommitteeModel.find();
         const response = committees.map((committee) => {
             const filename = committee.file
@@ -94,7 +99,7 @@ export const DeleteCommittee = async (req, res) => {
 
         // Delete the image file from the disk
         const imagePath = `uploads/images/${committee.file}`;
-        if (imagePath) {
+        if (imagePath && committee.file!=="") {
             fs.unlinkSync(imagePath);
         }
 
@@ -149,6 +154,7 @@ export const AddGalleryImage = async (req, res) => {
         await newData.save()
         res.status(200).json(newData);
     } catch (err) {
+        console.log(err);
         res.status(500).json({ "error": "Couldn't add" })
     }
 }

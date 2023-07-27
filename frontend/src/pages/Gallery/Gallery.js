@@ -10,7 +10,6 @@ const Gallery = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await api.fetchGallery();
-            console.log(response?.data)
             if (response?.data.length >= 1) {
                 const images = response.data.map((item) => ({
                     original: item.imageURL,
@@ -58,7 +57,7 @@ const Gallery = () => {
                             src={item.original}
                             alt={item.originalAlt}
                             width={getOriginalImageWidth()}
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'contain' }}
                         />
                     </div>
                 )}

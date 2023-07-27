@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
       <div className="logo-div">
-        <img src={Logo} alt="logo" className="logo" />
+        <img src={Logo} alt="logo" className="logo"/>
         <p>Geelong Malayalee Association Inc</p>
       </div>
       <ul className={icon ? "nav_menu active" : "nav_menu"}>
@@ -66,17 +66,7 @@ function Navbar() {
             <Link to='/committee'>Committee</Link>
           </li>
           <li>
-            <ScrollLink
-              to="registerUpdates"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              style={{ cursor: "pointer" }}
-              onClick={() => { if (icon) { setIcon(false) } }}
-            >
-              <Link to="/#registerUpdates">Membership</Link>
-            </ScrollLink>
+            <Link to="/membership" onClick={() => { if (icon) { setIcon(false) } }}>Membership</Link>
           </li>
 
           <li>

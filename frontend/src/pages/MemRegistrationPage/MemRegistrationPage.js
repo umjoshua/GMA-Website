@@ -28,7 +28,6 @@ function MemRegistrationPage() {
     state: "",
     postCode: "",
     country: "",
-    areaCode: "",
     phNo: "",
     email: "",
     gender: "Male",
@@ -156,13 +155,6 @@ function MemRegistrationPage() {
           <h3>Phone Number <span className="mandatory">*</span></h3>
           <div className="phone">
             <input className="formInput"
-              value={formData.areaCode}
-              name="areaCode"
-              onChange={handleChange}
-              placeholder="Area Code"
-              required
-            />
-            <input className="formInput"
               value={formData.phNo}
               name="phNo"
               onChange={handleChange}
@@ -224,7 +216,7 @@ function MemRegistrationPage() {
           </div>
 
           {/* Blood Group */}
-          <h3>Blood Group</h3>
+          <h3>Blood Group<span className="mandatory"> *</span></h3>
           <div className="email">
             <select
               name="bloodGroup"
@@ -371,7 +363,7 @@ function MemRegistrationPage() {
           </div>
 
           {/* Membership Type */}
-          <h3>Type of membership</h3>
+          <h3>Type of membership<span className="mandatory"> *</span></h3>
           <div className="contactMethod">
             <div className="gender">
               <label>
@@ -400,7 +392,7 @@ function MemRegistrationPage() {
           </div>
 
           {/* Membership Fee */}
-          <h3 style={{ marginBottom: "5px" }}>Membership fee paid?</h3>
+          <h3 style={{ marginBottom: "5px" }}>Membership fee paid?<span className="mandatory"> *</span></h3>
           <span className="accountDetails">
             BSB: 063871 A/C No: 1034 5666 A/C Name: Geelong Malayalee Association Inc.
           </span>
