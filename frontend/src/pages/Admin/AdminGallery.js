@@ -31,6 +31,8 @@ const AdminGallery = () => {
         fetchData();
     }, [selectedId]);
 
+    
+
 
     const deleteImage = async () => {
         if (selectedId) {
@@ -61,7 +63,7 @@ const AdminGallery = () => {
             <div className="commitee_container"
                 style={{ height: '200px', width: '250px' }}>
                 <div className="committee_image">
-                    <img src={item.imageURL ? item.imageURL : ''} alt="gallery_img" />
+                    <img src={item.imageUrl ? item.imageUrl : ''} alt="gallery_img" />
                 </div>
                 <div>
                     <DeleteIcon
@@ -79,9 +81,9 @@ const AdminGallery = () => {
             <div>
                 <div>
                     <div className="committe_cards">
-                        {gallery.map((item, key) => (
+                        {gallery.length > 0 ? gallery.map((item, key) => (
                             <GalleryCards item={item} key={key} />
-                        ))}
+                        )) : <p>No images found</p>}
                     </div>
                 </div>
             </div>

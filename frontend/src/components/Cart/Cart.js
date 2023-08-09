@@ -2,9 +2,16 @@ import React from "react";
 import "./Cart.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function Cart({ event, registrationData }) {
-
+function Cart({ event, registrationData, pfee, total }) {
   const ticket = event.tickets.find(ticket => ticket.name === registrationData.ticketType);
+
+  let payableTickets = 0;
+
+  Object.entries(registrationData.ticketCount).forEach(([key, value]) => {
+    if (registrationData.ticketPrice[key] !== 0) {
+      payableTickets += value;
+    }
+  });
 
   return (
     <div className="cart_container">
@@ -34,12 +41,17 @@ function Cart({ event, registrationData }) {
               )
             })
           }
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ placeSelf: 'flex-end' }}>Tickets x {payableTickets}: $ {registrationData.subTotal} </span>
+            <span style={{ placeSelf: 'flex-end' }}>Ticket Fee: $ 0.50 </span>
+            <span style={{ placeSelf: 'flex-end' }}>Processing Fee: $ {pfee.toFixed(2)} </span>
+          </div>
         </div>
       </div>
       <div className="fare">
       </div>
       <div className="subtotal">
-        <span>Subtotal: $ {registrationData.subTotal}</span>
+        <span>TOTAL: $ {total.toFixed(2)}</span>
       </div>
     </div>
   );

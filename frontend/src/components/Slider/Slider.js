@@ -53,7 +53,7 @@ function Slider() {
         {swiperData.map((image, key) => {
           return (
             <SwiperSlide>
-              <img src={image.imageURL} key={key} alt="slide_image" />
+              <img src={image.imageUrl} key={key} alt="slide_image" />
             </SwiperSlide>
           );
         })}

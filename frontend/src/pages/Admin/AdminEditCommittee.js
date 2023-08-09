@@ -104,7 +104,9 @@ const AdminEditCommittee = () => {
                         </div>
                     </div>
                 )}
-            </div>) : null
+            </div>) : <div className={styles.committee_main}>
+                <p>No committee data found</p>
+            </div>
             }
             <AddCommittee addCommittee={addCommittee} setAddCommittee={setAddCommittee} setCommittee={setCommittee} />
         </>

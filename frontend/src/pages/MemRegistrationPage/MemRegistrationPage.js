@@ -300,7 +300,7 @@ function MemRegistrationPage() {
           </div>
 
           {/* Other family member details */}
-          <h3>Details of other family members in your household and kids under 13 years</h3>
+          <h3>Details of Children</h3>
           <span style={{ fontSize: "small", color: "gray" }}>Please enter Full Name, Gender and Age</span>
           <div className="address1">
             <textarea className="familyDetails" rows={5} cols={50}

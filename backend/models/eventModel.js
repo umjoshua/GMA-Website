@@ -12,6 +12,8 @@ const eventSchema = mongoose.Schema({
         {
             name: { type: String, required: true },
             description: String,
+            count: Number,
+            ticketsLeft: Number,
             pricing: [
                 {
                     name: { type: String, required: true },
@@ -38,6 +40,7 @@ const eventRegSchema = mongoose.Schema({
     ticketType: String,
     ticketCount: {},
     amount: String,
+    paymentMethod: String,
 })
 
 const EventModel = mongoose.model("EventModel", eventSchema, "EventDetails")

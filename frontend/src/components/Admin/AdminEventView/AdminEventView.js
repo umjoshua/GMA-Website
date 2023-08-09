@@ -19,7 +19,7 @@ function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
       <div className='form-header'>
         <h2>{event.title}</h2>
         <CloseIcon style={{ cursor: 'pointer', backgroundColor: 'red', borderRadius: '50px', padding: '5px' }}
-          onClick={() => setViewEvent(false)}
+          onClick={() => { setViewEvent(false); setcurrentId(null) }}
         />
       </div>
       <div className='form-content'>
@@ -83,7 +83,7 @@ function AdminEventView({ events, setViewEvent, currentId, setcurrentId }) {
           </div>
           <div className='form-input'>
             <span>Terms and Conditions:</span>
-            <span style={{ fontWeight: 'normal',whiteSpace:'pre-wrap' }}>{event.terms}</span>
+            <span style={{ fontWeight: 'normal', whiteSpace: 'pre-wrap' }}>{event.terms}</span>
           </div>
         </div>
         <div className='form-input'>

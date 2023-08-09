@@ -23,6 +23,9 @@ const AdminEditEvents = () => {
   const [viewEvent, setViewEvent] = useState(false);
   return (
     <div className={styles.admin_edit_main}>
+      {
+        events.length === 0 && <p>No events found.</p>
+      }
       {!addEvent && !viewEvent && < div className={styles.admin_edit_events}>
         <Events events={events} setEvents={setEvents} setAddEvent={setAddEvent} setcurrentId={setcurrentId} currentId={currentId} setViewEvent={setViewEvent} />
       </div>}

@@ -8,7 +8,7 @@ const EventThank = ({ error }) => {
         <>
             {!error ?
                 <div className="thankContainer">
-                    <h1 style={{ color: "black", textAlign: 'center' }}>Thankyou for registering!</h1>
+                    <h1 style={{ color: "black", textAlign: 'center' }}>Thankyou for Booking.</h1>
                     <span style={{ fontSize: "large", padding: "10px" }}>You will recieve a confirmation mail soon..</span>
                     <button onClick={() => navigate('/')}>Go Home</button>
                 </div> : <div className="thankContainer">

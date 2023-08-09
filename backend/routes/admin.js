@@ -1,7 +1,7 @@
 import express from "express"
 import { AddGalleryImage, DeleteGalleryImage, adminLogin } from "../controllers/admin.js"
 import AuthMiddleware from "../middleware/auth.js"
-import { CreateEvent, AddCommittee, DeleteCommittee, DeleteEvent, UpdateEvent } from '../controllers/admin.js'
+import { CreateEvent, AddCommittee, DeleteCommittee, DeleteEvent, UpdateEvent,GetEventsList,GetEventRegData } from '../controllers/admin.js'
 
 const router = express.Router()
 
@@ -25,6 +25,9 @@ router.post("/gallery", AuthMiddleware, AddGalleryImage)
 
 router.delete("/gallery/:id", AuthMiddleware, DeleteGalleryImage)
 
+router.get("/events",AuthMiddleware,GetEventsList)
+
+router.get("/eventRegistrations/:id",AuthMiddleware,GetEventRegData)
 
 router.get('/', AuthMiddleware, (req, res) => {
     res.status(200).json("success")

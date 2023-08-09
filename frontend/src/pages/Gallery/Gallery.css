@@ -1,0 +1,6 @@
+.gallery {
+    height: 80vh;
+}
+.gallery img{
+    object-fit: contain;
+}

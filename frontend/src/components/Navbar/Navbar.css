@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
     position: sticky;
     top: 0;
     width: 100%;
@@ -31,10 +30,6 @@
     font-family: 'DM_Serif_Display';
     font-weight: 900;
     font-size: xx-large;
-}
-
-.logo {
-    max-height: 60px;
 }
 
 .header_bg {

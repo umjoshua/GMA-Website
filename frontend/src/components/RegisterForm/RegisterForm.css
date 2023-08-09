@@ -75,20 +75,23 @@ input::placeholder {
   margin: 20px 0px 20px 0px;
 }
 
-.form_submit>input, .form_submit>div {
+.form_submit>input,
+.form_submit>div {
   width: 40%;
   height: 30px;
   border: 1px solid navy;
   background: transparent;
   border-radius: 4px;
 }
+
 .form_submit>div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.form_submit>input:hover, .form_submit>div:hover {
+.form_submit>input:hover,
+.form_submit>div:hover {
   background-color: navy;
   color: aliceblue;
 }
@@ -123,6 +126,28 @@ input::placeholder {
 
 .counter span {
   margin: 0px 5px;
+}
+
+.selected_pay_button,
+.pay_button {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 90px;
+  height: 40px
+}
+
+.pay_button:hover {
+  background-color: whitesmoke;
+}
+
+.selected_pay_button {
+  background-color: #03517E;
+}
+
+.selected_pay_button span {
+  color: white,
 }
 
 

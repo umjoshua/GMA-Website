@@ -71,7 +71,7 @@
     }
 
     .registerPage {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .pay_methods {

@@ -39,7 +39,9 @@
     justify-content: flex-end;
     margin: 10px;
     color: navy;
-    font-weight: bold;
+}
+.subtotal span{
+    font-weight: 800;
 }
 
 .count {

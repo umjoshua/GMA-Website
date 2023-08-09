@@ -8,17 +8,23 @@ import RegisterDetails from "./RegisterDetails";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function RegisterPage() {
 
   const { id } = useParams();
   const events = useContext(AppContext);
 
+
   const event = events.find((event) => event._id === id);
 
 
   const [page, setPage] = useState(0);
   const [ticketType, setTicketType] = useState(null);
+  const [ticketsLeft, setTicketsLeft] = useState(0);
+  const [totalTickets, setTotalTickets] = useState(0);
 
   const [data, setData] = useState({})
 
@@ -36,6 +42,8 @@ function RegisterPage() {
     setTicketType(index);
 
     setPage(1);
+
+    setTicketsLeft(event?.tickets[index].ticketsLeft);
 
     const newTicketCount = {};
     const ticketPrice = {};
@@ -57,10 +65,11 @@ function RegisterPage() {
     setTicketType(null);
     setData({});
     setPage(0);
+    setTotalTickets(0);
+    setTicketsLeft(0);
   }
 
   const handleTicketSelect = () => {
-    console.log(data);
     let warning = true;
     for (const key in data.ticketCount) {
       if (data.ticketCount[key] > 0) {
@@ -81,12 +90,27 @@ function RegisterPage() {
       }
       setData({ ...data, subTotal: subTotal })
       setPage(2);
+      setTotalTickets(0);
+      setTicketsLeft(0);
     }
   }
 
+  const notify = () => toast.error('0 Tickets Left!', {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
   return (
     <>
+      <ToastContainer style={{ marginTop: '100px' }} />
       {
+
         event && event.tickets.length >= 1 &&
         <div className="rg1-1">
           <div className="rg1-2">
@@ -108,8 +132,21 @@ function RegisterPage() {
                       <div className="rg1-4-div">
                         <span id="rg1-4-2">{ticket.description}</span>
                       </div>
-                      <span id="rg1-4-2">{findMinAmount(ticket.pricing)}$ - {findMaxAmount(ticket.pricing)}$</span>
-                      <button id="rg-4-3" onClick={() => handleTicketTypeSelect(index)}>Select</button>
+                      <div className="rg1-4-div">
+                        {
+                          ticket.ticketsLeft <= 0 ?
+                            <div className="rg1-4-div">
+                              <span style={{ color: 'red' }}>Sold out</span>
+                            </div> :
+                            <span id="rg1-4-2">
+                              $ {findMinAmount(ticket.pricing)} - $ {findMaxAmount(ticket.pricing)}
+                            </span>
+                        }
+                      </div>
+                      {
+                        ticket.ticketsLeft > 0 &&
+                        <button id="rg-4-3" onClick={() => handleTicketTypeSelect(index)}>Select</button>
+                      }
                     </div>
                   )
                 })
@@ -131,23 +168,42 @@ function RegisterPage() {
                       <div id="rg2-3">
                         {<RemoveCircleOutlineIcon onClick={() => {
                           if (data.ticketCount[pricing.name] !== 0) {
-                            setData(
-                              {
-                                ...data,
-                                ticketCount: { ...data.ticketCount, [pricing.name]: data.ticketCount[pricing.name] - 1 }
+                            if (pricing.price !== 0) {
+                              setTotalTickets(totalTickets - 1);
+                            }
+
+                            setData({
+                              ...data,
+                              ticketCount: {
+                                ...data.ticketCount,
+                                [pricing.name]: data.ticketCount[pricing.name] - 1
                               }
-                            )
+                            });
                           }
                         }} />}
                         <span>{data?.ticketCount[pricing.name]}</span>
                         <AddCircleOutlineIcon onClick={() => {
                           setWarning(false);
-                          setData(
-                            {
-                              ...data,
-                              ticketCount: { ...data.ticketCount, [pricing.name]: data.ticketCount[pricing.name] + 1 }
+                          if (pricing.price !== 0) {
+                            if (totalTickets === ticketsLeft) {
+                              notify();
+                            } else {
+                              setTotalTickets(totalTickets + 1)
+                              setData(
+                                {
+                                  ...data,
+                                  ticketCount: { ...data.ticketCount, [pricing.name]: data.ticketCount[pricing.name] + 1 }
+                                }
+                              );
                             }
-                          );
+                          } else {
+                            setData(
+                              {
+                                ...data,
+                                ticketCount: { ...data.ticketCount, [pricing.name]: data.ticketCount[pricing.name] + 1 }
+                              }
+                            );
+                          }
                         }
                         } />
                       </div>

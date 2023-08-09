@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const gallerySchema = mongoose.Schema({
-    imageURL: {
+    file: {
         type: String,
         required: true,
     }

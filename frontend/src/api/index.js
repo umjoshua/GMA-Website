@@ -39,3 +39,7 @@ export const PayPalCapture = async (data, orderID) => await API.post('/orders/' 
 export const addGalleryImage = async (data, config) => await API.post('/admin/gallery', data, config);
 
 export const deleteGalleryImage = async (id, config) => await API.delete('/admin/gallery/' + id, config);
+
+export const getEventsList = async (config) => await API.get('/admin/events/', config);
+
+export const getEventRegs = async (id, config) => await API.get('/admin/eventRegistrations/' + id, config);

@@ -5,12 +5,13 @@ import AddIcon from '@mui/icons-material/Add';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import * as api from '../../../api';
+import FileBase from 'react-file-base64';
 
 const GalleryPopup = ({ gallery, setGallery }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const [imageURL, setimageURL] = useState('');
+    const [imageData, setimageData] = useState({});
 
     const [loading, setLoading] = useState(false);
 
@@ -28,9 +29,9 @@ const GalleryPopup = ({ gallery, setGallery }) => {
     const postdata = async () => {
         setLoading(true);
         try {
-            const { data } = await api.addGalleryImage({ imageURL }, config);
+            const { data } = await api.addGalleryImage(imageData, config);
             if (data) {
-                setGallery([...gallery, data]);
+                setGallery(data);
                 setIsOpen(false);
             }
         } catch (error) {
@@ -47,7 +48,7 @@ const GalleryPopup = ({ gallery, setGallery }) => {
 
     const togglePopup = () => {
         setIsOpen(!isOpen);
-        setimageURL('');
+        setimageData({});
     };
 
     return (
@@ -64,12 +65,8 @@ const GalleryPopup = ({ gallery, setGallery }) => {
                             onClick={togglePopup} />
                     </div>
                     <form className='form-input' style={{ marginTop: "20px" }} onSubmit={handleSubmit}>
-                        <input
-                            placeholder='Image URL' required
-                            style={{ height: '30px' }}
-                            value={imageURL}
-                            onChange={(e) => { setimageURL(e.target.value) }}
-                        />
+                        <FileBase type="file" multiple={false} onDone={({ base64 }) => setimageData({ file: base64 })} />
+                        {imageData.file && <img src={imageData.file} alt='preview' height={100}></img>}
                         <input type="submit"
                             style={
                                 { backgroundColor: 'green', color: 'white', marginTop: "10px", height: '30px' }

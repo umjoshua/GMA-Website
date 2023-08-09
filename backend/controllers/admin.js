@@ -1,4 +1,4 @@
-import { EventModel, } from "../models/eventModel.js";
+import { EventModel, EventRegModel } from "../models/eventModel.js";
 import { CommitteeModel } from "../models/committeeModel.js"
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -7,6 +7,8 @@ import mongoose from "mongoose";
 import GalleryModel from "../models/galleryModel.js";
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
+import sharp from 'sharp';
+import exceljs from "exceljs";
 
 
 export const CreateEvent = async (req, res) => {
@@ -25,6 +27,8 @@ export const DeleteEvent = async (req, res) => {
         const { id } = req.params;
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+
+        await EventRegModel.deleteMany({ event_id: id });
 
         await EventModel.findByIdAndRemove(id);
 
@@ -55,13 +59,12 @@ export const AddCommittee = async (req, res) => {
 
         const filename = data.file === "" ? "" : uuidv4();
 
-        const imageData = data.file.replace(/^data:image\/\w+;base64,/, '');
-        const imageBuffer = Buffer.from(imageData, 'base64');
-        const imagePath = `uploads/images/${filename}.png`;
-
-        fs.writeFileSync(imagePath, imageBuffer);
-
         if (filename !== "") {
+            const imageData = data.file.replace(/^data:image\/\w+;base64,/, '');
+            const imageBuffer = Buffer.from(imageData, 'base64');
+            const pngImageBuffer = await sharp(imageBuffer).toFormat('png').toBuffer();
+            const imagePath = `uploads/images/${filename}.png`;
+            fs.writeFileSync(imagePath, pngImageBuffer);
             data.file = `${filename}.png`;
         }
 
@@ -91,20 +94,17 @@ export const DeleteCommittee = async (req, res) => {
             return res.status(404).send('No member with this id');
         }
 
-        // Find the committee by id to get the imagePath
         const committee = await CommitteeModel.findById(id);
         if (!committee) {
             return res.status(404).send('Committee not found');
         }
 
-        // Delete the image file from the disk
+        await CommitteeModel.findByIdAndRemove(id);
+
         const imagePath = `uploads/images/${committee.file}`;
-        if (imagePath && committee.file!=="") {
+        if (imagePath && committee.file !== "") {
             fs.unlinkSync(imagePath);
         }
-
-        // Delete the committee from MongoDB
-        await CommitteeModel.findByIdAndRemove(id);
 
         res.json({ message: 'Post deleted successfully' });
     } catch (error) {
@@ -150,22 +150,172 @@ export const adminLogin = async (req, res) => {
 export const AddGalleryImage = async (req, res) => {
     try {
         const data = req.body;
+
+        const filename = data.file === "" ? "" : uuidv4();
+
+        if (filename !== "") {
+            const imageData = data.file.replace(/^data:image\/\w+;base64,/, '');
+            const imageBuffer = Buffer.from(imageData, 'base64');
+            const pngImageBuffer = await sharp(imageBuffer).toFormat('png').toBuffer();
+            const imagePath = `uploads/images/${filename}.png`;
+            fs.writeFileSync(imagePath, pngImageBuffer);
+            data.file = `${filename}.png`;
+        }
+
         const newData = new GalleryModel(data);
-        await newData.save()
-        res.status(200).json(newData);
+        await newData.save();
+
+        const gallery = await GalleryModel.find();
+        const response = gallery.map((item) => {
+            const filename = item.file
+            const imageUrl = filename !== "" ? `${process.env.URL}/uploads/images/${filename}` : "";
+            return { ...item.toObject(), imageUrl };
+        });
+        res.status(200).json(response);
+
     } catch (err) {
-        console.log(err);
-        res.status(500).json({ "error": "Couldn't add" })
+        console.log(err)
+        res.status(500).json({ error: "Couldn't add" });
     }
 }
 
 export const DeleteGalleryImage = async (req, res) => {
     try {
         const { id } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No image with this id');
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send('No member with this id');
+        }
+
+        const gallery = await GalleryModel.findById(id);
+        if (!gallery) {
+            return res.status(404).send('Committee not found');
+        }
+
         await GalleryModel.findByIdAndRemove(id);
-        res.json({ message: 'image deleted succesfully' });
+
+        const imagePath = `uploads/images/${gallery.file}`;
+        if (imagePath && gallery.file !== "") {
+            fs.unlinkSync(imagePath);
+        }
+
+        res.json({ message: 'Post deleted successfully' });
     } catch (error) {
-        res.status(500).json({ "error": "Couldn't delete" })
+        res.status(500).json({ error: "Couldn't delete" });
+    }
+}
+
+export const GetEventsList = async (req, res) => {
+    try {
+        let events = await EventModel.find({}, { _id: 1, title: 1, tickets: 1 });
+        console.log(events);
+        let registrations = await EventRegModel.find();
+
+        const groupedRegistrations = registrations.reduce((acc, reg) => {
+            const eventId = reg.event_id.toString();
+            if (!acc[eventId]) {
+                acc[eventId] = {
+                    totalRegistrations: 1,
+                    ticketTypeCounts: {},
+                };
+            } else {
+                acc[eventId].totalRegistrations++;
+            }
+
+            const ticketCounts = Object.values(reg.ticketCount);
+            ticketCounts.forEach((count, index) => {
+                const ticketType = Object.keys(reg.ticketCount)[index];
+                acc[eventId].ticketTypeCounts[ticketType] =
+                    (acc[eventId].ticketTypeCounts[ticketType] || 0) + count;
+            });
+
+            return acc;
+        }, {});
+
+        const eventListWithTotals = events.map((event) => {
+            const eventId = event._id.toString();
+            const ticketsLeft = event.tickets.reduce((acc, ticket) => {
+                acc[ticket.name] = ticket.ticketsLeft;
+                return acc;
+            }, {});
+
+            return {
+                _id: eventId,
+                title: event.title,
+                totalRegistrations: groupedRegistrations[eventId]
+                    ? groupedRegistrations[eventId].totalRegistrations
+                    : 0,
+                ticketTypeCounts: groupedRegistrations[eventId]
+                    ? groupedRegistrations[eventId].ticketTypeCounts
+                    : {},
+                ticketsLeft: ticketsLeft,
+            };
+        });
+
+        res.json(eventListWithTotals);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to fetch event list' });
+    }
+};
+
+export const GetEventRegData = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const rgd = await EventRegModel.find({ event_id: id })
+
+        const workbook = new exceljs.Workbook()
+        const worksheet = workbook.addWorksheet('Registration Data');
+
+        const headerRow = worksheet.addRow([
+            'Booking ID',
+            'Name',
+            'Address',
+            'Country',
+            'Phone',
+            'Email',
+            'Ticket Type',
+            'Pricing Category',
+            'Ticket Count',
+            'Payment Method'
+        ])
+
+        headerRow.eachCell((cell) => {
+            cell.font = { bold: true };
+        });
+
+        for (const registration of rgd) {
+            const ticketCount = registration.ticketCount;
+            const name = `${registration.firstName || ''} ${registration.lastName || ''}`;
+            const address = `${registration.address || ''}, ${registration.suburb || ''}, ${registration.postcode || ''}`;
+
+            for (const [ticketType, count] of Object.entries(ticketCount)) {
+                worksheet.addRow([
+                    registration._id.toString(),
+                    name,
+                    address,
+                    registration.country || 'N/A',
+                    registration.phone || 'N/A',
+                    registration.email || 'N/A',
+                    registration.ticketType || 'N/A',
+                    ticketType,
+                    count,
+                    registration.paymentMethod || 'N/A',
+                ]);
+            }
+        }
+
+
+        res.setHeader(
+            'Content-Disposition',
+            'attachment; filename=registration_data.xlsx'
+        )
+
+        await workbook.xlsx.write(res);
+
+        res.end();
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ "msg": "Couldn't process the download request" })
     }
 }

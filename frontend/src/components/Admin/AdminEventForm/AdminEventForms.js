@@ -30,7 +30,7 @@ function AdminEventForm({ events, setEvents, setAddEvent, currentId, setcurrentI
       tickets: [],
       terms: '',
       file: '',
-      regOpen: 'Yes'
+      regOpen: 'Yes',
     });
 
   const handleDeleteTicket = (index) => {
@@ -183,6 +183,10 @@ function AdminEventForm({ events, setEvents, setAddEvent, currentId, setcurrentI
                       <span>Description:</span>
                       <span style={{ fontWeight: 'normal' }}>{ticket.description}</span>
                     </div>
+                    <div>
+                      <span>Total Tickets:</span>
+                      <span style={{ fontWeight: 'normal' }}>{ticket.count}</span>
+                    </div>
                     <span>Pricing: </span>
                     {
                       event.tickets[index].pricing.map((pricing, ind) => {
@@ -190,7 +194,7 @@ function AdminEventForm({ events, setEvents, setAddEvent, currentId, setcurrentI
                           <div key={ind}>
                             <div style={{ display: "flex" }}>
                               <span>{pricing.name}: </span>
-                              <span style={{ fontWeight: 'normal' }}>{pricing.price}</span>
+                              <span style={{ fontWeight: 'normal' }}> $ {pricing.price}</span>
                             </div>
                           </div>
                         )

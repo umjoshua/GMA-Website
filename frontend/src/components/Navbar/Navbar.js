@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <div className={"header"} style={{ visibility: location.pathname.includes("/admin") ? "hidden" : "visible" }}>
       <div className="logo-div">
-        <img src={Logo} alt="logo" className="logo"/>
+        <img src={Logo} alt="logo" className="logo" height={90}/>
         <p>Geelong Malayalee Association Inc</p>
       </div>
       <ul className={icon ? "nav_menu active" : "nav_menu"}>

@@ -7,6 +7,8 @@ const AddEventPopup = ({ event, setEvent, ticketCount, setTicketCount }) => {
   const [ticket, setTicket] = useState({
     name: '',
     description: '',
+    count: '',
+    ticketsLeft: '',
     pricing: []
   });
 
@@ -28,6 +30,7 @@ const AddEventPopup = ({ event, setEvent, ticketCount, setTicketCount }) => {
     setTicket({
       name: '',
       description: '',
+      count: '',
       pricing: []
     });
   }
@@ -82,6 +85,13 @@ const AddEventPopup = ({ event, setEvent, ticketCount, setTicketCount }) => {
                 value={ticket.description}
                 onChange={(e) => setTicket({ ...ticket, description: e.target.value })}
               />
+              <input
+                className=''
+                placeholder='Total Tickets'
+                required
+                value={ticket.count}
+                onChange={(e) => setTicket({ ...ticket, count: e.target.value, ticketsLeft: e.target.value })}
+              />
             </div>
             <label style={{ marginTop: "20px" }}>Ticket Pricing</label>
             <div className='popup-3'>
@@ -112,7 +122,7 @@ const AddEventPopup = ({ event, setEvent, ticketCount, setTicketCount }) => {
 
               <AddIcon style={{}} onClick={handleAdd}></AddIcon>
             </div>
-            <input type='submit' className='popup-5'/>
+            <input type='submit' className='popup-5' />
           </div>
         </form>
       )

@@ -9,18 +9,28 @@ dotenv.config()
 const { CLIENT_ID, APP_SECRET } = process.env;
 
 const base = "https://api-m.paypal.com";
+// const base = "https://api-m.sandbox.paypal.com";
 
 export const CalculateAmount = (tickets, ticketType, ticketCount) => {
     let amount = 0;
+    let available = true;
+    let total = 0;
 
     const ticket = tickets.find(obj => obj.name.toString() === ticketType);
     ticket.pricing.forEach(element => {
         if (ticketCount[element.name]) {
             amount += Number(element.price) * Number(ticketCount[element.name])
+            if (element.price !== 0) {
+                total += ticketCount[element.name]
+            }
         }
     });
 
-    return amount;
+    if (ticket.ticketsLeft < total) {
+        available = false;
+    }
+
+    return [amount, available];
 }
 
 
@@ -98,12 +108,24 @@ async function handleResponse(response) {
 export const Order = async (req, res) => {
     try {
         let amount = 0;
+        let available = false;
         let regData = req.body;
 
         const eventId = regData.event_id;
         const { ticketType, ticketCount } = regData;
         let eventData = await EventModel.findById(eventId, 'tickets');
-        amount = CalculateAmount(eventData?.tickets, ticketType, ticketCount);
+
+        [amount, available] = CalculateAmount(eventData?.tickets, ticketType, ticketCount);
+        if (!available) {
+            return
+        }
+        if (req.body?.paymentMethod === "paypal") {
+            amount += ((amount * 3) / 100)
+        } else {
+            amount += ((amount * 2) / 100)
+        }
+        amount += 0.50;
+
         regData.amount = amount;
         const response = await createOrder(amount);
         res.json(response);
@@ -118,6 +140,7 @@ export const Capture = async (req, res) => {
     try {
         let regData = req.body;
         let amount = 0;
+        let available = false;
         const { orderID } = req.params;
         const response = await capturePayment(orderID);
 
@@ -129,13 +152,40 @@ export const Capture = async (req, res) => {
             const { ticketType, ticketCount } = regData;
 
             let eventData = await EventModel.findById(eventId, 'tickets');
-            console.log(eventData);
-            amount = CalculateAmount(eventData?.tickets, ticketType, ticketCount);
+
+            [amount, available] = CalculateAmount(eventData?.tickets, ticketType, ticketCount);
+
+            if (req.body?.paymentMethod === "paypal") {
+                amount += ((amount * 3) / 100)
+            } else {
+                amount += ((amount * 2) / 100)
+            }
+            amount += 0.50;
+
+            regData.amount = amount;
             regData.amount = amount;
 
             const ticket = eventData.tickets.find(obj => obj.name.toString() === ticketType);
             const newData = new EventRegModel(regData);
             await newData.save();
+
+            let ticketsLeft = ticket.ticketsLeft;
+
+            const pricingMap = new Map(ticket?.pricing.map(item => [item.name, item.price]))
+
+            Object.entries(ticketCount).forEach(([name, value]) => {
+                const price = pricingMap.get(name);
+                if (price !== undefined && price >= 0) {
+                    ticketsLeft -= value;
+                }
+            })
+
+            await EventModel.findOneAndUpdate(
+                { _id: eventId, 'tickets._id': ticket._id },
+                { $set: { 'tickets.$.ticketsLeft': ticketsLeft } },
+                { new: true }
+            )
+
             regData.regId = newData._id;
 
             const ticketData = {

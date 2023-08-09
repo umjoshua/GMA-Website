@@ -7,8 +7,9 @@ import * as api from '../../api'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import TermsPopup from './TermsPopup';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 
-function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setData, setThank, setError }) {
+function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setData, setThank, setError, fundingSource, setFundingsource }) {
 
   const [loading, setLoading] = useState(false);
   const [terms, setTerms] = useState(false);
@@ -139,12 +140,55 @@ function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setDa
             <span>{errors.cEmail?.message}</span>
           </div>
         </div>
+
+        {registrationData.subTotal !== 0 && <>
+          <span style={{ fontWeight: 'bold', fontSize: 'large', color: 'purple', marginLeft: "15px" }}>
+            How would you like to pay?
+          </span>
+
+          <div style={
+            {
+              marginLeft: '15px',
+              display: 'flex',
+              marginTop: '10px',
+              justifyContent: 'space-evenly'
+            }
+          }>
+
+            <button className={fundingSource === 'card' ? "selected_pay_button" : "pay_button"}
+              onClick={(e) => { e.preventDefault(); setFundingsource('card'); }}
+            >
+              <span
+                style={{
+                  fontWeight: 'bold', fontStyle: 'italic',
+
+                  color: fundingSource === 'card' ? 'white' : '#253b80',
+                  display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'
+                }}><CreditCardIcon style={{ height: '10px' }} />Card</span>
+            </button>
+
+
+            <button className={fundingSource === 'paypal' ? "selected_pay_button" : "pay_button"}
+              onClick={(e) => { e.preventDefault(); setFundingsource('paypal') }}
+            >
+
+              <span style={{
+                fontWeight: 'bold', fontStyle: 'italic', color: fundingSource === 'paypal' ? 'white' : '#253b80'
+              }}>Pay</span>
+              <span style={{
+                fontWeight: 'bold', fontStyle: 'italic',
+                color: fundingSource === 'paypal' ? 'white' : '#179bd7'
+              }}>Pal</span>
+            </button>
+          </div></>
+        }
         <label className="terms-c">
           <input className="radioInput"
             type="radio"
             required
             checked={terms}
             onClick={() => setTerms(!terms)}
+            onChange={() => { }}
           />
           I agree to {<TermsPopup terms={event.terms} />}
         </label>
@@ -157,7 +201,7 @@ function RegisterForm({ event, setCheckOut, setBackPage, registrationData, setDa
             value={registrationData.subTotal !== 0 ? "Submit and Pay" : "Submit"}
           />
         </div>
-      </form>
+      </form >
     </div >
   );
 }

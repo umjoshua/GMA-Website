@@ -15,7 +15,7 @@ const Adminnavbar = ({ setAdminPage }) => {
     return (
         <div className='admin-navbar'>
             <div className="logo-div">
-                <img src={Logo} alt="logo" className="logo" />
+                <img src={Logo} alt="logo" height={60} className="logo" />
                 <h2>GMA Dashboard</h2>
             </div>
             <div className={icon ? 'admin_nav_menu active' : 'admin_nav_menu'}>
