@@ -25,4 +25,6 @@ router.post("/membership", MembershipRegister)
 
 router.post("/contactus", ContactUs)
 
+// router.get("/phone")
+
 export default router

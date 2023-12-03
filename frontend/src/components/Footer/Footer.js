@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { getPhoneNumber } from '../../api'
 
 import './Footer.css';
 
 function Footer() {
+
+  const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await getPhoneNumber()
+        setPhone(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const location = useLocation();
 
   return (
@@ -17,16 +32,10 @@ function Footer() {
         <div className='footer_container'>
           <div className='footer_section'>
             <div className='location'>
-              <LocationCityIcon />
-              <div>
-                <p>12 Galactic Street</p>
-                <p>Mt. Duneed, VIC 3217</p>
-              </div>
-            </div>
-            <div className='location'>
               <PhoneIcon />
               <p>
                 <a href='tel://+61476187075'>+61 476187075</a>
+                {/* <a href={`tel:${phone}`}>{phone}</a> */}
               </p>
             </div>
             <div className='location'>

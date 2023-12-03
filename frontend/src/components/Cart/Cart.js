@@ -43,7 +43,7 @@ function Cart({ event, registrationData, pfee, total }) {
           }
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ placeSelf: 'flex-end' }}>Tickets x {payableTickets}: $ {registrationData.subTotal} </span>
-            <span style={{ placeSelf: 'flex-end' }}>Ticket Fee: $ 0.50 </span>
+            <span style={{ placeSelf: 'flex-end' }}>Ticket Fee: $ {registrationData.subTotal === 0 ? "0" : "0.50"} </span>
             <span style={{ placeSelf: 'flex-end' }}>Processing Fee: $ {pfee.toFixed(2)} </span>
           </div>
         </div>
@@ -51,7 +51,7 @@ function Cart({ event, registrationData, pfee, total }) {
       <div className="fare">
       </div>
       <div className="subtotal">
-        <span>TOTAL: $ {total.toFixed(2)}</span>
+        <span>TOTAL: $ {registrationData.subTotal === 0 ? "0" : total.toFixed(2)}</span>
       </div>
     </div>
   );

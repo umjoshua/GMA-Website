@@ -12,7 +12,7 @@ function PayPalPayment({ setThank, regData, setError, fundingSource,total }) {
     const baseURL = api.baseURL;
 
     const initialOptions = {
-        "client-id": "client-id",
+        "client-id": "ARg1nuqJFBBb2vAMf0IO_2L8YmmIUnxZJYnzzpJ3iuvmTJ4id4uLO2NFitHMcIYBQCVDD6Q1lycTczAo",
         "enable-funding": "paylater,venmo,card",
         "currency": "AUD",
         "locale": "en_AU",

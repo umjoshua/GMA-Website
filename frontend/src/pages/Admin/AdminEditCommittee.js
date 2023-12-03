@@ -20,6 +20,7 @@ const AdminEditCommittee = () => {
     const [deleteConfirmation, setDeleteConfirmation] = useState(false);
     const [selectedCommitteeId, setSelectedCommitteeId] = useState(null);
     const [addCommittee, setAddCommittee] = useState(false);
+    const [phone,setPhone] = useState('');
 
     const deleteMember = async () => {
         if (selectedCommitteeId) {
@@ -40,6 +41,8 @@ const AdminEditCommittee = () => {
             try {
                 const { data } = await api.fetchCommittee()
                 setCommittee(data);
+                // const phone = await api.getPhoneNumber()
+                // console.log(phone);
             } catch (error) {
                 console.error(error);
             }

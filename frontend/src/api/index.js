@@ -43,3 +43,7 @@ export const deleteGalleryImage = async (id, config) => await API.delete('/admin
 export const getEventsList = async (config) => await API.get('/admin/events/', config);
 
 export const getEventRegs = async (id, config) => await API.get('/admin/eventRegistrations/' + id, config);
+
+export const setPhoneNumber = async (data, config) => await API.post('/admin/phone', data, config);
+
+export const getPhoneNumber = async() => await API.get("/user/phone");

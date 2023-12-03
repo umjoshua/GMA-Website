@@ -1,5 +1,6 @@
 import { EventModel, EventRegModel } from "../models/eventModel.js";
 import { CommitteeModel } from "../models/committeeModel.js"
+import AddressModel from '../models/addressModel.js'
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import AdminModel from "../models/adminModel.js"
@@ -317,5 +318,20 @@ export const GetEventRegData = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(500).json({ "msg": "Couldn't process the download request" })
+    }
+}
+
+
+export const UpdatePhone = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Event with this id');
+
+        const updatedEvent = req.body;
+        await EventModel.findByIdAndUpdate(id, updatedEvent, { new: true });
+
+        res.json(updatedEvent);
+    } catch (error) {
+        res.status(500).json({ "error": "Couldn't update" })
     }
 }

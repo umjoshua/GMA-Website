@@ -60,7 +60,7 @@ const Event = ({ item, setEvents, setViewEvent, setAddEvent, currentId, setcurre
                     <div className="confirmation_dialog">
                         <div className="confirmation_content">
                             <h2>Confirmation</h2>
-                            <p>Are you sure you want to delete this committee member?</p>
+                            <p>Are you sure you want to delete this Event?</p>
                             <div className="confirmation_buttons">
                                 <button className="confirmation_button" onClick={deleteEvent}>
                                     Yes, Delete

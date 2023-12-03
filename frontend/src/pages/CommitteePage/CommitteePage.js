@@ -11,7 +11,6 @@ function CommitteePage() {
       try {
         const { data } = await api.fetchCommittee()
         setCommittee(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
